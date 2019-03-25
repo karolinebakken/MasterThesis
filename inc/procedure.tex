@@ -2,7 +2,8 @@
 \label{chap:procedure}
 In this chapter, the methodology for the creation of the two models will be described.
 \section{Procedure for Modelling of Global Model}
-The global model was created in SIMA RIFLEX, and consists of the whole cable attached to a point that is will behave like the vessel due to the transfer functions provided from Dr. Techn. Olav Olsen. The following section will describe how the central properties of the cable were modeled in the numeric model. 
+\label{sec:globmod}
+The global model was created in SIMA RIFLEX, and consists of the whole cable attached to a point that will behave like the vessel due to the transfer functions provided from Dr. Techn. Olav Olsen. The following section will describe how the central properties of the cable were modeled in the numeric model. 
 
 \subsection{Cross Sectional Properties}
 The cable in the global model consists of two different cross sections, with the properties presented in table \ref{table:crosssima}. 
@@ -60,8 +61,8 @@ The cable consists of 3 sections with 2 different cross-sections. Section 1 is t
 \noindent As a simplification, it is assumed that the floating wind turbine can have 3 different positions:
 \begin{itemize}
     \item Neutral: There is no wind
-    \item Near: Maximum wind from the west direction
-    \item Far: Maximum wind from the east direction
+    \item Near: Maximum wind from the east direction
+    \item Far: Maximum wind from the west direction
 \end{itemize}
 To determine the far position it was decided in agreement with Dr. Techn. Olav Olsen that the maximum offset in far position, relative to the neutral position is 20\% of the water depth in the west direction. Assuming a linear system, the near position was calculated relative to the far position as according to the scatter diagram of the wind in Figure \ref{fig:scatterwind}:
 \begin{equation}
@@ -171,9 +172,9 @@ The straight components are modeled with HSHEAR363 elements. That includes the i
 The conductors were modeled with a lay angle of 8 degrees, and the armouring has a lay angle of 20 degrees. The local model is 5 pitch lengths for the conductor. 1 pitch length can be calculated as:
 
  \begin{equation}
-   L_p = \frac{2\pi R}{\tan(\theta)}
+   L_p = \frac{2\pi R}{\tan(\alpha)}
 \end{equation}
- Where $L_p$ is 1 pitch length, R is the radius in polar coordinates, and $\theta$ is the lay angle\newline
+ Where $L_p$ is 1 pitch length, R is the radius in polar coordinates, and $\alpha$ is the lay angle\newline
  \newline
  With a lay angle of 8 degrees, 5 pitch lengths are calculated to be $L_p=3.35$m \newline
 \newline
@@ -388,7 +389,7 @@ The boundary conditions for the cable is created in such a way that the cable ca
 The local model was, as the global model tested to see if it performs in a satisfactory manner. The following sequence of loads was added to the local model. 
 \begin{enumerate}
     \item Gravity Load: Gravity is turned off on the local model, but the effect of the mass of the model should still be applied. This was added at the very first time step.
-    \item Tension: Tension was added to the local model in the axial direction on the last node in the outer sheath, with magnitude 150 Pa. The load was applied at t=1s to t=5s. seconds
+    \item Tension: Tension was added to the local model in the axial direction on the last node in the outer sheath, with magnitude 150 kPa. The load was applied at t=1s to t=5s. seconds
     \item Initial strain: Initial strain was added to the outer sheath of the model in 1 direction. The strain was added to all the elements with a magnitude 0.03. It was applied at t=1s to t=5s.
     \item Bending: Smooth bending of the cable was applied. The cable was bent from 0 degrees to 5 degrees between t=5 and t=15, and from 5 degrees to -5 degrees between t=15 and t=35.  
 \end{enumerate}

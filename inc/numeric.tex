@@ -17,7 +17,7 @@ This is based on the following principles:
 \end{itemize}
  \cite{moan2003}
 \subsection{Principle of Virtual Work}
-The element stiffness relationship can be derived based on virtual work (Galerkin's Method). This method assumes a displacement for each element so that the displacement is continuous between elements. The method can be generalized and used for all kinds of structural problems in all dimensions \cite{moan2003}. The method gives an approximation rather than the exact solution. This is done by,  in average, fulfilling the differential equations in the problem by approximated weighted function multiplication a volume integration. By setting the internal work equal to the external work, it is assumed that the error from assuming the weight function in the external work is equal to the error in the internal work. If the weight functions are selected so that the boundary conditions are fulfilled appropriately, the error in the external work will cancel out. This means that the total error in the volume integration is zero in average, but at an arbitrary point, the equilibrium equation is not necessarily fulfilled. This is referred to as integrated equilibrium. The principle of virtual work in a body with deformed volume and surfaces in equilibrium:   
+The element stiffness relationship can be derived based on virtual work (Galerkin's Method). This method assumes a displacement for each element so that the displacement is continuous between elements. The method can be generalized and used for all kinds of structural problems in all dimensions, \cite{moan2003}. The method gives an approximation rather than the exact solution. This is done by,  in average, fulfilling the differential equations in the problem. By setting the internal work equal to the external work, it is assumed that the error from assuming the weight function in the external work is equal to the error in the internal work. If the weight functions are selected so that the boundary conditions are fulfilled appropriately, the error in the external work will cancel out. This means that the total error in the volume integration is zero in average, but at an arbitrary point, the equilibrium equation is not necessarily fulfilled. This is referred to as integrated equilibrium. The principle of virtual work in a body with deformed volume and surfaces in equilibrium:   
 
 \begin{equation}
     \int_v (\rho \boldsymbol{\ddot{u}} - \boldsymbol{f}) \cdot \delta \boldsymbol{u}dV + \int_V \boldsymbol{\sigma}: \delta \epsilon dV - \int_S \boldsymbol{t} \cdot \delta \boldsymbol{u} dS =0
@@ -46,10 +46,10 @@ According to \cite{moan2003}, a system is non-linear if it contains non-linear m
 \end{equation}
 The stiffness matrix is often written on differential form, with the incremental stiffness matrix, $K_I$:
 \begin{equation}
-    d\boldsymbol{R}=\frac{d}{dr}(\boldsymbol{K(r)r})dr
+    d\boldsymbol{R}=\frac{d}{d\boldsymbol{r}}(\boldsymbol{K(r)r})d\boldsymbol{r}
 \end{equation}
 \begin{equation}
-  \boldsymbol{dR}= \boldsymbol{K_I(r)}\boldsymbol{dr}
+  d\boldsymbol{R}= \boldsymbol{K_I(r)}d\boldsymbol{r}
   \label{eq:system}
 \end{equation}
 In general it can be challenging to determine $\boldsymbol{r}$ for a given $\boldsymbol{R}$ analytically, and thus iterative methods will have to be used. Only the methods relevant for the project/master will be presented. 
@@ -63,7 +63,7 @@ This method it an incremental method, meaning that the external load is applied 
 \end{equation}
 \newline 
 \newline
-Where:
+where:
 \begin{equation}
     \Delta \boldsymbol{R_{m+1}} = \boldsymbol{R_{m+1}} - \boldsymbol{R_{m}}
 \end{equation}
@@ -120,7 +120,7 @@ When combining the two methods load is applied according to the Euler-Cauchy met
 Dynamic analysis has to be considered when external loads are not applied in a very slow manner. Dynamic loads are different from static loads by implying a time dependent solution and by introducing inertia loads throughout the structure, and often also damping. The equilibrium equation for a dynamic system is stated by \cite{Langen1999} as:
 
 \begin{equation}
-  \boldsymbol{M \ddot{r}} + \boldsymbol{C \dot{r}} + \boldsymbol{Kr} =  \boldsymbol{Q(t)}
+  \boldsymbol{M \ddot{r}} + \boldsymbol{C \dot{r}} + \boldsymbol{Kr} =  \boldsymbol{Q}(t)
   \label{eq:eq}
 \end{equation}
 
@@ -132,7 +132,7 @@ Where $\boldsymbol{R^I}$ is the inertia force vector, $\boldsymbol{R^D}$ is the 
 \newline
 The inertia forces relate to the mass matrix as:
 \begin{equation}
-    \boldsymbol{R^I}= \boldsymbol{R^I(\ddot{r},\dot{r},r,t)}=\boldsymbol{M(\ddot{r},\dot{r},r,t)}\boldsymbol{r}
+    \boldsymbol{R^I}= \boldsymbol{R^I(\ddot{r},\dot{r},r,}t)=\boldsymbol{M(\ddot{r},\dot{r},r,}t)\boldsymbol{r}
 \end{equation}
 
 \noindent The internal forces $\boldsymbol{R^S}$ can be established by:
@@ -163,7 +163,7 @@ Where $\alpha_1$ and $\alpha_2$ are the damping coefficients for the Rayleigh da
 \noindent  The dynamic equilibrium equation is an initial value problem, meaning that the solution is determined by start values. Practical numerical integration methods use a step-by-step approach, where the time interval is divided into sub-intervals with step length h. Displacement, velocity, and acceleration are known for the beginning of the sub-interval, and the solution for the end of the sub-interval is calculated by assuming the variation of the acceleration over the time step. The computed value will be used to determine the velocity and displacement across the time step, and they will be the start values for the next sub-interval. This way, an approximated solution is calculated at instants along the time axis, and accuracy increases as h decreases, \cite{Langen1999}.
 \newline 
 \newline
- \noindent How the acceleration changes during a time step is suggested by several methods. Only the methods relevant to this project/master thesis will be presented\newline
+ \noindent How the acceleration changes during a time step is suggested by several methods, and can be explicit or implicit. A nonlinear implicit method requires iteration at each time step to establish for each time step, while this is not necessary for an explicit method. Only the methods relevant to this master thesis will be presented\newline
  \newline
 \noindent 
 \subsection{Newmark's $\boldsymbol{\beta}$ Family}
@@ -191,7 +191,7 @@ $\gamma$ and $\beta$ are parameters defining the change in acceleration, velocit
 \noindent $\gamma = \frac{1}{2}$ is normally used to assure second order accuracy and stability. 
 According to \cite{Mathisen1990}, the Newmark-$\boldsymbol{\beta}$ method may have difficulties with solving non-linear problems if they are not discretized in the right way. \newline
 \newline
-\noindent In dynamic analysis, the higher modes are of little interest, and these can be removed by using introducing increased damping ratio. The Newmark's $\boldsymbol{\beta}$ Family will remove the medium modes, and not affecting the lowest and highest modes. The higher modes can be removed by introducing numerical damping, but it is at the cost of accuracy.  The method can be applied both for linear and non-linear analysis \cite{sintef2017}.
+\noindent In dynamic analysis, the higher modes are of little interest, and these can be removed by introducing increased damping ratio. The Newmark's $\boldsymbol{\beta}$ Family will remove the medium modes, and not affecting the lowest and highest modes. The higher modes can be removed by introducing numerical damping, but it is at the cost of accuracy.  The method can be applied both for linear and non-linear analysis \cite{sintef2017}.
 
 \subsection{Modified Hilber-Hughes-Taylor Method}
 \label{sec:HHT}
@@ -210,7 +210,7 @@ The method is unconditionally stable when:
 \noindent The method is effectively suppressing high frequency and also retains second-order accuracy. \cite{Mathisen1990}
 
 \section{Global Model in SIMA RIFLEX}
-SIMA RIFLEX is a computer program made for analyzing slender structures such as flexible risers and mooring lines developed by SINTEF Ocean. The combined method is used for the static calculation and Newmark-$\boldsymbol{\beta}$ is used for dynamic analysis. These methods are described in section \ref{sec:combined} and \ref{sec:newmark} respectively. 
+SIMA RIFLEX is a computer program made for analyzing slender structures such as flexible risers and mooring lines developed by SINTEF Ocean. The Combined Method is used for the static calculation and Newmark-$\boldsymbol{\beta}$ is used for dynamic analysis. These methods are described in section \ref{sec:combined} and \ref{sec:newmark} respectively. 
 
 
 \subsection{Element Formulation}
@@ -327,15 +327,15 @@ This is an elastic element with two nodes and six degrees of freedom in each nod
 \end{equation}
 The displacement of an arbitrary point p defined by the local coordinates in the cross section can be expressed as:
 \begin{equation}
-    u_x(x,y,z)=u_{x0}-yu_{y0,x}-zu_{z0,x}
+    u(x,y,z)=u_{0}-yv_{0}-zw_{0}
 \end{equation}
 
 \begin{equation}
-    u_y(x,y,z)=u_{y0}-z\theta_x
+    v(x,y,z)=v_{0}-z\theta_x
 \end{equation}
 
 \begin{equation}
-    u_z(x,y,z)=u_{z0}-y\theta_x
+    w(x,y,z)=w_{0}-y\theta_x
 \end{equation}
 \noindent Where $\sigma_{ij}$ is the stress in i,j direction, E is Young's modulus for the material, $\nu$ is the Poisson's number, $\epsilon_ij$ is the strain in i,j direction, $\gamma$ is the shear strain, $u_i$ is the displacement in i direction and $\theta$ is the torsion.  
 \subsubsection{HSHEAR353}
@@ -397,7 +397,7 @@ Helix beam element with 3 nodes, 2 centroid nodes and 1 radial node to describe 
 \noindent For pressure armour and tape layers the longitudinal strain can be described as:
 
 \begin{equation}
-    \epsilon_{11}=cos^2 \alpha \w_{1,1} + \frac{\sin^2 \alpha}{R} u_3 + R \sin \alpha \cos \alpha \chi_{1,1}-u_{3,22} \sin^2 \alpha X^3
+    \epsilon_{11}=cos^2 \alpha w_{1,1} + \frac{\sin^2 \alpha}{R} u_3 + R \sin \alpha \cos \alpha \chi_{1,1}-u_{3,22} \sin^2 \alpha X^3
 \end{equation}
 While for the plastic layer the strains can be described as:
 \begin{equation}
@@ -431,7 +431,7 @@ If $\alpha \rightarrow \infty$ the contact condition is recovered exactly.\newli
 \newline 
 \noindent The contact kinematic of the HCONT463 element will be:
 \begin{equation}
-    \Delta u_n= (\Delta \boldsymbol{u_B} - \Delta \boldsymbol{u_A})  \cdot \boldsymbol{n} = (u_3^{0B} - u_3^{0A})
+    \Delta u_n= (\Delta \boldsymbol{u_B} - \Delta \boldsymbol{u_A})  \cdot \boldsymbol{n} = (\Delta u_3^{0B} - \Delta u_3^{0A})
 \end{equation}
 Where
 \begin{equation}

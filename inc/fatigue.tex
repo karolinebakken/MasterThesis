@@ -49,7 +49,7 @@ The loads from the waves acting on the floating wind turbine can be calculated u
 \noindent Where $\rho$ is the density of the water, D is the diameter of the pipe, $C_M$ is the mass coefficient, $a_x$ is the horizontal particle acceleration, is the acceleration in x direction, $C_D$ is the drag coefficient and u is the horizontal particle velocity. \newline
 \newline
 \newline
-In the case of a moving cylinder, the Morison's Equation can be modified as follows:
+In the case of a moving cylinder, the Morison's Equation can be modified according to \cite{Faltinsen1990} as follows:
 \begin{equation}
     dF=\frac{1}{2}\rho C_D D dz(u-\dot{\eta_1}) |u-\dot \eta_1| +  \rho C_M \frac{\pi D^2}{4} dz a_1 -\rho (C_M-1) \frac{\pi D^2}{4} dz \ddot{\eta_1}
     \label{eq:movemorison}
@@ -118,8 +118,11 @@ From this it follows that the stress range, $\Delta S$ is:
 \end{equation}
 Fatigue data can be plotted in an SN diagram where stress or strain range is plotted against the number of cycles until failure, as can be seen in Figure \ref{fig:sn}. For most applications, fatigue life spans over a high number of cycles, so the SN plot is presented as a log-log-diagram. It is common to differentiate between high cycle fatigue and low cycle fatigue, where high cycle fatigue has a fatigue life at more than $10^5$ cycles, and the stress is elastic. High cycle fatigue tends to follow a log-linear relationship called the SN curve:
 \begin{equation}
-    N(\Delta s)^m = \text{constant}
+    N(\Delta s)^m = \text{c}
 \end{equation}
+\label{eq:sn}
+Where N is the number of cycles before failure, $\Delta S$ is the stress range, m is an exponent and c is a constant.\newline
+\newline
 For the low cycle fatigue, the material will experience plastic deformation. For marine structure applications, the stress is usually in the high cycle fatigue range. If the stress range is sufficiently low, fatigue life can approach "infinite". This is called the fatigue limit and only applies in non-corrosive environments. 
 
 \begin{figure}[h!]
@@ -240,7 +243,7 @@ The friction stress will be the smallest stress range from either the max allowe
 \begin{equation}
     \Delta \sigma_f^i =\text{min}\left(E \cos^2 \alpha_i R_i \Delta \kappa , \frac{\pi R_i \tau_i}{\sin \alpha_i A_i}\right)
 \end{equation}
-Where $R_i$ is the helix radius of the layer i, and $\tau$ is the friction force per unit length, and can be determined by:
+Where $R_i$ is the helix radius of the layer i, and $\tau_i$ is the friction force per unit length, and can be determined by:
 \begin{equation}
     \tau_i \cong E \epsilon_c \mu \left( \sum_{j=i+1}^m \frac{n_j A_j \cos^2 \alpha_j \sin^2 \alpha_j }{n_i R_i} + \sum_{j=i}^m \frac{n_j A_j \cos^2 \alpha_j  \sin^2 \alpha_j}{n_j R_i}\right)
 \end{equation}
