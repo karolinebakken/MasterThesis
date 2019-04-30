@@ -98,9 +98,9 @@ Far & 96.85 \\
 Section number & External area [m$^2$] & Length [m] \\
  \hline
  \hline
-1 & 0.006171 & 20\\
-2 & 0.03 & 60\\
-3 & 0.006171 & 90\\
+1 & 0.006171 & 30\\
+2 & 0.03 & 40\\
+3 & 0.006171 & 130\\
  \hline
 \end{tabular}
 \caption{Dimensions of different sections of cable}
@@ -109,35 +109,6 @@ Section number & External area [m$^2$] & Length [m] \\
 
 \subsection{Boundary Conditions}
 The cable is fixed to the sea bottom in all translational and rotational degrees of freedoms. The cable hang-off on the vessels is fixed in all translational degrees of freedom and free in all rotational degrees of freedom. 
-
-\subsection{Testing}
-To make sure the global model is ready to be used in analyses in the master thesis, it had to be tested. The design criteria for the global model was that the curvature could not exceed $\kappa=1.3675$ anywhere in the cable to avoid locking of the cable. To test this, the most severe sea state according to the scatter diagram for West of Barra was tested in a dynamic analysis. The key variables used in the test are displayed in table \ref{table:testglob}.
-
-\begin{table} [H]
-\centering
-\begin{tabular}{ |c|c|c|}
-\hline
-Variable & Value \\
- \hline
- \hline
-Hs [m] & 13.5\\
-Tp[s] & 17 \\
-Time [s] & 500 \\
-Time step [s] & 0.1 \\
- \hline
-\end{tabular}
-\caption{Key variables used in testing of global model}
-\label{table:testglob}
-\end{table}
-
-The following results were seen as interesting to assess the quality of the model:
-\begin{itemize}
-    \item The static configuration, to make sure the cable had the desired steep S shape, and that the buoyancy section is not too high in the water.
-    \item Curvature envelope, to make sure the curvature does not exceed the max curvature of 1.3675 $\frac{1}{m}$
-    \item Max force envelope, to make sure the tension in the cable is acceptable
-    \item Min force envelope, to make sure the there is no compression in the bottom of the cable
-
-\end{itemize}
 
 \section{Procedure for Local Model}
 The local model is created in BFLEX and consists of the upper part of the cable. The model was built up from the inner layer and outwards. It can be divided into mainly 3 different components:
@@ -394,8 +365,185 @@ The boundary conditions for the cable is created in such a way that the cable ca
     \item The conductors are fixed in 1 and 2 for the first and last node. Degree of freedom 4 is fixed in all nodes.
     \item The armouring layers are fixed in 1 at the first node, and in 2,4,5 and 6 for all nodes
 \end{itemize}
-\subsection {Testing}
+
+\section {Testing}
 \label{sec:localtest}
+To make sure the global and local model were acceptable, some key features had to be checked before the analyses could begin. 
+\subsection{Testing of Global Model}
+To make sure the global model was ready to be used in further analyses, several things were investigated. The design criteria for the global model was that the curvature could not exceed $\kappa=1.3675$ anywhere in the cable to avoid locking of the cable. To test this, the most severe sea state according to the scatter diagram for West of Barra in Figure \ref{fig:scatn} was tested in a dynamic analysis. The key variables used in the test are displayed in table \ref{table:testglob}.
+
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|}
+\hline
+Variable & Value \\
+ \hline
+ \hline
+Hs [m] & 13.5\\
+Tp[s] & 16 \\
+Time step [s] & 0.1 \\
+ \hline
+\end{tabular}
+\caption{Key variables used in testing of global model}
+\label{table:testglob}
+\end{table}
+
+The following results for the three wind conditions were seen as interesting to assess the quality of the model:
+\begin{itemize}
+    \item The static configuration, to make sure the cable had the desired steep S shape, and that the buoyancy section is not too high in the water.
+    \item Curvature envelope, to make sure the curvature does not exceed the max curvature of 1.3675 $\frac{1}{m}$
+    \item Max force envelope, to make sure the tension in the cable is acceptable
+    \item Min force envelope, to make sure the there is no compression in the bottom of the cable
+\end{itemize}
+
+\section{Results from Testing of Global Model}
+The static configuration without current for the three different wind conditions: 
+\begin{figure}[H]
+\subfloat[Near position\label{fig:cavS200}]
+  {\includegraphics[width=.3\linewidth]{figures/statposnear}}\hfill
+\subfloat[Neutral position \label{fig:cavS2500}]
+  {\includegraphics[width=.3\linewidth]{figures/statposneu}}\hfill
+  \subfloat[Far position \label{fig:cavS5000}]
+  {\includegraphics[width=.3\linewidth]{figures/statposfar}}\hfill
+\caption{Static configuration for the global model for different wind conditions}
+\label{fig:statcon}
+\end{figure}
+
+The static configuration with current for the three different wind conditions: 
+\begin{figure}[H]
+\subfloat[Near position\label{fig:cavS200}]
+  {\includegraphics[width=.3\linewidth]{figures/statposnearc}}\hfill
+\subfloat[Neutral position \label{fig:cavS2500}]
+  {\includegraphics[width=.3\linewidth]{figures/statposneuc}}\hfill
+  \subfloat[Far position \label{fig:cavS5000}]
+  {\includegraphics[width=.3\linewidth]{figures/statposfarc}}\hfill
+\caption{Static configuration for the global model for different wind conditions}
+\label{fig:statcon}
+\end{figure}
+
+\noindent These positions gave the following configurations for the dynamic cable without current: 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/confignear}
+\caption{Configuration for near position}
+ \label{fig:confignear}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/configneu}
+\caption{Configuration for neutral position}
+ \label{fig:configneu}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/configfar}
+\caption{Configuration for far position}
+ \label{fig:configfar}
+\end{figure}
+
+\noindent These positions gave the following configurations for the dynamic cable with current: 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/confignearc}
+\caption{Configuration for near position}
+ \label{fig:confignear}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/configneuc}
+\caption{Configuration for neutral position}
+ \label{fig:configneu}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/configfarc}
+\caption{Configuration for far position}
+ \label{fig:configfar}
+\end{figure}
+
+\noindent The envelope curves for the curvatures
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/envcurvenear}
+\caption{Curvature envelope for near position}
+ \label{fig:envcurvenear}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/envcurveneu}
+\caption{Curvature envelope for neutral position}
+ \label{fig:envcurveneu}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/envcurvefar}
+\caption{Curvature envelope for far position}
+ \label{fig:envcurvefar}
+\end{figure}
+
+\noindent The max tension over the length of the cable
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/fmaxnear}
+\caption{The max tension over the length of the cable in near position}
+ \label{fig:fmaxnear}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/fmaxneu}
+\caption{The max tension over the length of the cable in neutral position}
+ \label{fig:fmaxneu}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/fmaxfar}
+\caption{The max tension over the length of the cable in far position}
+ \label{fig:fmaxfar}
+\end{figure}
+
+\noindent The minimum tension over the length of the cable
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/fminnear}
+\caption{The minimum tension over the length of the cable in near position}
+ \label{fig:fminnear}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/fminneu}
+\caption{The minimum tension over the length of the cable in neutral position}
+ \label{fig:fminneu}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/fminfar}
+\caption{The minimum tension over the length of the cable in far position}
+ \label{fig:fminfar}
+\end{figure}
+
+
+
+\subsection{Testing of Local Model}
+
+
+
 The local model was, as the global model tested to see if it performs in a satisfactory manner. The following sequence of loads was added to the local model. 
 \begin{enumerate}
     \item Gravity Load: Gravity is turned off on the local model, but the effect of the mass of the model should still be applied. This was added at the very first time step.
@@ -403,5 +551,31 @@ The local model was, as the global model tested to see if it performs in a satis
     \item Initial strain: Initial strain was added to the outer sheath of the model in 1 direction. The strain was added to all the elements with a magnitude 0.03. It was applied at t=1s to t=5s.
     \item Bending: Smooth bending of the cable was applied. The cable was bent from 0 degrees to 5 degrees between t=5 and t=15, and from 5 degrees to -5 degrees between t=15 and t=35.  
 \end{enumerate}
+
+
+\label{chap:results}
+The desired results in this project thesis are confirmation that the two models are working and are ready to be used in the master thesis. 
+
+\section{Local Model}
+The following figures show the local model and some of its components:
+
+\begin{figure}[H]
+\subfloat[Local model from the side with bend stiffener \label{fig:lm_total}]
+  {\includegraphics[width=.45\linewidth]{figures/lm_total}}\hfill
+\subfloat[Cable cross section in local model \label{fig:lm_cross}]
+  {\includegraphics[width=.25\linewidth]{figures/lm_cross}}\hfill
+\caption{Local model}
+\label{fig:volt}
+\end{figure}
+
+\begin{figure}[H]
+\subfloat[Conductors \label{fig:single}]
+  {\includegraphics[width=.45\linewidth]{figures/lm_conductors}}\hfill
+\subfloat[Armouring \label{fig:3phase}]
+  {\includegraphics[width=.45\linewidth]{figures/lm_arm}}\hfill
+\caption{Helical components in the local model}
+\label{fig:volt}
+\end{figure}
+
 
 
