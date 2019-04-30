@@ -195,8 +195,35 @@ Where $n_i$ is the number of cycles with a certain stress range experienced by t
 \newline
 The specimen will fail due to fatigue if D exceeds 1.
 
+\subsection{Mean Stress Correction}
+According to \cite{Savik2016}, fatigue tests of steel or copper wires are often done with wither keeping the mean stress or the R-ratio constant and always positive to avoid compression. Testing in tension-tension mode normally has a R-ratio of 0.1-0.5. The applied stress range can be calculated for a given R-ratio as:
+
+\begin{equation}
+    \Delta \sigma = 2 \bar{\sigma} \frac{1-R}{1+R}
+\end{equation}
+A Haigh diagram gives the relationship between the stress range ($\Delta \sigma$) and the mean stress ($\bar{\sigma}$),  and fatigue tests at given R-ratios will form a straight line in the Haigh diagram, illustrated in Figure \ref{fig:gerber}. Often, the SN curve is only available for a certain R-ratio: Goodman or Gerber assumptions can be used to transform between different mean stresses using the following expressions:\newline
+\newline
+\noindent Goodman assumption:
+\begin{equation}
+    \Delta \sigma_0 = \frac{\Delta \sigma}{1-(\frac{\bar{\sigma}}{\sigma_u})}
+\end{equation}
+
+\noindent Gerber assumption:
+\begin{equation}
+    \Delta \sigma_0 = \frac{\Delta \sigma}{1-(\frac{\bar{\sigma}}{\sigma_u})^2}
+\end{equation}
+
+\noindent where $\Delta \sigma_0$ is the stress range at zero mean stress, $\Delta \sigma$ is the calculated stress range, $\bar{\sigma}$ is the mean stress level and $\sigma_u$ is the ultimate stress level of the material. The Goodman and Gerber assumptions can also be seen in Figure \ref{fig:gerber}. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{figures/gerber}
+\caption[$\; \:$Haigh diagram with Goodman and Gerber assumptions]{Haigh diagram with Goodman and Gerber assumptions \cite{Savik2016} }
+ \label{fig:gerber}
+\end{figure}
+
 \subsection{Fatigue of Dynamic Power Cables}
-\noindent According to \cite{Nasution2013}, when the cable is in operation, it will experience loads from gravity, the motions of the floating vessel, and from the sea. The cable will experience a mean global tension and torque due to the gravity. Surge and heave motion will induce dynamic tensile and torque, while pitch and roll motion will give a dynamic curvature of the cable. This can be seen in Figure \ref{fig:float}. 
+\noindent \cite{Nasution2013} states that when the cable is in operation, it will experience loads from gravity, the motions of the floating vessel, and from the sea. The cable will experience a mean global tension and torque due to the gravity. Surge and heave motion will induce dynamic tensile and torque, while pitch and roll motion will give a dynamic curvature of the cable. This can be seen in Figure \ref{fig:float}. 
 
 \begin{figure}[H]
 \centering
@@ -237,17 +264,17 @@ The bending stress range for small lay angels can be approximated as:
 \begin{equation}
     \Delta \sigma_{nc} = R_{nominal} E \cos^2 \alpha_i \cos2 \alpha_i \Delta \kappa \cos \Psi \approx R_{nominal}E \Delta \kappa \cos \Psi
 \end{equation}
-Where $\Delta \kappa$ is the curvature range and $\Psi$ is the polar coordinate angle defining the helix position. \newline
+where $\Delta \kappa$ is the curvature range and $\Psi$ is the polar coordinate angle defining the helix position. \newline
 \newline
 The friction stress will be the smallest stress range from either the max allowed due to friction between the interfaces and the plane surfaces remain plane solution:
 \begin{equation}
     \Delta \sigma_f^i =\text{min}\left(E \cos^2 \alpha_i R_i \Delta \kappa , \frac{\pi R_i \tau_i}{\sin \alpha_i A_i}\right)
 \end{equation}
-Where $R_i$ is the helix radius of the layer i, and $\tau_i$ is the friction force per unit length, and can be determined by:
+where $R_i$ is the helix radius of the layer i, and $\tau_i$ is the friction force per unit length, and can be determined by:
 \begin{equation}
     \tau_i \cong E \epsilon_c \mu \left( \sum_{j=i+1}^m \frac{n_j A_j \cos^2 \alpha_j \sin^2 \alpha_j }{n_i R_i} + \sum_{j=i}^m \frac{n_j A_j \cos^2 \alpha_j  \sin^2 \alpha_j}{n_j R_i}\right)
 \end{equation}
-Where $\mu$ is the coefficient of friction and $\epsilon_c$ can be found from:
+where $\mu$ is the coefficient of friction and $\epsilon_c$ can be found from:
 \begin{equation}
     \epsilon_c =\frac{T}{EA_{full}}
     \label{eq:stressvariation2}

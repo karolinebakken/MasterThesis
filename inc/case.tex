@@ -282,7 +282,7 @@ Depth [m] & Wind & Tidal and Surge & Total Current Profile \\
 \label{table:tidcur}
 \end{table}   
 
-\section{Wind Mill Floater Motions}
+\section{Wind Turbine Floater Motions}
 To simulate the motion of OO-star, Olav Olsen have provided the transfer functions for all 6 degrees of freedom for the vessel. In the model, the cable is attached some distance from the center of gravity as can be seen in Figure \ref{fig:cabhang}. This distance has been calculated to be 9.24m.
 
 \begin{figure}[H]
@@ -359,6 +359,12 @@ Sheath 3 & 42.82& 3  \\
 \caption{Dimensions of local model}
 \label{table:dim}
 \end{table} 
+
+\noindent There are 66 steel armouring fibers in the inner layer of the armouring, and 74 in the outer layer. This is calculated by the following expression:
+\begin{equation}
+    n_i=\frac{F_j\cos(\alpha)\pi D_c}{D_s}
+\end{equation}
+Where $F_j$ is the fill factor, $\alpha$ is the lay angle, $D_c$ is the diameter of the cable and $D_s$ is the diameter of one steel fibre. 
 \subsection{Power Cable SN fatigue data}
 To estimate the life time of the power cable, a S-N curve in Figure \ref{fig:snplot} will be used. 
 

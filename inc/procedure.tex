@@ -368,16 +368,14 @@ Outer diameter, narrowest part & 0.1\\
 \noindent The bend stiffener begins 1 pitch length away from the upper end of the cable, and is made out of polyurethane. It is modeled by the use of CROSSECTION command in BFLEX making the inclination very easy to model.  
 
 \subsubsection{Material data for Bend Stiffener}
-The material of the bend stiffener is a polymer with non-linear material properties with the sam stiffness loss as the stress-strain relationship shown with the red curve in Figure \ref{fig:matbend}. The material was chosen in agreement with guidance from Professor Svein Sævik. 
+The material of the bend stiffener is a polymer with non-linear material properties.The initial Young's modulus was chosen to be 150 GPa, with a decay in stiffness according to  Figure \ref{fig:matbend}. The material was chosen in agreement with guidance from Professor Svein Sævik. 
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.5]{figures/matbend}
+\includegraphics[scale=1]{figures/matbend}
 \caption[$\; \:$ Stress-strain relationship for bend stiffener material]{Stress-strain relationship for bend stiffener material}
  \label{fig:matbend}
 \end{figure}
-\todo{referansse!! }
-The initial Young's modulus was chosen to be 150 GPa, with a decay in stiffness according to the red curve in Figure \ref{fig:matbend} 
 
 \subsection{Stiff Pipe}
 A stiff pipe was modeled at the very end of the cable. This was done to make sure that there was no curvature in the termination of the cable to avoid transient effects. The pipe has the length of one pitch length and was modeled with PIPE31 elements. The nodes of the stiff pipe are connected with the central node system of the cable through the CONSTR card in BFLEX. The card assigns one node to be the slave and the other to be master, and defines the relationship between them:

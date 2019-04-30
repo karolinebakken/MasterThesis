@@ -146,8 +146,46 @@ Angle range class [deg] & Number of cycles \\
 \newline
 \subsection{Preparing the Input for The Local Analysis}
 \subsubsection{Correcting the Applied Angle}
-As the local model only represents the upper meters of the total cable, both sides of the model will experience curvature when the model bends to one side at a certain angle. This can be seen in Figure ....
-\noindent  It was decided that the angle would be the master over the tension, meaning that for the local analyses, the cycle count for the angle would be used with the corresponding tension. Even though the trends in the angle time series and the tension time series were the same, the high angles and tensions did not occur at the exact same time steps, so that linear regression showed no correlation.   Linear regression showed no correlation as the high 
+As the local model only represents the upper meters of the total cable, both sides of the model will experience curvature when the model bends to a certain angle. This can be seen in Figure \ref{fig:anglecorr}. $\theta_1$ was equal to the applied angle, but the total angle experienced by the model was:
+\begin{equation}
+    \theta_{tot}=\theta_1 + \theta_2
+\end{equation}
+Where $\theta_{tot}$ is the total angle experienced by the local model and $\theta_1$ and $\theta_2$ are illustrated in Figure \ref{fig:anglecorr}.
 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{figures/anglecorr}
+\caption[Initial and deformed configuration of local model]{Initial and deformed configuration of local model}
+ \label{fig:anglecorr}
+\end{figure}
+
+\noindent Several analyses was done to create a relation between the applied angle and the total angle. The relationship was found to be linear as can be seen in Figure \ref{fig:anglerel}, with the following expression:
+
+\begin{equation}
+    \theta_{tot}=1.3133\theta_{appl.}
+\end{equation}
+Where $\theta_{tot}$ is the total angle experienced by the local model and $\theta_{appl.}$ is the angle applied by BFLEX.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{figures/anglerel}
+\caption[Relationship between applied angle and total angle]{Relationship between applied angle and total angle}
+ \label{fig:anglerel}
+\end{figure}
+
+
+\subsubsection{Adding tension}
+\noindent  It was decided that the angle would be the master over the tension, meaning that for the local analyses, the cycle count for the angle would be used with the corresponding tension. Even though the trends in the angle time series and the tension time series were the same, the high angles and tensions did not occur at the exact same time steps, so that linear regression showed no correlation. It was decided that the max tension would correspond to the max angle, and the min angle would correspond to the min angle. Linear interpolation was used to find the tension to the corresponding angle. The max and min tension registered at the top of the cable for all sea states was 40.69 kN and 9.32 kN. \newline
+\newline
+For application of dynamic tension to the model, an extra pipe element was added in the end of the model as can be seen in red in Figure \ref{fig:exelem}. This element has a very low EA, but the same EI as the steel armoring. The purpose of this was to make it possible to apply the tension in the form of strain so that:
+\begin{equation}
+    \epsilon_0 = T_0
+\end{equation}
+where $\epsilon_0$ is the reference value for strain and $T_0$ is the reference value for tension. This was scaled so that the reference value was 1000N, and desired tension could easily be applied in BFLEX by multiplying the strain with a factor. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{figures/exelem}
+\caption[Illustration of the extra element added for easy application of tension]{Illustration of the extra element added for easy application of tension}
+ \label{fig:exelem}
+\end{figure}
 
 \section{Local Analysis}
