@@ -396,7 +396,7 @@ The following results for the three wind conditions were seen as interesting to 
     \item Min force envelope, to make sure the there is no compression in the bottom of the cable
 \end{itemize}
 
-\section{Results from Testing of Global Model}
+\subsection{Results from Testing of Global Model}
 The static configuration without current for the three different wind conditions: 
 \begin{figure}[H]
 \subfloat[Near position\label{fig:cavS200}]
@@ -541,23 +541,7 @@ The static configuration with current for the three different wind conditions:
 
 
 \subsection{Testing of Local Model}
-
-
-
-The local model was, as the global model tested to see if it performs in a satisfactory manner. The following sequence of loads was added to the local model. 
-\begin{enumerate}
-    \item Gravity Load: Gravity is turned off on the local model, but the effect of the mass of the model should still be applied. This was added at the very first time step.
-    \item Tension: Tension was added to the local model in the axial direction on the last node in the outer sheath, with magnitude 150 kPa. The load was applied at t=1s to t=5s. seconds
-    \item Initial strain: Initial strain was added to the outer sheath of the model in 1 direction. The strain was added to all the elements with a magnitude 0.03. It was applied at t=1s to t=5s.
-    \item Bending: Smooth bending of the cable was applied. The cable was bent from 0 degrees to 5 degrees between t=5 and t=15, and from 5 degrees to -5 degrees between t=15 and t=35.  
-\end{enumerate}
-
-
-\label{chap:results}
-The desired results in this project thesis are confirmation that the two models are working and are ready to be used in the master thesis. 
-
-\section{Local Model}
-The following figures show the local model and some of its components:
+The local model was, as the global model tested to see if it performs in a satisfactory manner. The following figures show the local model and some of its components:
 
 \begin{figure}[H]
 \subfloat[Local model from the side with bend stiffener \label{fig:lm_total}]
@@ -576,6 +560,14 @@ The following figures show the local model and some of its components:
 \caption{Helical components in the local model}
 \label{fig:volt}
 \end{figure}
+ \noindent The following sequence of loads was added to the local model.
+\begin{enumerate}
+    \item Gravity Load: Gravity is turned off on the local model, but the effect of the mass of the model should still be applied. This was added at the very first time step.
+    \item Tension: Tension was added to the local model in the axial direction on the last node in the outer sheath, with magnitude 50kN. The load was applied at t=1s to t=5s. seconds
+    \item Initial strain: Initial strain was added to the outer sheath of the model in 1 direction. The strain was added to all the elements with a magnitude 0.03. It was applied at t=1s to t=5s.
+    \item Bending: Smooth bending of the cable was applied. The cable was bent from 0 degrees to 5 degrees between t=5 and t=15, and from 5 degrees to -5 degrees between t=15 and t=35.  
+\end{enumerate}
+ 
 
 
 
