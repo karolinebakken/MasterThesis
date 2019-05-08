@@ -163,9 +163,9 @@ In Figure \ref{fig:irr}, a few concepts of irregular loading are defined:
     \item Bandwidth - Ratio of mean crossings with positive slope to the number of peaks or valleys. 
 \end{itemize}
  
-\subsubsection{Rain flow counting}
+\subsection{Rainflow counting}
 \label{sec:rainflow}
-There are several ways of counting cycles, and rain flow counting is one of them. The name of this method stems from the thought of rain falling on the roof of a pagoda (Chinese architecture). In this procedure, the reversals are counted in accordance with the stress-strain response. This can be seen in Figure \ref{fig:count}, where the cycle from 2-3-2' does not affect the rest of the stress-strain cycle. Each time a loop is completed, a cycle count is made. This means that the counting of the cycles are reflecting the way the material is responding. The fatigue damage caused by a closed loop in the irregular amplitude loading is, according to this counting method, the same as one cycle in a constant amplitude test. Half cycles cannot be paired up with other half cycles, so the damage they do on the structure is not counted in this method, but in a realistic case, there will be few half cycles. Due to its versatility, the rain flow method is considered a superior method to the other counting methods. 
+There are several ways of counting cycles, and rainflow counting is one of them. The name of this method stems from the thought of rain falling on the roof of a pagoda (Chinese architecture). In this procedure, the reversals are counted in accordance with the stress-strain response. This can be seen in Figure \ref{fig:count}, where the cycle from 2-3-2' does not affect the rest of the stress-strain cycle. Each time a loop is completed, a cycle count is made. This means that the counting of the cycles are reflecting the way the material is responding. The fatigue damage caused by a closed loop in the irregular amplitude loading is, according to this counting method, the same as one cycle in a constant amplitude test. Half cycles cannot be paired up with other half cycles, so the damage they do on the structure is not counted in this method, but in a realistic case, there will be few half cycles. Due to its versatility, the rainflow method is considered a superior method to the other counting methods. 
 
 \begin{figure}[H]
 \centering
@@ -174,16 +174,19 @@ There are several ways of counting cycles, and rain flow counting is one of them
  \label{fig:count}
 \end{figure}
 
-\noindent Figure \ref{fig:pagoda} shows the rain flow counting method method:\newline 
+\noindent Figure \ref{fig:pagoda} shows the rainflow counting method method:\newline 
 \newline
-Begin at the first valley. If the next valley is deeper or equal to the first one, the rain flow stops here and a cycle is counted, (see point 5 in the Figure). If the valley is not deeper than the first one, the flow proceeds to the next valley, (see point 3 in the Figure). The rain-flow is also considered to stop if it meets another flow from above, (see point 2' in the Figure) When one rain flow has stopped, proceed to the next valley and repeat the procedure. When this has been done to all the valleys, do the same for all the peaks. The results from the rain flow counting can be gathered in a histogram that easily will show the number of cycles for different levels. 
+Begin at the first valley. If the next valley is deeper or equal to the first one, the rainflow stops here and a cycle is counted, (see point 5 in the Figure). If the valley is not deeper than the first one, the flow proceeds to the next valley, (see point 3 in the Figure). The rain-flow is also considered to stop if it meets another flow from above, (see point 2' in the Figure) When one rainflow has stopped, proceed to the next valley and repeat the procedure. When this has been done to all the valleys, do the same for all the peaks. The results from the rainflow counting can be gathered in a histogram that easily will show the number of cycles for different levels. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.9]{figures/pagoda}
-\caption[$\; \:$Rain flow counting]{Rain flow counting with illustrating the Chinese pagoda origin.    \cite{fatigue2016} }
+\caption[$\; \:$rainflow counting]{rainflow counting with illustrating the Chinese pagoda origin.    \cite{fatigue2016} }
  \label{fig:pagoda}
 \end{figure}
+\noindent In this master thesis, rainflow counting was utilized by using a module in Pyhton called rainflow.py. According to \cite{rf}, the module inplements ASTM E1049-85 rainflow cycle counting
+algorythm, and is meant for fatigue analyses. The function rainflow.count\_cycles takes in a 1D array of numbers and returns a sorted list of the load ranges and the corresponding
+number of cycles.
 
 \subsection{Cumulative Damage}
 Several methods can be used to calculate the cumulative damage due to irregular amplitude cyclic loading. Miner-Palmgren approach has proven to be as good as other methods and is extremely simple. The Miner-Palmgren theory assumes that the damage is constant during a given stress range. The Miner-Palmgren expression:

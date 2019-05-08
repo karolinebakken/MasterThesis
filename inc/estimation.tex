@@ -139,14 +139,14 @@ Angle range class [deg] & Number of cycles \\
 
  \hline
 \end{tabular}
-\caption{Dimensions of local model}
+\caption{Number of cycles in each angle range}
 \label{table:angleclass}
 \end{table} 
 \noindent It is important to note that the number of cycles for each class are not just half and whole cycles, as the number of cycles have been scaled for occurrence during a year.\newline 
 \newline
-\subsection{Preparing the Input for The Local Analysis}
-\subsubsection{Correcting the Applied Angle}
-As the local model only represents the upper meters of the total cable, both sides of the model will experience curvature when the model bends to a certain angle. This can be seen in Figure \ref{fig:anglecorr}. $\theta_1$ was equal to the applied angle, but the total angle experienced by the model was:
+
+\section{Local Analysis}
+The local analyses was performed by using the results from the global analyses. Each of the angle ranges was analyzed for one cycle. As the local is pinned in both ends, both ends of the model experiences rotation when the model bends to a certain angle. This can be seen in Figure \ref{fig:anglecorr}. $\theta_1$ was equal to the applied angle, but the total angle experienced by the model was:
 \begin{equation}
     \theta_{tot}=\theta_1 + \theta_2
 \end{equation}
@@ -172,20 +172,39 @@ Where $\theta_{tot}$ is the total angle experienced by the local model and $\the
  \label{fig:anglerel}
 \end{figure}
 
-
-\subsubsection{Adding tension}
-\noindent  It was decided that the angle would be the master over the tension, meaning that for the local analyses, the cycle count for the angle would be used with the corresponding tension. Even though the trends in the angle time series and the tension time series were the same, the high angles and tensions did not occur at the exact same time steps, so that linear regression showed no correlation. It was decided that the max tension would correspond to the max angle, and the min angle would correspond to the min angle. Linear interpolation was used to find the tension to the corresponding angle. The max and min tension registered at the top of the cable for all sea states was 40.69 kN and 9.32 kN. \newline
+\noindent It was decided that the angle would be the master over the tension, meaning that for the local analyses, the cycle count for the angle would be used with the corresponding tension. Even though the trends in the angle time series and the tension time series were the same, the high angles and tensions did not occur at the exact same time steps, so that linear regression showed no correlation. It was decided that the max tension would correspond to the max angle, and the min angle would correspond to the min angle, as this would be a conservative approach.  Linear interpolation was used to find the tension to the corresponding angle. The max and min tension registered at the top of the cable for all sea states was 40.69 kN and 9.32 kN. \newline
 \newline
-For application of dynamic tension to the model, an extra pipe element was added in the end of the model as can be seen in red in Figure \ref{fig:exelem}. This element has a very low EA, but the same EI as the steel armoring. The purpose of this was to make it possible to apply the tension in the form of strain so that:
-\begin{equation}
-    \epsilon_0 = T_0
-\end{equation}
-where $\epsilon_0$ is the reference value for strain and $T_0$ is the reference value for tension. This was scaled so that the reference value was 1000N, and desired tension could easily be applied in BFLEX by multiplying the strain with a factor. 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.8]{figures/exelem}
-\caption[Illustration of the extra element added for easy application of tension]{Illustration of the extra element added for easy application of tension}
- \label{fig:exelem}
-\end{figure}
+\noindent The 15 angle range classes in Table \ref{table:angleclass} was turned into the 15 BFLEX cases displayed in Table \ref{table:cases}. The Min angle and max angle columns represents the largest value in each of the angle range count from table \ref{table:angleclass}. As explained earlier in this section, the angles needed to be corrected due to the boundary conditions of the local model as seen in Figure \ref{fig:anglerel}. The minimum dynamic tension and maximum dynamic tension were found through interpolation, and the mean tension represents the static tension at the top of the cable after current has been applied. Thus, the input to Bflex was Angle max corr., Angle min corr., Mean tens., Max dyn. tens. and Min dyn tens from Table \ref{table:cases}
 
-\section{Local Analysis}
+\begin{sidewaystable}
+\begin{tabular}{ |c|c|c|c|c|c|c|c|}
+\hline
+	Case nr. & Angle max & Angle min &  Angle max corr. & Angle min corr. & Mean tens. & Max dyn. tens.  & Min dyn. tens   \\
+ \hline
+ \hline
+	1 & 20.86 & 15.46 & 15.89 & 11.77 & 13.7 & 25.07 & 11.50   \\ 
+	2 & 21.46 & 14.86 & 16.34 & 11.32 & 13.7 & 25.52 & 11.44   \\
+	3 & 21.76 & 14.56 & 16.57 & 11.09 & 13.7 & 25.75 & 11.41   \\ 
+	4 & 22.06 & 14.26 & 16.78 & 10.86 & 13.7 & 25.97 & 11.37  \\ 
+	5 & 22.36 & 13.96 & 17.03 & 10.63 & 13.7 & 26.20 & 11.34  \\ 
+	6 & 22.66 & 13.66 & 17.25 & 10.40 & 13.7 & 26.42 & 11.31  \\ 
+	7 & 22.96 & 13.36 & 17.48 & 10.17 & 13.7 & 26.65 & 11.28   \\ 
+	8 & 23.26 & 13.06 & 17.71 & 9.94 & 13.7 & 26.88 & 11.25  \\ 
+	9 & 23.56 & 12.76 & 17.94 & 9.72 & 13.7 & 27.10 & 11.22  \\ 
+	10 & 23.86 & 12.46 & 18.17 & 9.49 & 13.7 & 27.33 & 11.18  \\ 
+	11 & 24.46 & 11.86 & 18.62 & 9.03 & 13.7 & 27.78 & 11.12  \\ 
+	12 & 25.06 & 11.26 & 19.08 & 8.57 & 13.7 & 28.24 & 11.06  \\ 
+	13 & 26.56 & 9.76 & 20.22 & 7.43 & 13.7 & 29.37 & 10.90  \\ 
+	14 & 36.15 & 0.16 & 27.53 & 0.12 & 13.7 & 36.62 & 9.89  \\ 
+	15 & 41.56 & -5.24 & 31.65 & -3.99 & 13.7 & 40.69 & 9.32 \\ 
+ \hline
+\end{tabular}
+\caption{Load cases for local analyses}
+\label{table:cases}
+\end{sidewaystable}
+
+\todo{UNITS}
+
+
+
+

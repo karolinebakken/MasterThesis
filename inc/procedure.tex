@@ -357,6 +357,19 @@ Where $r_{Si}$ is the displacement of the slave node,  $C_1$ is a constant descr
 \newline 
 In this case $C_1$ is 1, so the nodes will follow each other exactly. 
 
+\subsection{Method for Application of Tension}
+\noindent For application of dynamic tension to the model, an extra pipe element was added in the end of the model as can be seen in red in Figure \ref{fig:exelem}. This element has a very low EA, but the same EI as the steel armoring. The purpose of this was to make it possible to apply the tension in the form of strain so that:
+\begin{equation}
+    \epsilon_0 = T_0
+\end{equation}
+where $\epsilon_0$ is the reference value for strain and $T_0$ is the reference value for tension. This was scaled so that the reference value was 1000N, and desired tension could easily be applied in BFLEX by multiplying the strain with a factor. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{figures/exelem}
+\caption[Illustration of the extra element added for easy application of tension]{Illustration of the extra element added for easy application of tension}
+ \label{fig:exelem}
+\end{figure}
+
 \subsection{Boundary Conditions}
 The boundary conditions for the cable is created in such a way that the cable can slide inside the bend stiffener. The following constraints are made for the different components:
 \begin{itemize}
@@ -405,7 +418,7 @@ The static configuration without current for the three different wind conditions
   {\includegraphics[width=.3\linewidth]{figures/statposneu}}\hfill
   \subfloat[Far position \label{fig:cavS5000}]
   {\includegraphics[width=.3\linewidth]{figures/statposfar}}\hfill
-\caption{Static configuration for the global model for different wind conditions}
+\caption{Static configuration for the global model for different wind conditions, without current}
 \label{fig:statcon}
 \end{figure}
 
@@ -417,127 +430,11 @@ The static configuration with current for the three different wind conditions:
   {\includegraphics[width=.3\linewidth]{figures/statposneuc}}\hfill
   \subfloat[Far position \label{fig:cavS5000}]
   {\includegraphics[width=.3\linewidth]{figures/statposfarc}}\hfill
-\caption{Static configuration for the global model for different wind conditions}
+\caption{Static configuration for the global model for different wind conditions, with current}
 \label{fig:statcon}
 \end{figure}
 
-\noindent These positions gave the following configurations for the dynamic cable without current: 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/confignear}
-\caption{Configuration for near position}
- \label{fig:confignear}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/configneu}
-\caption{Configuration for neutral position}
- \label{fig:configneu}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/configfar}
-\caption{Configuration for far position}
- \label{fig:configfar}
-\end{figure}
-
-\noindent These positions gave the following configurations for the dynamic cable with current: 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/confignearc}
-\caption{Configuration for near position}
- \label{fig:confignear}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/configneuc}
-\caption{Configuration for neutral position}
- \label{fig:configneu}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/configfarc}
-\caption{Configuration for far position}
- \label{fig:configfar}
-\end{figure}
-
-\noindent The envelope curves for the curvatures
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/envcurvenear}
-\caption{Curvature envelope for near position}
- \label{fig:envcurvenear}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/envcurveneu}
-\caption{Curvature envelope for neutral position}
- \label{fig:envcurveneu}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/envcurvefar}
-\caption{Curvature envelope for far position}
- \label{fig:envcurvefar}
-\end{figure}
-
-\noindent The max tension over the length of the cable
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/fmaxnear}
-\caption{The max tension over the length of the cable in near position}
- \label{fig:fmaxnear}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/fmaxneu}
-\caption{The max tension over the length of the cable in neutral position}
- \label{fig:fmaxneu}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/fmaxfar}
-\caption{The max tension over the length of the cable in far position}
- \label{fig:fmaxfar}
-\end{figure}
-
-\noindent The minimum tension over the length of the cable
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/fminnear}
-\caption{The minimum tension over the length of the cable in near position}
- \label{fig:fminnear}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/fminneu}
-\caption{The minimum tension over the length of the cable in neutral position}
- \label{fig:fminneu}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/fminfar}
-\caption{The minimum tension over the length of the cable in far position}
- \label{fig:fminfar}
-\end{figure}
-
+The testing showed that there is no compression in the cable, and both the curvature and max tension are at acceptable levels. The plots showing the configurations in different weather conditions with and without current as well as the   plots of tension and curvature are placed in 
 
 
 \subsection{Testing of Local Model}
@@ -560,13 +457,59 @@ The local model was, as the global model tested to see if it performs in a satis
 \caption{Helical components in the local model}
 \label{fig:volt}
 \end{figure}
- \noindent The following sequence of loads was added to the local model.
+ \noindent The following sequence of loads was added to the local model:
 \begin{enumerate}
     \item Gravity Load: Gravity is turned off on the local model, but the effect of the mass of the model should still be applied. This was added at the very first time step.
     \item Tension: Tension was added to the local model in the axial direction on the last node in the outer sheath, with magnitude 50kN. The load was applied at t=1s to t=5s. seconds
     \item Initial strain: Initial strain was added to the outer sheath of the model in 1 direction. The strain was added to all the elements with a magnitude 0.03. It was applied at t=1s to t=5s.
     \item Bending: Smooth bending of the cable was applied. The cable was bent from 0 degrees to 5 degrees between t=5 and t=15, and from 5 degrees to -5 degrees between t=15 and t=35.  
 \end{enumerate}
+\noindent The results for the testing of the local model can be seen in Figures \ref{fig:bflexax} to \ref{fig:bflexcurve}:
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{figures/bflexax}
+\caption[$\; \:$Axial force in conductors]{Axial force in conductors over length of cable [N]}
+ \label{fig:bflexax}
+\end{figure}
+\noindent Figure \ref{fig:bflexax} shows the axial force distribution over the cable......
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{figures/bflexmx}
+\caption[$\; \:$Moment about X-Axis in conductors]{Moment about X-Axis in conductors over length of cable  [Nm]}
+ \label{fig:bflexmx}
+\end{figure}
+
+\noindent Figure \ref{fig:bflexmx} shows the moment about the x-axis over the length of cable......
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{figures/bflexmy}
+\caption[$\; \:$Moment about Y-Axis in conductors]{Moment about Y-Axis in conductors over length of cable [Nm]}
+ \label{fig:bflexmy}
+\end{figure}
+\noindent Figure \ref{fig:bflexmx} displays the moment about the y-axis over the length of cable. The plot is cyclic as the conductor is helical. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{figures/bflexmz}
+\caption[$\; \:$Axial force in conductors]{Axial force in conductors over length of cable [Nm]}
+ \label{fig:bflexmz}
+\end{figure}
+\noindent Figure \ref{fig:bflexmx} displays the moment about the z-axis over the length of cable........
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{figures/bflexcurve}
+\caption[$\; \:$Curvature in outer sheath]{Curvature in the outer sheath over the length of cable [1/m]}
+ \label{fig:bflexcurve}
+\end{figure}
+\noindent Figure \ref{fig:bflexcurve} presents the curvature over the length of cable.......
+\newline
+The local model has been assessed in the figure above. As mentioned, it seems that the bend stiffener is not performing in a satisfactory manner, and this will need to be investigated further. As with the global model, the local model is somewhat simplified and based on assumptions. Creating the model has given the author a greater understanding of local models and of the software BFLEX, and is considered to be at least a starting point for the local analyses that will take place in the master thesis.  
+
+
  
 
 
