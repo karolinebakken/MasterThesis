@@ -174,36 +174,8 @@ Where $\theta_{tot}$ is the total angle experienced by the local model and $\the
 
 \noindent It was decided that the angle would be the master over the tension, meaning that for the local analyses, the cycle count for the angle would be used with the corresponding tension. Even though the trends in the angle time series and the tension time series were the same, the high angles and tensions did not occur at the exact same time steps, so that linear regression showed no correlation. It was decided that the max tension would correspond to the max angle, and the min angle would correspond to the min angle, as this would be a conservative approach.  Linear interpolation was used to find the tension to the corresponding angle. The max and min tension registered at the top of the cable for all sea states was 40.69 kN and 9.32 kN. \newline
 \newline
-\noindent The 15 angle range classes in Table \ref{table:angleclass} was turned into the 15 BFLEX cases displayed in Table \ref{table:cases}. The Min angle and max angle columns represents the largest value in each of the angle range count from table \ref{table:angleclass}. As explained earlier in this section, the angles needed to be corrected due to the boundary conditions of the local model as seen in Figure \ref{fig:anglerel}. The minimum dynamic tension and maximum dynamic tension were found through interpolation, and the mean tension represents the static tension at the top of the cable after current has been applied. Thus, the input to Bflex was Angle max corr., Angle min corr., Mean tens., Max dyn. tens. and Min dyn tens from Table \ref{table:cases}
+\noindent The 15 angle range classes in Table \ref{table:angleclass} was turned into the 15 BFLEX cases displayed in Appendix \ref{appendix:C}. As the angles needed to be corrected due to the boundary conditions of the local model as seen in Figure \ref{fig:anglerel}, the Min angle and Max angle in Table \ref{table:loadcase} are the corrected min and max angle, and thus the angle input in the local analyses. The minimum dynamic tension and maximum dynamic tension were found through interpolation, and the mean tension represents the static tension at the top of the cable after current has been applied in far position. 
 
-\begin{sidewaystable}
-\begin{tabular}{ |c|c|c|c|c|c|c|c|}
-\hline
-	Case nr. & Angle max & Angle min &  Angle max corr. & Angle min corr. & Mean tens. & Max dyn. tens.  & Min dyn. tens   \\
- \hline
- \hline
-	1 & 20.86 & 15.46 & 15.89 & 11.77 & 13.7 & 25.07 & 11.50   \\ 
-	2 & 21.46 & 14.86 & 16.34 & 11.32 & 13.7 & 25.52 & 11.44   \\
-	3 & 21.76 & 14.56 & 16.57 & 11.09 & 13.7 & 25.75 & 11.41   \\ 
-	4 & 22.06 & 14.26 & 16.78 & 10.86 & 13.7 & 25.97 & 11.37  \\ 
-	5 & 22.36 & 13.96 & 17.03 & 10.63 & 13.7 & 26.20 & 11.34  \\ 
-	6 & 22.66 & 13.66 & 17.25 & 10.40 & 13.7 & 26.42 & 11.31  \\ 
-	7 & 22.96 & 13.36 & 17.48 & 10.17 & 13.7 & 26.65 & 11.28   \\ 
-	8 & 23.26 & 13.06 & 17.71 & 9.94 & 13.7 & 26.88 & 11.25  \\ 
-	9 & 23.56 & 12.76 & 17.94 & 9.72 & 13.7 & 27.10 & 11.22  \\ 
-	10 & 23.86 & 12.46 & 18.17 & 9.49 & 13.7 & 27.33 & 11.18  \\ 
-	11 & 24.46 & 11.86 & 18.62 & 9.03 & 13.7 & 27.78 & 11.12  \\ 
-	12 & 25.06 & 11.26 & 19.08 & 8.57 & 13.7 & 28.24 & 11.06  \\ 
-	13 & 26.56 & 9.76 & 20.22 & 7.43 & 13.7 & 29.37 & 10.90  \\ 
-	14 & 36.15 & 0.16 & 27.53 & 0.12 & 13.7 & 36.62 & 9.89  \\ 
-	15 & 41.56 & -5.24 & 31.65 & -3.99 & 13.7 & 40.69 & 9.32 \\ 
- \hline
-\end{tabular}
-\caption{Load cases for local analyses}
-\label{table:cases}
-\end{sidewaystable}
-
-\todo{UNITS}
 
 
 

@@ -409,7 +409,6 @@ The following results for the three wind conditions were seen as interesting to 
     \item Min force envelope, to make sure the there is no compression in the bottom of the cable
 \end{itemize}
 
-\subsection{Results from Testing of Global Model}
 The static configuration without current for the three different wind conditions: 
 \begin{figure}[H]
 \subfloat[Near position\label{fig:cavS200}]
@@ -434,7 +433,7 @@ The static configuration with current for the three different wind conditions:
 \label{fig:statcon}
 \end{figure}
 
-The testing showed that there is no compression in the cable, and both the curvature and max tension are at acceptable levels. The plots showing the configurations in different weather conditions with and without current as well as the   plots of tension and curvature are placed in 
+The testing showed that there is no compression in the cable, and both the curvature and max tension are at acceptable levels. The results were plotted and can be investigated further in Appendix \ref{appendix:A}. 
 
 
 \subsection{Testing of Local Model}
@@ -460,54 +459,14 @@ The local model was, as the global model tested to see if it performs in a satis
  \noindent The following sequence of loads was added to the local model:
 \begin{enumerate}
     \item Gravity Load: Gravity is turned off on the local model, but the effect of the mass of the model should still be applied. This was added at the very first time step.
-    \item Tension: Tension was added to the local model in the axial direction on the last node in the outer sheath, with magnitude 50kN. The load was applied at t=1s to t=5s. seconds
+    \item Tension: Tension was added to the local model in the axial direction on the last node in the outer sheath, with magnitude 13.7kN. The load was applied at t=1s to t=5s. seconds
     \item Initial strain: Initial strain was added to the outer sheath of the model in 1 direction. The strain was added to all the elements with a magnitude 0.03. It was applied at t=1s to t=5s.
     \item Bending: Smooth bending of the cable was applied. The cable was bent from 0 degrees to 5 degrees between t=5 and t=15, and from 5 degrees to -5 degrees between t=15 and t=35.  
 \end{enumerate}
 \noindent The results for the testing of the local model can be seen in Figures \ref{fig:bflexax} to \ref{fig:bflexcurve}:
 
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4]{figures/bflexax}
-\caption[$\; \:$Axial force in conductors]{Axial force in conductors over length of cable [N]}
- \label{fig:bflexax}
-\end{figure}
-\noindent Figure \ref{fig:bflexax} shows the axial force distribution over the cable......
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4]{figures/bflexmx}
-\caption[$\; \:$Moment about X-Axis in conductors]{Moment about X-Axis in conductors over length of cable  [Nm]}
- \label{fig:bflexmx}
-\end{figure}
 
-\noindent Figure \ref{fig:bflexmx} shows the moment about the x-axis over the length of cable......
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4]{figures/bflexmy}
-\caption[$\; \:$Moment about Y-Axis in conductors]{Moment about Y-Axis in conductors over length of cable [Nm]}
- \label{fig:bflexmy}
-\end{figure}
-\noindent Figure \ref{fig:bflexmx} displays the moment about the y-axis over the length of cable. The plot is cyclic as the conductor is helical. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4]{figures/bflexmz}
-\caption[$\; \:$Axial force in conductors]{Axial force in conductors over length of cable [Nm]}
- \label{fig:bflexmz}
-\end{figure}
-\noindent Figure \ref{fig:bflexmx} displays the moment about the z-axis over the length of cable........
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4]{figures/bflexcurve}
-\caption[$\; \:$Curvature in outer sheath]{Curvature in the outer sheath over the length of cable [1/m]}
- \label{fig:bflexcurve}
-\end{figure}
-\noindent Figure \ref{fig:bflexcurve} presents the curvature over the length of cable.......
-\newline
-The local model has been assessed in the figure above. As mentioned, it seems that the bend stiffener is not performing in a satisfactory manner, and this will need to be investigated further. As with the global model, the local model is somewhat simplified and based on assumptions. Creating the model has given the author a greater understanding of local models and of the software BFLEX, and is considered to be at least a starting point for the local analyses that will take place in the master thesis.  
 
 
  
