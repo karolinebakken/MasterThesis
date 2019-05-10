@@ -3,10 +3,18 @@
 In this chapter, the methodology for the creation of the two models will be described.
 \section{Procedure for Modelling of Global Model}
 \label{sec:globmod}
-The global model was created in SIMA RIFLEX, and consists of the whole cable attached to a point that will behave like the vessel due to the transfer functions provided from Dr. Techn. Olav Olsen. The following section will describe how the central properties of the cable were modeled in the numeric model. 
+The global model was created in SIMA RIFLEX, and represents the total dynamic part of the power cable. It is attached to both the sea floor and the a point that will behave like the vessel due to the transfer functions provided from Dr. Techn. Olav Olsen. It is assumed that the most severe damage due to fatigue is located at the top of the cable, so that very little attention was borough to the bottom attachment. The following section will describe how the central properties of the cable were modeled in the numeric model. 
 
 \subsection{Cross Sectional Properties}
-The cable in the global model consists of two different cross sections, with the properties presented in table \ref{table:crosssima}. 
+The cable in the global model consists of three different cable section with two different cross sections. An illustration of the different cable section is shown in Figure \ref{fig:globalill}, and the properties of the two cross sections are presented in Table \ref{table:crosssima}. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{figures/globalill}
+\caption [$\; \:$ Illustration of the global model and its different sections ]{Illustration of the global model and its different sections}
+ \label{fig:globalill}
+\end{figure}
+
 \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|c|}
@@ -24,7 +32,7 @@ Torsional Stiffness [Nm$^2$] & 5403 & 5403\\
 \caption{Parameters used for the two different cross sections}
 \label{table:crosssima}
 \end{table}
-\noindent The only difference between the two is the external area due to the buoyancy elements attached to the buoy section. The parameters in table \ref{table:crosssima} were calculated as follows:\newline
+\noindent The only difference between the two cross section types is the external area due to the buoyancy elements attached to the buoy section. The parameters in Table \ref{table:crosssima} were calculated as follows:\newline
 \newline 
 \noindent The mass coefficient: 
 \begin{equation}
@@ -33,7 +41,7 @@ Torsional Stiffness [Nm$^2$] & 5403 & 5403\\
 
 \noindent Where $L_c$ is the length of a helical copper conductor pr meter, $A_c$ is the area of a copper conductor, $n_c$ is the number of copper conductors, $\rho_c$ is the density of copper, $\rho_w$ is the density of water, $L_{si}$ is the length of steel armouring pr meter for layer i, $A_s$ is the area of one wire for the steel armouring assumed to be the same for layer 1 and 2, $n_{si}$ is the number of wires in armouring layer i and $\rho_s$ is the density of steel. The plastic sheaths and tape were assumed to have the same density as the water. \newline
 \newline 
-The Axial stiffness and torsional stiffness was calculated according to equation 4.14 and 4.22 in \cite{Savik2016} as:
+The Axial stiffness and torsional stiffness was calculated according to Equation 4.14 and 4.22 in \cite{Savik2016} as:
 \begin{equation}
     EA=nEA_t \cos\alpha(\cos^2\alpha-\nu_a \sin^2\alpha)
 \end{equation}
@@ -53,10 +61,10 @@ To increase the weight of the cable and thus increase the inertia, lead was adde
 \begin{equation}
     \frac{\sum_{i=1}^n m_i - b}{b}\approx 2
 \end{equation}
-Where $m_i$ is the mass of the different components in the cross section, and b is the buoyancy. To achieve this, 6kg had to be added to the cross section. This was done by making the center tube out of lead, and also place three tubes the size of the center tube in the free space between the conductors and the sheath. To model this, the mass coefficient is increased by 6 kg and will be 15.75 kg as shown in table \ref{table:DIMCABLE}. \newline
-\newline A dummy super node was added to the vessel with a dummy line between the two supernodes attached to the vessel. This way it will be possible to take the dot product of the of the dummy line and the upper element of the cable and get a time series of the angle between the vessel and the cable.
+Where $m_i$ is the mass of the different components in the cross section, and b is the buoyancy. To achieve this, 6kg had to be added to the cross section. This was done by making the center tube out of lead, and also place three tubes the size of the center tube in the free space between the conductors and the sheath. To model this, the mass coefficient is increased by 6 kg and will be 15.75 kg as shown in Table \ref{table:DIMCABLE}. \newline
+\newline A dummy super node was added to the vessel with a dummy line between the two super nodes attached to the vessel. This way it will be possible to take the dot product of the dummy line and the upper element of the cable and get a time series of the angle between the vessel and the cable.
 \subsection{Cable Configuration}
-The cable consists of 3 sections with 2 different cross-sections. Section 1 is the lowest part of the cable and is attached to a supernode located on the sea floor with the cable cross-section. The second section is located in the middle of the cable with buoyancy elements. The third section is the upper part of the cable, and it is attached to a supernode on the wind turbine floater, with the cable cross-section.\newline
+The cable consists of 3 sections with 2 different cross-sections. Section 1 is the lowest part of the cable and is attached to a super node located on the sea floor with the cable cross-section. The second section is located in the middle of the cable with buoyancy elements. The third section is the upper part of the cable, and it is attached to a super node on the wind turbine floater, with the cable cross-section.\newline
 \newline 
 \noindent As a simplification, it is assumed that the floating wind turbine can have 3 different positions:
 \begin{itemize}
@@ -64,12 +72,12 @@ The cable consists of 3 sections with 2 different cross-sections. Section 1 is t
     \item Near: Maximum wind from the east direction
     \item Far: Maximum wind from the west direction
 \end{itemize}
-To determine the far position it was decided in agreement with Dr. Techn. Olav Olsen that the maximum offset in far position, relative to the neutral position is 20\% of the water depth in the west direction. Assuming a linear system, the near position was calculated relative to the far position as according to the scatter diagram of the wind in Figure \ref{fig:scatterwind}:
+To determine the far position, it was decided in agreement with Dr. Techn. Olav Olsen that the maximum offset in far position, relative to the neutral position was 20\% of the water depth in the east direction. Assuming a linear system, the offset in Near position relative to the Neutral position was calculated by using the scatter diagram for wind in Figure \ref{fig:scatterwind}:
 \begin{equation}
-    \text{Near}=\frac{(\text{Max  wind speed from east})^2}{(\text{Max wind speed form west})^2}
+    \text{Offset Near}=\left(\frac{\text{Max  wind speed from east}}{\text{Max wind speed form west}}\right)^2 \cdot \text{Offset far}
 \end{equation}
 
-\noindent The near position is set to be 60m away from the anchoring, and the neutral and far position is calculated from this as described above. This gave the following positions: 
+\noindent The near position was set to be 60 m away from the anchoring, in agreement with Professor Svein Sævik, and the neutral and far position was calculated from by adding the offsets as described above. This gave the following positions: 
 \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|}
@@ -90,7 +98,7 @@ Far & 96.85 \\
 \label{table:pos}
 \end{table}
 
-\noindent The final configuration is determined to be: 
+\noindent The final configuration was determined by testing numerous different combinations, and the final lengths of the different sections are displayed in Table \ref{table:DIMCABLE} 
 \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|c|}
@@ -108,17 +116,69 @@ Section number & External area [m$^2$] & Length [m] \\
 \end{table}
 
 \subsection{Boundary Conditions}
-The cable is fixed to the sea bottom in all translational and rotational degrees of freedoms. The cable hang-off on the vessels is fixed in all translational degrees of freedom and free in all rotational degrees of freedom. 
+The cable was fixed to the sea bottom in all translational and rotational degrees of freedoms. The cable hang-off on the vessel is fixed in all translational degrees of freedom and free in all rotational degrees of freedom. 
 
-\section{Procedure for Local Model}
-The local model is created in BFLEX and consists of the upper part of the cable. The model was built up from the inner layer and outwards. It can be divided into mainly 3 different components:
+\subsection{Testing of Global Model}
+To make sure the global model was ready to be used in further analyses, several things were investigated. The design criteria for the global model was that the curvature could not exceed $\kappa=1.3675$ anywhere in the cable to avoid locking of the cable. To test this, the most severe sea state according to the scatter diagram for West of Barra in Figure \ref{fig:scatn} was tested in a dynamic analysis. The key variables used in the test are displayed in Table \ref{table:testglob}.
+
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|}
+\hline
+Variable & Value \\
+ \hline
+ \hline
+Hs [m] & 13.5\\
+Tp[s] & 16 \\
+Time step [s] & 0.1 \\
+ \hline
+\end{tabular}
+\caption{Key variables used in testing of global model}
+\label{table:testglob}
+\end{table}
+
+The following results for the three wind conditions were seen as interesting to assess the quality of the model:
 \begin{itemize}
-    \item A cable
-    \item A bend stiffener
-    \item A pipe
+    \item The static configuration, to make sure the cable had the desired steep S shape, and that the buoyancy section was not too high in the water.
+    \item Curvature envelope, to make sure the curvature did not exceed the max curvature of 1.3675 $\frac{1}{m}$
+    \item Max force envelope, to make sure the tension in the cable was acceptable
+    \item Min force envelope, to make sure the there was no compression in the bottom of the cable
 \end{itemize}
+The testing showed that there was no compression in the cable, and both the curvature and max tension are at acceptable levels. The results were plotted and can be investigated further in Appendix \ref{appendix:A}. \newline
+\newline
+The global model in with its three different wind conditions are shown in Figure \ref{fig:statcon} and Figure \ref{fig:statconc}. 
+\begin{figure}[H]
+\subfloat[Near position\label{fig:cavS200}]
+  {\includegraphics[width=.3\linewidth]{figures/statposnear}}\hfill
+\subfloat[Neutral position \label{fig:cavS2500}]
+  {\includegraphics[width=.3\linewidth]{figures/statposneu}}\hfill
+  \subfloat[Far position \label{fig:cavS5000}]
+  {\includegraphics[width=.3\linewidth]{figures/statposfar}}\hfill
+\caption{Static configuration for the global model for different wind conditions, without current}
+\label{fig:statcon}
+\end{figure}
 
-\noindent The extra lead added to increase the mass discussed earlier in this chapter will not be included in the local model, as it will not have any structural significance other than increasing the mass of the cable.\newline
+The static configuration with current for the three different wind conditions: 
+\begin{figure}[H]
+\subfloat[Near position\label{fig:cavS200}]
+  {\includegraphics[width=.3\linewidth]{figures/statposnearc}}\hfill
+\subfloat[Neutral position \label{fig:cavS2500}]
+  {\includegraphics[width=.3\linewidth]{figures/statposneuc}}\hfill
+  \subfloat[Far position \label{fig:cavS5000}]
+  {\includegraphics[width=.3\linewidth]{figures/statposfarc}}\hfill
+\caption{Static configuration for the global model for different wind conditions, with current}
+\label{fig:statconc}
+\end{figure}
+
+\section{Procedure for Modelling of Local Model}
+The local model was created in BFLEX and consists of the upper part of the cable. The model was built up from the inner layer and outwards. It can be divided into mainly 3 different components as illustrated in Figure \ref{fig:localmod}.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{figures/localmod.png}
+\caption [$\; \:$Illustration of local model]{Illustration of local model}
+ \label{fig:localmod}
+\end{figure}
+The extra lead added to increase the mass discussed earlier in this chapter was not included in the local model, as it does not have any structural significance other than increasing the mass of the cable.\newline
 \newline
 \subsection{Cable}
 The cable cross section is illustrated in Figure \ref{fig:crosspro}
@@ -128,8 +188,8 @@ The cable cross section is illustrated in Figure \ref{fig:crosspro}
 \caption [$\; \:$ Cable cross-section in local model]{Illustration of cable cross-section in local model}
  \label{fig:crosspro}
 \end{figure}
-\noindent The cable consists of the upper 5 pitch lengths of the cable, and consists of several layers as displayed in the Figure above. The model was built up form the inner layer and outwards. 
-The straight components are modeled with HSHEAR363 elements. That includes the inner core (A), the sheath around the conductors (C), the tape between the armouring layers (E), and the outer sheath(G). The helical components are modeled with HSHEAR353 elements and include the conductors (B) and the armouring layers (D) and (F). The cable is built out of one central node system, and all the components are connected to this node system in addition to having their own radial node system.\\\\ To model the contact between element groups, contact elements are used.  HCONT463 was used to describe the contact between different layers. The purpose of the element is connecting two other elements, making one of them the master and the other the slave. The modeling started in the inner layer of the cross-section, the core, and this was the first master element. The element connected the radial node of the core to the radial nodes of the conductors. Then the conductors were the master element and sheath 1 was the slave element. This continued until the outer sheath was reached. A description of how the different layers were connected to each other by the HCONT463 is illustrated in Figure \ref{fig:contact}
+\noindent The cable initially consisted of the upper 5 pitch lengths of the cable. However, after running a few analyses it turned out that the model was somewhat short, and it gained some extra length making it 4.25m. It was made up by several layers, as displayed in Figure \ref{fig:cross2}. The model was built up form the inner layer and outwards. 
+The straight components were modeled with HSHEAR363 elements. That includes the inner core (A), the sheath around the conductors (C), the tape between the armouring layers (E), and the outer sheath(G). The helical components were modeled with HSHEAR353 elements and include the conductors (B) and the armouring layers (D) and (F). The cable was built out of one central node system, and all the components were connected to this node system in addition to having their own radial node system.\\\\ To model the contact between element groups, contact elements were used.  HCONT463 was used to describe the contact between different layers. The purpose of the element is connecting two other elements, making one of them the master and the other the slave. The modeling started in the inner layer of the cross-section, the core, and this was the first master element. The element connected the radial node of the core to the radial nodes of the conductors. Then the conductors were the master element and sheath 1 was the slave element. This continued until the outer sheath was reached. An illustration of how the different layers were connected to each other by the HCONT463 is shown in Figure \ref{fig:contact}
 
 \begin{figure}[H]
 \centering
@@ -140,16 +200,9 @@ The straight components are modeled with HSHEAR363 elements. That includes the i
 
 \noindent To describe the contact between the conductors, the element HCONT454 was used. This element connects the two radial nodes of the HSHEAR353 elements together.\newline
 \newline
-The conductors were modeled with a lay angle of 8 degrees, and the armouring has a lay angle of 20 degrees. The local model is 5 pitch lengths for the conductor. 1 pitch length can be calculated as:
-
- \begin{equation}
-   L_p = \frac{2\pi R}{\tan(\alpha)}
-\end{equation}
- Where $L_p$ is 1 pitch length, R is the radius in polar coordinates, and $\alpha$ is the lay angle\newline
- \newline
- With a lay angle of 8 degrees, 5 pitch lengths are calculated to be $L_p=3.35$m \newline
+The conductors were modeled with a lay angle of 8 degrees, and the armouring with a lay angle of 20 degrees. \newline
 \newline
-The cable includes three different materials, where the conductors are of copper, the armouring are of steel and the sheaths and tape are made of plastic. The most important material properties are reproduced in table \ref{table:matprop}
+The cable included three different materials, where the conductors were of copper, the armouring were of steel and the sheaths and tape were made of plastic. The material properties were decided in agreement with Professor Svein Sævik, and the most important material properties are reproduced in Table \ref{table:matprop}
 \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|c|c|}
@@ -192,7 +245,7 @@ Surface stiffness [N/m$^2$] & 100e5 & 100e6 & 100e8\\
 \label{table:friprop}
 \end{table}
 
-The different friction models for the different contacts are described in table \ref{table:frimod}
+The different friction models for the different contacts are described in Table \ref{table:frimod}
 
 \begin{table} [H]
 \centering
@@ -338,12 +391,12 @@ Outer diameter, narrowest part & 0.1\\
 \end{table}
 \noindent The bend stiffener begins 1 pitch length away from the upper end of the cable, and is made out of polyurethane. It is modeled by the use of CROSSECTION command in BFLEX making the inclination very easy to model.  
 
-\subsubsection{Material data for Bend Stiffener}
+\subsubsection{Material Data for Bend Stiffener}
 The material of the bend stiffener is a polymer with non-linear material properties.The initial Young's modulus was chosen to be 150 GPa, with a decay in stiffness according to  Figure \ref{fig:matbend}. The material was chosen in agreement with guidance from Professor Svein Sævik. 
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=1]{figures/matbend}
+\includegraphics[scale=0.8]{figures/matbend}
 \caption[$\; \:$ Stress-strain relationship for bend stiffener material]{Stress-strain relationship for bend stiffener material}
  \label{fig:matbend}
 \end{figure}
@@ -362,7 +415,7 @@ In this case $C_1$ is 1, so the nodes will follow each other exactly.
 \begin{equation}
     \epsilon_0 = T_0
 \end{equation}
-where $\epsilon_0$ is the reference value for strain and $T_0$ is the reference value for tension. This was scaled so that the reference value was 1000N, and desired tension could easily be applied in BFLEX by multiplying the strain with a factor. 
+where $\epsilon_0$ is the reference value for strain and $T_0$ is the reference value for tension. This was scaled so that the reference value was $T_0=$1000N, and desired tension could easily be applied in BFLEX by multiplying the strain with a factor. 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{figures/exelem}
@@ -379,65 +432,26 @@ The boundary conditions for the cable is created in such a way that the cable ca
     \item The armouring layers are fixed in 1 at the first node, and in 2,4,5 and 6 for all nodes
 \end{itemize}
 
-\section {Testing}
-\label{sec:localtest}
-To make sure the global and local model were acceptable, some key features had to be checked before the analyses could begin. 
-\subsection{Testing of Global Model}
-To make sure the global model was ready to be used in further analyses, several things were investigated. The design criteria for the global model was that the curvature could not exceed $\kappa=1.3675$ anywhere in the cable to avoid locking of the cable. To test this, the most severe sea state according to the scatter diagram for West of Barra in Figure \ref{fig:scatn} was tested in a dynamic analysis. The key variables used in the test are displayed in table \ref{table:testglob}.
-
-\begin{table} [H]
-\centering
-\begin{tabular}{ |c|c|c|}
-\hline
-Variable & Value \\
- \hline
- \hline
-Hs [m] & 13.5\\
-Tp[s] & 16 \\
-Time step [s] & 0.1 \\
- \hline
-\end{tabular}
-\caption{Key variables used in testing of global model}
-\label{table:testglob}
-\end{table}
-
-The following results for the three wind conditions were seen as interesting to assess the quality of the model:
-\begin{itemize}
-    \item The static configuration, to make sure the cable had the desired steep S shape, and that the buoyancy section is not too high in the water.
-    \item Curvature envelope, to make sure the curvature does not exceed the max curvature of 1.3675 $\frac{1}{m}$
-    \item Max force envelope, to make sure the tension in the cable is acceptable
-    \item Min force envelope, to make sure the there is no compression in the bottom of the cable
-\end{itemize}
-
-The static configuration without current for the three different wind conditions: 
-\begin{figure}[H]
-\subfloat[Near position\label{fig:cavS200}]
-  {\includegraphics[width=.3\linewidth]{figures/statposnear}}\hfill
-\subfloat[Neutral position \label{fig:cavS2500}]
-  {\includegraphics[width=.3\linewidth]{figures/statposneu}}\hfill
-  \subfloat[Far position \label{fig:cavS5000}]
-  {\includegraphics[width=.3\linewidth]{figures/statposfar}}\hfill
-\caption{Static configuration for the global model for different wind conditions, without current}
-\label{fig:statcon}
-\end{figure}
-
-The static configuration with current for the three different wind conditions: 
-\begin{figure}[H]
-\subfloat[Near position\label{fig:cavS200}]
-  {\includegraphics[width=.3\linewidth]{figures/statposnearc}}\hfill
-\subfloat[Neutral position \label{fig:cavS2500}]
-  {\includegraphics[width=.3\linewidth]{figures/statposneuc}}\hfill
-  \subfloat[Far position \label{fig:cavS5000}]
-  {\includegraphics[width=.3\linewidth]{figures/statposfarc}}\hfill
-\caption{Static configuration for the global model for different wind conditions, with current}
-\label{fig:statcon}
-\end{figure}
-
-The testing showed that there is no compression in the cable, and both the curvature and max tension are at acceptable levels. The results were plotted and can be investigated further in Appendix \ref{appendix:A}. 
-
-
 \subsection{Testing of Local Model}
-The local model was, as the global model tested to see if it performs in a satisfactory manner. The following figures show the local model and some of its components:
+\label{sec:localtest}
+The local model was, as the global model tested to see if it performed in a satisfactory manner.
+ \noindent The following sequence of loads was added to the local model:
+\begin{enumerate}
+    \item Gravity Load: Gravity is turned off on the local model, but the effect of the mass of the model should still be applied. This was added at the very first time step.
+    \item Tension: Tension was added to the local model in the axial direction on the last node in the outer sheath, with magnitude 13.7kN. The load was applied at t=1s to t=5s. seconds
+    \item Initial strain: Initial strain was added to the outer sheath of the model in 1 direction. The strain was added to all the elements with a magnitude 0.03. It was applied at t=1s to t=5s.
+    \item Bending: Smooth bending of the cable was applied. The cable was bent from 0 degrees to 5 degrees between t=5 and t=15, and from 5 degrees to -5 degrees between t=15 and t=35.  
+\end{enumerate}
+The following results were seen as interesting in assessing the local model. 
+\begin{itemize}
+    \item Force in the conductors over the length of the cable
+    \item Moments about X,Y and Z axis over the length of the cable
+    \item Curvature of the outer sheath over the length of the cable
+    \item Curvature in bend stiffener
+\end{itemize}
+The testing showed that the local model was good... \todo{MERE HER} All  The results for the testing of the local model can be seen in Figures \ref{fig:bflexax} to \ref{fig:bendstiff} in Appendix \ref{appendix:B}.
+
+Figure \ref{fig:local1} and Figure \ref{fig:local2} show the local model and some of its components.
 
 \begin{figure}[H]
 \subfloat[Local model from the side with bend stiffener \label{fig:lm_total}]
@@ -445,7 +459,7 @@ The local model was, as the global model tested to see if it performs in a satis
 \subfloat[Cable cross section in local model \label{fig:lm_cross}]
   {\includegraphics[width=.25\linewidth]{figures/lm_cross}}\hfill
 \caption{Local model}
-\label{fig:volt}
+\label{fig:local1}
 \end{figure}
 
 \begin{figure}[H]
@@ -454,16 +468,8 @@ The local model was, as the global model tested to see if it performs in a satis
 \subfloat[Armouring \label{fig:3phase}]
   {\includegraphics[width=.45\linewidth]{figures/lm_arm}}\hfill
 \caption{Helical components in the local model}
-\label{fig:volt}
+\label{fig:local2}
 \end{figure}
- \noindent The following sequence of loads was added to the local model:
-\begin{enumerate}
-    \item Gravity Load: Gravity is turned off on the local model, but the effect of the mass of the model should still be applied. This was added at the very first time step.
-    \item Tension: Tension was added to the local model in the axial direction on the last node in the outer sheath, with magnitude 13.7kN. The load was applied at t=1s to t=5s. seconds
-    \item Initial strain: Initial strain was added to the outer sheath of the model in 1 direction. The strain was added to all the elements with a magnitude 0.03. It was applied at t=1s to t=5s.
-    \item Bending: Smooth bending of the cable was applied. The cable was bent from 0 degrees to 5 degrees between t=5 and t=15, and from 5 degrees to -5 degrees between t=15 and t=35.  
-\end{enumerate}
-\noindent The results for the testing of the local model can be seen in Figures \ref{fig:bflexax} to \ref{fig:bflexcurve}:
 
 
 
