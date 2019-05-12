@@ -75,7 +75,23 @@ Farm Demonstration Project, \cite{yagihashi2015dynamic}. Inter-array cables are 
 \end{figure}
 
 \section{Objective}
-skriv om prosjektoppgaven
+The objective of this Master Thesis is to estimate the lifetime of a dynamic power cable applied in offshore wind farms. Theory and software used and developed for the oil and gas industry, is applied in the relatively new and upcoming field of ocean renewable energy.
+
+A Project Thesis was executed in the fall of 2018 lays the basis for this Master Thesis where a local and a global model were modelled                 ....
+
+This is achieved by performing a local and a global analysis on a selected wind turbine floater at a selected location. The global analysis is executed first in SIMA RIFLEX on a global model consisting of the total cable attach to the sea floor and to the vessel. A scatter diagram for the wave conditions at the selected location is used, and all the different sea states (i.e. the different combinations of Hs and Tp) are analyzed for one hour each in the global analysis. The output of the global analyses are time series of the angle between the vessel and the cable, and tension in the cable hang off. The cycles of the time series are counted using rain-flow counting implemented in Python, and result in histograms with the number of cycles for each angle scaled for occurrence in the scatter diagram.  This will be used as input in the local analyses.\\\\ The local analyses is be performed in BFLEX, and the local model consists the top of the cable where the fatigue damage will be most severe. Each angle range is analyzed for one cycle with the corresponding tension level found by linear interpolation. From this, the stress variation in each individual wire in the copper conductor is calculated, and the total damage pr year is found using  and SN fatigue data and Miner-Palmgren formula will be used to estimate the lifetime of the dynamic power cable. \\\\ The objective of this report is, therefore, to conduct a literature study, acquire the necessary theoretical background, select an appropriate case study and create the models that will be used in the master thesis. All choices and simplifications are to be described and justified. 
+
+\section{Project Thesis Structure}
+\begin{itemize}
+    \item Chapter 1 contains the introduction with literature review, state of the art and objective for the project thesis.
+     \item Chapter 2 is the system theory for wind turbines, offshore wind turbines and power cables.
+      \item Chapter 3 goes through the basic theory of wave-induced fatigue. 
+      \item The case scenario that will be investigated is presented in Chapter 4
+      \item Chapter 5 describes the theory behind the two numeric models
+      \item In chapter 6, the modeling methodology will be explained.
+      \item 
+      \item
+\end{itemize}
 \section{Contribution}
 
 
