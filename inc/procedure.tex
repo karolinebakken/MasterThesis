@@ -1,12 +1,13 @@
 \chapter{Modeling Methodology}
 \label{chap:procedure}
-In this chapter, the methodology for the creation of the two models will be described.
+In this chapter, the methodology of the modelling process of the two models will be described.
 \section{Procedure for Modelling of Global Model}
 \label{sec:globmod}
 The global model was created in SIMA RIFLEX, and represents the total dynamic part of the power cable. It is attached to both the sea floor and the a point that will behave like the vessel due to the transfer functions provided from Dr. Techn. Olav Olsen. It is assumed that the most severe damage due to fatigue is located at the top of the cable, so that very little attention was borough to the bottom attachment. The following section will describe how the central properties of the cable were modeled in the numeric model. 
 
-\subsection{Cross Sectional Properties}
-The cable in the global model consists of three different cable section with two different cross sections. An illustration of the different cable section is shown in Figure \ref{fig:globalill}, and the properties of the two cross sections are presented in Table \ref{table:crosssima}. 
+\subsection{Cable Configuration}
+The cable consists of 3 sections with 2 different cross-sections. Section 1 is the lowest part of the cable and is attached to a super node located on the sea floor with the cable cross-section. The second section is located in the middle of the cable with buoyancy elements. The third section is the upper part of the cable, and it is attached to a super node on the wind turbine floater, with the cable cross-section. An illustration of a typical dynamic power cable configuration with the different sections explained can be seen in Figure \ref{fig:globalill}.\newline
+\newline 
 
 \begin{figure}[H]
 \centering
@@ -14,70 +15,19 @@ The cable in the global model consists of three different cable section with two
 \caption [$\; \:$ Illustration of the global model and its different sections ]{Illustration of the global model and its different sections}
  \label{fig:globalill}
 \end{figure}
-
-\begin{table} [H]
-\centering
-\begin{tabular}{ |c|c|c|}
-\hline
-Property& Cable Cross Section & Buoy Cross Section \\
- \hline
- \hline
-Dry mass+ Buoyancy [$\frac{kg}{m}$] & 15.75 & 15.75\\
-External Area [m]& 0.006171 & 0.03\\
-Axial Stiffness [N] & 2.0e+08 & 2.0e+08\\
-Bending Stiffness [Nm$^2$] & 1481 & 1481\\
-Torsional Stiffness [Nm$^2$] & 5403 & 5403\\
- \hline
-\end{tabular}
-\caption{Parameters used for the two different cross sections}
-\label{table:crosssima}
-\end{table}
-\noindent The only difference between the two cross section types is the external area due to the buoyancy elements attached to the buoy section. The parameters in Table \ref{table:crosssima} were calculated as follows:\newline
-\newline 
-\noindent The mass coefficient: 
-\begin{equation}
-\text{Mass coeff.}=L_{c} A_cn_c (\rho_c-\rho_w) + L_{s1} A_{s}n_{s1} (\rho_s-\rho_w)+L_{s2} A_{s2}n_{s2} (\rho_s-\rho_w)
-\end{equation}
-
-\noindent Where $L_c$ is the length of a helical copper conductor pr meter, $A_c$ is the area of a copper conductor, $n_c$ is the number of copper conductors, $\rho_c$ is the density of copper, $\rho_w$ is the density of water, $L_{si}$ is the length of steel armouring pr meter for layer i, $A_s$ is the area of one wire for the steel armouring assumed to be the same for layer 1 and 2, $n_{si}$ is the number of wires in armouring layer i and $\rho_s$ is the density of steel. The plastic sheaths and tape were assumed to have the same density as the water. \newline
-\newline 
-The Axial stiffness and torsional stiffness was calculated according to Equation 4.14 and 4.22 in \cite{Savik2016} as:
-\begin{equation}
-    EA=nEA_t \cos\alpha(\cos^2\alpha-\nu_a \sin^2\alpha)
-\end{equation}
-
-\begin{equation}
-    GI=nA_t E R^2 \sin^2 \alpha \cos^2 \alpha
-\end{equation}
-Where $n$ is the number of wires in the steel armouring, $E$ is Young's modulus of steel, $A_t$ is the area of one steel wire, $\alpha$ is the lay angle of the armouring, R is the radius in polar coordinates between the armouring layers.  \newline
-\newline 
-The bending stiffness was calculated from the outer sheath as follows:
-\begin{equation}
-    EI= E\cdot \frac{\pi}{4}(r_o-r_i)
-\end{equation}
-Where E is Young's modulus of the plastic of the outer sheath, $r_o$ is the outer radius of the outer sheath, and $r_i$ is the inner radius of the outer sheath. \newline
-\newline 
-To increase the weight of the cable and thus increase the inertia, lead was added to the model. According to Professor Svein Sævik, the following criteria would be beneficial for the cable:
-\begin{equation}
-    \frac{\sum_{i=1}^n m_i - b}{b}\approx 2
-\end{equation}
-Where $m_i$ is the mass of the different components in the cross section, and b is the buoyancy. To achieve this, 6kg had to be added to the cross section. This was done by making the center tube out of lead, and also place three tubes the size of the center tube in the free space between the conductors and the sheath. To model this, the mass coefficient is increased by 6 kg and will be 15.75 kg as shown in Table \ref{table:DIMCABLE}. \newline
-\newline A dummy super node was added to the vessel with a dummy line between the two super nodes attached to the vessel. This way it will be possible to take the dot product of the dummy line and the upper element of the cable and get a time series of the angle between the vessel and the cable.
-\subsection{Cable Configuration}
-The cable consists of 3 sections with 2 different cross-sections. Section 1 is the lowest part of the cable and is attached to a super node located on the sea floor with the cable cross-section. The second section is located in the middle of the cable with buoyancy elements. The third section is the upper part of the cable, and it is attached to a super node on the wind turbine floater, with the cable cross-section.\newline
-\newline 
-\noindent As a simplification, it is assumed that the floating wind turbine can have 3 different positions:
+\noindent As a simplification, it was assumed that the floating wind turbine can have 3 different positions:
 \begin{itemize}
     \item Neutral: There is no wind
     \item Near: Maximum wind from the east direction
     \item Far: Maximum wind from the west direction
 \end{itemize}
-To determine the far position, it was decided in agreement with Dr. Techn. Olav Olsen that the maximum offset in far position, relative to the neutral position was 20\% of the water depth in the east direction. Assuming a linear system, the offset in Near position relative to the Neutral position was calculated by using the scatter diagram for wind in Figure \ref{fig:scatterwind}:
+See Section \ref{sec:current} for more detailed information on the weather conditions at each position. \\\\
+To determine the far position, it was decided in agreement with Dr. Techn. Olav Olsen that the maximum offset in far position, relative to the Neutral position was 20\% of the water depth in the east direction. Assuming a linear system, the offset in Near position relative to the Neutral position was calculated by using the scatter diagram for wind in Figure \ref{fig:scatterwind}:
 \begin{equation}
     \text{Offset Near}=\left(\frac{\text{Max  wind speed from east}}{\text{Max wind speed form west}}\right)^2 \cdot \text{Offset far}
 \end{equation}
 
-\noindent The near position was set to be 60 m away from the anchoring, in agreement with Professor Svein Sævik, and the neutral and far position was calculated from by adding the offsets as described above. This gave the following positions: 
+\noindent The near position was set to be 60 m away from the anchoring, in agreement with Professor Svein Sævik, and the Neutral and Far position was calculated from by adding the offsets as described above. This gave the following positions: 
 \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|}
@@ -98,7 +48,7 @@ Far & 96.85 \\
 \label{table:pos}
 \end{table}
 
-\noindent The final configuration was determined by testing numerous different combinations, and the final lengths of the different sections are displayed in Table \ref{table:DIMCABLE} 
+\noindent The final cable configuration was determined by testing numerous different combinations of different lengths for the three sections to achieve with max curvature criteria of 1.3675 $\frac{1}{m}$, and no tension throughout the cable for neighter of teh three positions. The final values are displayed in Table \ref{table:DIMCABLE} 
 \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|c|}
@@ -115,11 +65,63 @@ Section number & External area [m$^2$] & Length [m] \\
 \label{table:DIMCABLE}
 \end{table}
 
+\subsection{Cross Sectional Properties}
+The properties of the two cable cross sections are presented in Table \ref{table:crosssima}, and Figure \ref{fig:globalill} illustrates the use of the two cross sections.
+
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|}
+\hline
+Property& Cable Cross Section & Buoy Cross Section \\
+ \hline
+ \hline
+Dry mass+ Buoyancy [$\frac{kg}{m}$] & 15.75 & 15.75\\
+External Area [m]& 0.006171 & 0.03\\
+Axial Stiffness [N] & 2.0e+08 & 2.0e+08\\
+Bending Stiffness [Nm$^2$] & 1481 & 1481\\
+Torsional Stiffness [Nm$^2$] & 5403 & 5403\\
+ \hline
+\end{tabular}
+\caption{Parameters used for the two different cross sections}
+\label{table:crosssima}
+\end{table}
+\noindent The only difference between the two cross section types is the external area due to the buoyancy elements attached to the buoy section. The parameters in Table \ref{table:crosssima} were calculated as follows:\newline
+\newline 
+\noindent The Dry mass + Buoyancy: 
+\begin{equation}
+\text{Dry mass + Buoyancy}=L_{c} A_cn_c (\rho_c-\rho_w) + L_{s,1} A_{s}n_{s,1} (\rho_s-\rho_w)+L_{s,2} A_{s}n_{s,2} (\rho_s-\rho_w)
+\end{equation}
+
+\noindent Where $L_c$ is the length of a helical copper conductor pr meter, $A_c$ is the area of a copper conductor, $n_c$ is the number of copper conductors, $\rho_c$ is the density of copper, $\rho_w$ is the density of water, $L_{s,i}$ is the length of steel armouring pr meter for layer i, $A_s$ is the area of one wire for the steel armouring assumed to be the same for layer 1 and 2, $n_{s,i}$ is the number of wires in armouring layer i and $\rho_s$ is the density of steel. The plastic sheaths and tape were assumed to have the same density as the water, and thus have neutral buoyancy. \newline
+\newline 
+The Axial Stiffness and Torsional Stiffness were calculated according to Equation 4.14 and 4.22 in \cite{Savik2016} as:
+\begin{equation}
+    EA=nEA_t \cos\alpha(\cos^2\alpha-\nu_a \sin^2\alpha)
+\end{equation}
+
+\begin{equation}
+    GI=nA_t E R^2 \sin^2 \alpha \cos^2 \alpha
+\end{equation}
+Where $n$ is the number of wires in the steel armouring, $E$ is Young's modulus of steel, $A_t$ is the area of one steel wire, $\alpha$ is the lay angle of the armouring, R is the radius in polar coordinates between the armouring layers.  \newline
+\newline 
+The bending stiffness was calculated from the outer sheath as follows:
+\begin{equation}
+    EI= E\cdot \frac{\pi}{4}(r_o-r_i)
+\end{equation}
+Where E is Young's modulus of the plastic of the outer sheath, $r_o$ is the outer radius of the outer sheath, and $r_i$ is the inner radius of the outer sheath. \newline
+\newline 
+To increase the weight of the cable and thus increase the inertia, lead was added to the model. According to Professor Svein Sævik, the following criteria would be beneficial for the cable:
+\begin{equation}
+    \frac{\sum_{i=1}^n m_i - b}{b}\approx 2
+\end{equation}
+Where $m_i$ is the mass of the different components in the cross section, and b is the buoyancy. To achieve this, 6kg had to be added to the cross section. This was done by making the center tube out of lead, and also place three tubes the size of the center tube in the free space between the conductors and the sheath. To model this, the mass coefficient was increased by 6 kg and reached 15.75 $\frac{kg}{m}$ as shown in Table \ref{table:DIMCABLE}. \newline
+\newline A dummy super node was added to the vessel with a dummy line between the two super nodes attached to the vessel. This way it was possible to take the dot product of the dummy line and the upper element of the cable and get a time series of the angle between the vessel and the cable.
+
 \subsection{Boundary Conditions}
-The cable was fixed to the sea bottom in all translational and rotational degrees of freedoms. The cable hang-off on the vessel is fixed in all translational degrees of freedom and free in all rotational degrees of freedom. 
+The cable was fixed to the sea bottom in all translational and rotational degrees of freedoms. The cable hang-off on the vessel was fixed in all translational degrees of freedom and free in all rotational degrees of freedom. 
 
 \subsection{Testing of Global Model}
-To make sure the global model was ready to be used in further analyses, several things were investigated. The design criteria for the global model was that the curvature could not exceed $\kappa=1.3675$ anywhere in the cable to avoid locking of the cable. To test this, the most severe sea state according to the scatter diagram for West of Barra in Figure \ref{fig:scatn} was tested in a dynamic analysis. The key variables used in the test are displayed in Table \ref{table:testglob}.
+To make sure the global model was ready to be used in further analyses, several things were verified.  The most severe sea state according to the scatter diagram for West of Barra in Figure \ref{fig:scatn} was tested in a dynamic analysis. The key variables used in the test are displayed in Table \ref{table:testglob}.
 
 \begin{table} [H]
 \centering
@@ -144,9 +146,15 @@ The following results for the three wind conditions were seen as interesting to 
     \item Max force envelope, to make sure the tension in the cable was acceptable
     \item Min force envelope, to make sure the there was no compression in the bottom of the cable
 \end{itemize}
-The testing showed that there was no compression in the cable, and both the curvature and max tension are at acceptable levels. The results were plotted and can be investigated further in Appendix \ref{appendix:A}. \newline
+The testing showed that there was no compression in the cable that the curvature did not exceed it criteria. \\\\  The max capacity of the cable was calculated by Equation \ref{eq:tcap} to be 223kN, while the max tension in the cable in static configuration was around 17kN.
+\begin{equation}
+    T_{cap}=n \cos{\alpha} \sigma_f A_s
+   \label{eq:tcap}
+\end{equation}
+Where n is the total number of armouring layers in both layers, $\alpha$ is the lay angle, $\sigma_f$ is the yield stress of steel and $A_s$ is the area of one steel fibre.\\\\ 
+The results were plotted and can be investigated further in Appendix \ref{appendix:A}. \newline
 \newline
-The global model in with its three different wind conditions are shown in Figure \ref{fig:statcon} and Figure \ref{fig:statconc}. 
+The global model with its three different wind conditions in static configuration without current are shown in Figure \ref{fig:statcon} and Figure \ref{fig:statconc}. 
 \begin{figure}[H]
 \subfloat[Near position\label{fig:cavS200}]
   {\includegraphics[width=.3\linewidth]{figures/statposnear}}\hfill
@@ -171,7 +179,7 @@ The static configuration with current for the three different wind conditions:
 \end{figure}
 
 \section{Procedure for Modelling of Local Model}
-The local model was created in BFLEX and consists of the upper part of the cable. The model was built up from the inner layer and outwards. It can be divided into mainly 3 different components as illustrated in Figure \ref{fig:localmod}.
+The local model was created in BFLEX and consists of the upper part of the cable. As it was assumed that the most severe fatigue damage occurs here.  The model was built up from the inner layer and outwards. It consists of mainly 3 different components as illustrated in Figure \ref{fig:localmod}.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{figures/localmod.png}
@@ -184,12 +192,11 @@ The extra lead added to increase the mass discussed earlier in this chapter was 
 The cable cross section is illustrated in Figure \ref{fig:crosspro}
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.5]{figures/cross2}
-\caption [$\; \:$ Cable cross-section in local model]{Illustration of cable cross-section in local model}
+\includegraphics[scale=0.8]{figures/cross2}
+\caption [$\; \:$ Cable cross section in local model]{Illustration of cable cross section in local model}
  \label{fig:crosspro}
 \end{figure}
-\noindent The cable initially consisted of the upper 5 pitch lengths of the cable. However, after running a few analyses it turned out that the model was somewhat short, and it gained some extra length making it 4.25m. It was made up by several layers, as displayed in Figure \ref{fig:cross2}. The model was built up form the inner layer and outwards. 
-The straight components were modeled with HSHEAR363 elements. That includes the inner core (A), the sheath around the conductors (C), the tape between the armouring layers (E), and the outer sheath(G). The helical components were modeled with HSHEAR353 elements and include the conductors (B) and the armouring layers (D) and (F). The cable was built out of one central node system, and all the components were connected to this node system in addition to having their own radial node system.\\\\ To model the contact between element groups, contact elements were used.  HCONT463 was used to describe the contact between different layers. The purpose of the element is connecting two other elements, making one of them the master and the other the slave. The modeling started in the inner layer of the cross-section, the core, and this was the first master element. The element connected the radial node of the core to the radial nodes of the conductors. Then the conductors were the master element and sheath 1 was the slave element. This continued until the outer sheath was reached. An illustration of how the different layers were connected to each other by the HCONT463 is shown in Figure \ref{fig:contact}
+\noindent The cable initially consisted of the upper 5 pitch lengths of the cable. However, after running a few analyses it turned out that the model was somewhat short, and it gained some extra length making it 4.25m. It was made up by several layers, as displayed in Figure \ref{fig:cross2}.  The straight components were modeled with HSHEAR363 elements. That includes the center tube (A), the sheath around the conductors (C), the tape between the armouring layers (E), and the outer sheath(G). The helical components were modeled with HSHEAR353 elements and include the conductors (B) and the armouring layers (D) and (F). The cable was built out of one central node system, and all the components were connected to this node system in addition to having their own radial node system.\\\\ To model the contact between element groups, contact elements were used.  HCONT463 was used to describe the contact between different layers. The purpose of the element is connecting two other elements, making one of them the master and the other the slave. The modeling started in the inner layer of the cross-section, the core, and this was the first master element. The element connected the radial node of the core to the radial nodes of the conductors. Then the conductors were the master element and sheath 1 was the slave element. This continued until the outer sheath was reached. An illustration of how the different layers were connected to each other by the HCONT463 is shown in Figure \ref{fig:contact}
 
 \begin{figure}[H]
 \centering
@@ -200,7 +207,7 @@ The straight components were modeled with HSHEAR363 elements. That includes the 
 
 \noindent To describe the contact between the conductors, the element HCONT454 was used. This element connects the two radial nodes of the HSHEAR353 elements together.\newline
 \newline
-The conductors were modeled with a lay angle of 8 degrees, and the armouring with a lay angle of 20 degrees. \newline
+The conductors were modeled with a lay angle of 8 degrees, and the armouring with a lay angle of 20 degrees according to Professor Svein Sævik's recommendations. \newline
 \newline
 The cable included three different materials, where the conductors were of copper, the armouring were of steel and the sheaths and tape were made of plastic. The material properties were decided in agreement with Professor Svein Sævik, and the most important material properties are reproduced in Table \ref{table:matprop}
 \begin{table} [H]
@@ -268,10 +275,10 @@ Armouring 2 - Sheath 2 & contact1\\
 \end{table}
 
 \subsection{Bend Stiffener}
-To add more local stiffness to the flexible cable, a bend stiffener was added to the model. The following section is based on guidance from Professor Svein Sævik. 
+To make the transition in stiffness at the cable hang off smoother and thus add more local stiffness to the flexible cable, a bend stiffener was added to the model. The following section is based on guidance from Professor Svein Sævik. 
 \newline 
 \newline
-The dimensions of the bend stiffener are, for now, based on rough calculations and assumptions by the following equations: \newline
+The dimensions of the bend stiffener were roughly calculated in the beginning by the following procedure: \newline
 \newline
 
 \noindent Locking radius of the flexible cable:
@@ -366,7 +373,7 @@ Where $\kappa_{max}$ is the maximum curvature, $T_{max}$ is the maximum tension,
 \end{equation}
  Where EI is the bending stiffness, $r_o$ is the outer radius of the bend stiffener and $r_i$ is the inner radius.\newline 
 \newline 
-This gives the final dimensions for the bend stiffener: 
+It turned out that this rough calculation was not quite satisfying, and that the bend stiffener lacked both some length was too wide. With the above calculations as a base, a few attempts were used to improve the dimensions of the bend stiffener. This gave the final dimensions: 
  \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|}
@@ -375,13 +382,13 @@ Parameter & Value [m] \\
  \hline
  \hline
  
- Length & 0.325 \\
+ Length & 1.400 \\
  
-Outer diameter, widest part & 0.3152\\
+Outer diameter, widest part & 0.260\\
 
-Outer diameter, narrowest part & 0.1\\
+Outer diameter, narrowest part & 0.100\\
 
- Inner diameter & 0.0966 \\
+ Inner diameter & 0.097 \\
  
 
  \hline
@@ -389,10 +396,10 @@ Outer diameter, narrowest part & 0.1\\
 \caption{Dimensions of bend stiffener}
 \label{table:dim}
 \end{table}
-\noindent The bend stiffener begins 1 pitch length away from the upper end of the cable, and is made out of polyurethane. It is modeled by the use of CROSSECTION command in BFLEX making the inclination very easy to model.  
+\noindent The bend stiffener begins 1 pitch length away from the upper end of the cable. It is modeled by the use of CROSSECTION command in BFLEX making the inclination very easy to model.  
 
 \subsubsection{Material Data for Bend Stiffener}
-The material of the bend stiffener is a polymer with non-linear material properties.The initial Young's modulus was chosen to be 150 GPa, with a decay in stiffness according to  Figure \ref{fig:matbend}. The material was chosen in agreement with guidance from Professor Svein Sævik. 
+The material of the bend stiffener is a polyurethane with non-linear material properties.The initial Young's modulus was chosen to be 150 GPa, with a decay in stiffness according to  Figure \ref{fig:matbend}. The material was chosen in agreement with guidance from Professor Svein Sævik. 
 
 \begin{figure}[H]
 \centering
@@ -402,7 +409,7 @@ The material of the bend stiffener is a polymer with non-linear material propert
 \end{figure}
 
 \subsection{Stiff Pipe}
-A stiff pipe was modeled at the very end of the cable. This was done to make sure that there was no curvature in the termination of the cable to avoid transient effects. The pipe has the length of one pitch length and was modeled with PIPE31 elements. The nodes of the stiff pipe are connected with the central node system of the cable through the CONSTR card in BFLEX. The card assigns one node to be the slave and the other to be master, and defines the relationship between them:
+A stiff pipe was modeled at the very end of the cable. This was done to make sure that there was no curvature in the termination of the cable to avoid transient effects. The pipe has the length of one pitch length and was modeled with PIPE31 elements. The first node of the stiff pipe is connected to the first node of the central node system of through the CONSTR card in BFLEX. The card assigns one node to be the slave and the other to be master, and defines the relationship between them:
 \begin{equation}
 r_{Si}=C_1 \cdot r_{Mj}    
 \end{equation}
@@ -411,7 +418,7 @@ Where $r_{Si}$ is the displacement of the slave node,  $C_1$ is a constant descr
 In this case $C_1$ is 1, so the nodes will follow each other exactly. 
 
 \subsection{Method for Application of Tension}
-\noindent For application of dynamic tension to the model, an extra pipe element was added in the end of the model as can be seen in red in Figure \ref{fig:exelem}. This element has a very low EA, but the same EI as the steel armoring. The purpose of this was to make it possible to apply the tension in the form of strain so that:
+\noindent For easy application of dynamic tension to the model, an extra pipe element was added in the end of the model as can be seen in red in Figure \ref{fig:exelem}. This element has a very low EA, but the same EI as the steel armoring. The purpose of this was to make it possible to apply the tension in the form of strain so that:
 \begin{equation}
     \epsilon_0 = T_0
 \end{equation}
@@ -424,7 +431,7 @@ where $\epsilon_0$ is the reference value for strain and $T_0$ is the reference 
 \end{figure}
 
 \subsection{Boundary Conditions}
-The boundary conditions for the cable is created in such a way that the cable can slide inside the bend stiffener. The following constraints are made for the different components:
+The boundary conditions for the cable was created in such a way that the cable can slide inside the bend stiffener. The following constraints were made for the different components:
 \begin{itemize}
     \item Centroid system: Fixed in 2 and 6 for all nodes, and 2 and 3 for the last nodes
     \item Radial nodes of the core, sheaths, and tape are fixed in 2 and 3 for all nodes. 
@@ -437,8 +444,8 @@ The boundary conditions for the cable is created in such a way that the cable ca
 The local model was, as the global model tested to see if it performed in a satisfactory manner.
  \noindent The following sequence of loads was added to the local model:
 \begin{enumerate}
-    \item Gravity Load: Gravity is turned off on the local model, but the effect of the mass of the model should still be applied. This was added at the very first time step.
-    \item Tension: Tension was added to the local model in the axial direction on the last node in the outer sheath, with magnitude 13.7kN. The load was applied at t=1s to t=5s. seconds
+    \item Gravity Load: Gravity was turned off on the local model, but the effect of the mass of the model had to be applied. This was added at the very first time step.
+    \item Tension: The mean tension was added to the local model in the axial direction on the last node in the outer sheath, with magnitude 13.7kN found by the global analyses. The load was applied at t=1s to t=5s. seconds
     \item Initial strain: Initial strain was added to the outer sheath of the model in 1 direction. The strain was added to all the elements with a magnitude 0.03. It was applied at t=1s to t=5s.
     \item Bending: Smooth bending of the cable was applied. The cable was bent from 0 degrees to 5 degrees between t=5 and t=15, and from 5 degrees to -5 degrees between t=15 and t=35.  
 \end{enumerate}
@@ -449,8 +456,7 @@ The following results were seen as interesting in assessing the local model.
     \item Curvature of the outer sheath over the length of the cable
     \item Curvature in bend stiffener
 \end{itemize}
-The testing showed that the local model was good... \todo{MERE HER} All  The results for the testing of the local model can be seen in Figures \ref{fig:bflexax} to \ref{fig:bendstiff} in Appendix \ref{appendix:B}.
-
+The testing showed that the local model was acceptable. All  The results for the testing of the local model can be seen in Figures \ref{fig:bflexax} to \ref{fig:bendstiff} in Appendix \ref{appendix:B}. Figure \ref{fig:bflexax} shows that the tension variation on the conductors between max angle and min angle died out towards the end of the model, indicating that the model was of sufficient length, and the same can be seen for the moments in Figure \ref{fig:bflexmx} to Figure \ref{fig:bflexmz}. The curvature is about zero at the beginning and end of the outer sheath (Figure \ref{fig:bflexcurve}), and the bend curvature in the bend stiffener (Figure \ref{fig:bendstiff} has the desired shape. This indicates that the bend stiffener has appropriate dimensions and is serving its purpose. \\\\
 Figure \ref{fig:local1} and Figure \ref{fig:local2} show the actual local model and some of its components as they look in XPOST.
 
 \begin{figure}[H]
