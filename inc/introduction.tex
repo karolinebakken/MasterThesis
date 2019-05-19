@@ -1,9 +1,9 @@
 \chapter{Introduction}
 \label{chap:introduction}
 \section{Motivation and Background}
-As the world strives towards greener energy, different renewable energy alternatives are being explored. Wind energy has been utilized by man for over thousands of years, and in the recent years become one of the more mature renewable energies. As the areas on land that are fit for wind turbines are scarce, and the public is disliking the noise and visibility of the wind turbines, technology is pushing towards offshore wind parks. Moving the wind parks offshore is not only solving the problems with complaints from the public, but wind speed tends to increase with distance from shore. In the last years, there has been an increase in scale, capacity and distance from shore each year for offshore wind installations. Moving further from shore often implies moving into deeper waters, making floating wind turbines the most plausible technology. Floating wind turbines are similar to semi-submersible oil platforms, but will have very different motions, as geometry and wind loads are significantly different. A lot of research has been done in terms of estimating the lifetime for flexible risers and umbilicals in relations to fatigue for the oil and gas industry. For floating wind turbines, there is significantly less research done in terms of the lifetime of dynamic flexible cables. The power cable technology and the lifetime of power cables are some of the most important limiting factors of moving wind floating wind turbines further away from the shore and into deeper waters. Research is needed in order to continue the development of floating wind turbines in the future, \cite{Thies2012}. \newline
+As the world strives towards greener energy, different renewable energy alternatives are being explored. Wind energy has been utilized by man for over thousands of years, and in the recent years become one of the more mature renewable energies. As the areas on land that are fit for wind turbines are scarce, and the public is disliking the noise and visibility of the wind turbines, technology is pushing towards offshore wind parks. Moving the wind parks offshore is not only solving the problems with complaints from the public, but wind speed tends to increase with distance from shore. In the last years, there has been an increase in scale, capacity and distance from shore each year for offshore wind installations. Moving further from shore often implies moving into deeper waters, making floating wind turbines the most plausible technology. Floating wind turbines are similar to semi-submersible oil platforms, but will have very different motions, as geometry and wind loads are significantly different. A lot of research has been done in terms of estimating the lifetime for flexible risers and umbilicals in relations to fatigue for the oil and gas industry. For floating wind turbines, there is significantly less research done in terms of the lifetime of dynamic flexible cables. As the power cables that are connected to floating structures will be subjected to oscillations due to movements of the vessel in waves, fatigue strength needs to be verified for design, \cite{Savik2014}.   The power cable technology and the lifetime of power cables are some of the most important limiting factors of moving wind floating wind turbines further away from the shore and into deeper waters. Research is needed in order to continue the development of floating wind turbines in the future, \cite{Thies2012}. \cite{savik2014} also explains that a conductor usually consists of several conductors with layers of copper wires in each conductor. The wires are stranded helically around a core wire, and this causes contact both between the layer and within each layer. This makes the cable vulnerable for fretting fatigue in addition to fatigue due to the cyclic variation in curvature and tension due to the vessels movements in the waves.  \newline
 \newline
-Lifes50+ is a project financed by the Horizon2020 program where the goal is to develop cost-effective floating solutions for 10MW wind turbines, \cite{Horizon2010}. The project consists of 4 different designs and 3 different locations. One of the designs in the project is the OO-Star developed by Dr. Techn. Olav Olsen shown in Figure \ref{fig:oostarintro}. This was considered an appropriate case study to investigate the lifetime of dynamic power cables further. 
+Lifes50+ is a project financed by the Horizon2020 program where the goal is to develop cost-effective floating solutions for 10MW wind turbines, \cite{Horizon2010}. The project consists of 4 different designs and 3 different locations. One of the designs in the project is the OO-Star developed by Dr. Techn. Olav Olsen shown in Figure \ref{fig:oostarintro}. This was considered an appropriate case study to investigate the lifetime of dynamic power cables further.
 
 \begin{figure}[H]
 \centering
@@ -75,13 +75,22 @@ Farm Demonstration Project, \cite{yagihashi2015dynamic}. Inter-array cables are 
 \end{figure}
 
 \section{Objective}
-The objective of this Master Thesis is to estimate the lifetime of a dynamic power cable applied in offshore wind farms. Theory and software used and developed for the oil and gas industry, is applied in the relatively new and upcoming field of ocean renewable energy.
+The objective of this Master Thesis is to estimate the lifetime of a dynamic power cable applied in offshore wind farms. Theory and software used and developed for the oil and gas industry, are applied in the relatively new and upcoming field of ocean renewable energy.\\\\
+The focus of this study will be to estimate the fatigue life of a dynamic power cable at a chosen location through global and local analyses with the use of well known fatigue calculation methods such as Rainflow counting, SN-curve and Miner-Palmgren.  In addition, the study focuses on getting an insight in the mechanisms affecting the fatigue life of the cable down to fibre level in the power conductors. \\\\
+This master thesis is a continuation of a project thesis that was executed in the fall of 2018.\\\\
+The main objectives of this study are:
+\begin{enumerate}
+    \item Perform a literature study and acquire the necessary theory background on all topics relevant for the Master Thesis, including but not limited to global and local analyses, offshore wind turbines, cable technology and fatigue.
+    \item Choose and establish a case scenario regarding wind turbine floater design, location, environmental conditions, cable design and SN-fatigue data
+    \item Create global model in SIMA RIFLEX and determine cable configuration. 
+    \item Create a local model in Bflex
+    \item Perform global and local analyses and process the results to estimate the fatigue life of the dynamic power cable.
+    \item Do a sensitivity study by comparing results with layer friction included and not included, and determine the importance on including friction between layers in fatigue analyses of dynamic power cables.  
+\end{enumerate} 
 
-A Project Thesis was executed in the fall of 2018 lays the basis for this Master Thesis where a local and a global model were modelled                 ....
-
-This is achieved by performing a local and a global analysis on a selected wind turbine floater at a selected location. The global analysis is executed first in SIMA RIFLEX on a global model consisting of the total cable attach to the sea floor and to the vessel. A scatter diagram for the wave conditions at the selected location is used, and all the different sea states (i.e. the different combinations of Hs and Tp) are analyzed for one hour each in the global analysis. The output of the global analyses are time series of the angle between the vessel and the cable, and tension in the cable hang off. The cycles of the time series are counted using rain-flow counting implemented in Python, and result in histograms with the number of cycles for each angle scaled for occurrence in the scatter diagram.  This will be used as input in the local analyses.\\\\ The local analyses is be performed in BFLEX, and the local model consists the top of the cable where the fatigue damage will be most severe. Each angle range is analyzed for one cycle with the corresponding tension level found by linear interpolation. From this, the stress variation in each individual wire in the copper conductor is calculated, and the total damage pr year is found using  and SN fatigue data and Miner-Palmgren formula will be used to estimate the lifetime of the dynamic power cable. \\\\ The objective of this report is, therefore, to conduct a literature study, acquire the necessary theoretical background, select an appropriate case study and create the models that will be used in the master thesis. All choices and simplifications are to be described and justified. 
-
-\section{Project Thesis Structure}
+\section{Contribution}
+The main contribution from this this study is the investigation of fatigue life of the cable down to fibre level. The effect of friction between wires in the same layer and between layers have been studied and compare to not including this effect. It turns out that.... \todo{INKLUDER RESULTATER}. This has been investigated by performing global and local analyses on a specified case scenario. 
+\section{Master Thesis Structure}
 \begin{itemize}
     \item Chapter 1 contains the introduction with literature review, state of the art and objective for the project thesis.
      \item Chapter 2 is the system theory for wind turbines, offshore wind turbines and power cables.
@@ -89,11 +98,8 @@ This is achieved by performing a local and a global analysis on a selected wind 
       \item The case scenario that will be investigated is presented in Chapter 4
       \item Chapter 5 describes the theory behind the two numeric models
       \item In chapter 6, the modeling methodology will be explained.
-      \item 
-      \item
+      \item In Chapter 7, goes through the analyses methodology
+      \item Chapter 8 presents the results and discussion of the results
+      \item Chapter 9 is the conclusion and suggestions for further work
 \end{itemize}
-\section{Contribution}
-
-
-\section{Master Thesis Structure}
 
