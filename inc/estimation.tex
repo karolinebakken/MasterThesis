@@ -1,8 +1,8 @@
 \chapter{Methodology for Analyses}
 \label{chap:estimation}
-In this section a brief overview of the algorithm for estimating the fatigue life of dynamic power cable will be presented. 
+In this section a brief overview of how the global and local analyses were performed and the estimation of the fatigue life of the dynamic power cable. 
 \section{Global Analysis}
-First, the global analysis was carried out. The global model is described in Section \ref{sec:globmod} was used and the 160 sea states presented in Figure \ref{fig:scatn} was analyzed for 1 hour each, with Far weather conditions described in Section \ref{sec:current}. The following three quantities from the analyses were stored in separate files for each time step:
+First, the global analysis was carried out. The global model is described in Section \ref{sec:globmod} was used, and the 160 sea states presented in Figure \ref{fig:scatn} was applied to the model for 1 hour each, with Far weather conditions described in Section \ref{sec:current}. The following three quantities from the analyses were stored in separate files for each time step:
 \begin{itemize}
     \item The  tension in the upper element of the cable.
     \item The displacement of the dummy node on the vessel in x, y and z direction.
@@ -10,15 +10,13 @@ First, the global analysis was carried out. The global model is described in Sec
 \end{itemize}
 
 \subsection{Post Processing of Global Analyses Results}
-The results from the global analyses determined the input of the local analysis. Time series of the displacements of the three nodes seen in Figure \ref{fig:angle} was used to calculate the angle ($\theta$) between the vessel and the cable: 
+The results from the global analyses determined the input for the local analyses. Time series of the displacements of the three nodes seen in Figure \ref{fig:angle} was used to calculate the angle ($\theta$) between the vessel and the cable by dot product: 
 
 \begin{equation}
     cos(\theta) = \frac{\boldsymbol{a \cdot b}}{|\boldsymbol{a}||\boldsymbol{b}| }
 \end{equation}
-\begin{equation}
-    cos(\theta) = \frac{a_x b_x + a_z b_z}{\sqrt{a_x^2 +a_z^2}\sqrt{b_x^2 +b_z^2}}
-\end{equation}
-Where $\boldsymbol{a}$ and $\boldsymbol{b}$ are the vectors of the dummy element and the first element of the cable, and $a_x$, $a_z$, $b_x$ and $b_z$ are the x and z components of the vectors $\boldsymbol{a}$ and $\boldsymbol{b}$. 
+
+Where $\boldsymbol{a}$ and $\boldsymbol{b}$ are the vectors of the dummy element and the first element of the cable. 
 
 \begin{figure}[H]
 \centering
@@ -27,7 +25,7 @@ Where $\boldsymbol{a}$ and $\boldsymbol{b}$ are the vectors of the dummy element
  \label{fig:angle}
 \end{figure}
 
-\noindent The calculated angle and tension were stored as time series for each sea state, and and examples of this can be seen in Figure \ref{fig:angleex} and Figure \ref{fig:extension}
+\noindent The calculated angle and tension were stored as time series for each sea state. Exaples of the time series for angle and tension as plots Figure \ref{fig:angleex} and Figure \ref{fig:tensex}
 
 \begin{figure}[H]
 \subfloat[Time series for angle between vessel and cable \label{fig:angleex}]
@@ -39,7 +37,7 @@ Where $\boldsymbol{a}$ and $\boldsymbol{b}$ are the vectors of the dummy element
 \end{figure}
 
 \subsection{Rainflow Counting}
- Rainflow Counting was performed on the time series of the angle to determine the number of cycles for each angle range. The Rainflow Counting was performed in Python, and the algorithm is explained in Section \ref{sec:rainflow}. The Rainflow counting in Python gives a matrix where the first column is the class and the second is the number of cycles in each class. The counts from each sea state were scaled to apply for a year according to:
+ Rainflow Counting was performed on the time series of the angle to determine the number of cycles for each angle range. The Rainflow Counting was performed in Python, and the algorithm is explained in Section \ref{sec:rainflow}. The Rainflow counting in Python takes in a one dimensional array of numbers and gives out a matrix where the first column is the class and the second is the number of cycles in each class. The counts from each sea state were scaled after occurrence in the scatter diagram in Figure \ref{fig:scatn} to apply for a year according to:
 
 \begin{equation}
     n_{cycle,year}=n_{cycle,hour} \frac{n_{seastate}}{N_{seastate}} \cdot 365 \cdot 24 
@@ -56,18 +54,18 @@ Where $\boldsymbol{a}$ and $\boldsymbol{b}$ are the vectors of the dummy element
  \label{fig:initialcyc}
 \end{figure}
 
-\noindent In Figure \ref{fig:initialcyc}, the classes are of equal length of 0.3. It is not possible to see the classes on the x-axis due to the large amount of classes. It is is clear from Figure \ref{fig:initialcyc} that the majority of the cycles are happening in the first classes, and decreasing as the angle increases.\newline
+\noindent In Figure \ref{fig:initialcyc}, the classes are of equal length of 0.3. It is not possible to see the classes on the x-axis due to the large amount of classes. It is is clear from Figure \ref{fig:initialcyc} that the majority of the cycles are happening in the first classes, and decreasing as the angle range increases.\newline
 \newline
-The damage from each cycle was calculated according to Miner Palmgren expression in Equation \ref{eq:MP}, where N was calculated from Equation \ref{eq:sn}. This gave the following expression for the damage from each angel class: 
+The damage from each range was calculated according to Miner Palmgren expression in Equation \ref{eq:MP}, where N was calculated from Equation \ref{eq:sn}. This gave the following expression for the damage from each angel class: 
 \begin{equation}
     d_i  = \frac{n_i}{N_i}
 \end{equation}
 \begin{equation}
     d_i=\frac{n_i}{\frac{c}{\Delta \sigma ^m}}
 \end{equation}
-Where $d_i$ is the damage from the cycles in angel class i, $n_i$ is the number of cycles in angle class i, $N_i$ is the number of cycles until failure for angle class i, c is a constant from Equation \ref{eq:sn}, c=4 for this case, $\Delta \sigma$ is the stress range that relates to the angle range as: $\Delta \sigma_i = a \Delta \theta_i$ where a is an arbitrary constant.\newline
+Where $d_i$ is the damage from the cycles in angel class i, $n_i$ is the number of cycles in angle class i, $N_i$ is the number of cycles until failure for angle class i, c and m are from Equation \ref{eq:sn}, c=4 and m=2.88e25 for this case,  $\Delta \sigma$ is the stress range that relates to the angle range as: $\Delta \sigma_i = a \Delta \theta_i$ where a is an arbitrary constant.\newline
 \newline 
-The damage from the cycles in the different angle classes can be seen in Figure \ref{fig:initialdam}
+The damage from the cycles in the different angle classes can be seen in Figure \ref{fig:initialdam}. It is clear that the middle classes give the largest damage. this is because the small classes have high cycle count but very low damage pr cycle, and the high classes have high damage pr cycle, but very few cycles. 
 
 \begin{figure}[H]
 \centering
@@ -135,7 +133,7 @@ Angle range class [deg] & Number of cycles \\
 \caption{Number of cycles in each angle range}
 \label{table:angleclass}
 \end{table} 
-\noindent It is important to note that the number of cycles for each class are not just half and whole cycles, as the number of cycles have been scaled for occurrence during a year.\newline 
+\noindent It is important to note that the number of cycles for each class are not just half and whole cycles, as the number of cycles have been scaled for occurrence over a year.\newline 
 \newline
 
 \section{Local Analysis}
@@ -167,7 +165,41 @@ Where $\theta_{tot}$ is the total angle experienced by the local model and $\the
 
 \noindent It was decided in line with Professor Svein Sævik's recommendations that the angle would be the master over the tension, meaning that for the local analyses, the cycle count for the angle would be used with the corresponding tension. Even though the trends in the angle time series and the tension time series were the same, the high angles and tensions did not occur at the exact same time steps, so that linear regression showed no correlation. It was decided that the max tension would correspond to the max angle, and the min angle would correspond to the min angle, as this would be a conservative approach.  Linear interpolation was used to find the tension to the corresponding angle. The max and min tension registered at the top of the cable for all sea states was 40.69 kN and 9.32 kN. \newline
 \newline
-\noindent The 15 angle range classes in Table \ref{table:angleclass} was turned into the 15 BFLEX cases displayed in Appendix \ref{appendix:C}. As the angles needed to be corrected due to the boundary conditions of the local model as seen in Figure \ref{fig:anglerel}, the Min angle and Max angle in Table \ref{table:loadcase} are the corrected min and max angle, and thus the angle input in the local analyses. The minimum dynamic tension and maximum dynamic tension were found through interpolation, and the mean tension represents the static tension at the top of the cable after current has been applied in far position. 
+\noindent The 15 angle range classes in Table \ref{table:angleclass} was turned into the 15 BFLEX cases displayed in Appendix \ref{appendix:C}. Bend stiffeners are normally initially mounted in a stress free configuration. For this study it was though that the stress free configuration for the bend stiffener was in Neutral position wiht no current. This corresponds to an angle of -2.32$^\circ$ found from the SIMA RIFLEX, with zero degrees being if the cable was hanging straight down and positive angle is counter clockwise. The dynamic analyses were performed in the far position with current, where the static position of the bend stiffener was 15.78$^\circ$ relative to the stress free configuration due to the strong current as can be seen in Figure \ref{fig:statconc}. The total mean angle was therefore 18.16$^\circ$, and the max and min angle for each angle range were added and subtracted to the mean angle, so that the cable would bend around this angle. As the angles needed to be corrected due to the boundary conditions of the local model as seen in Figure \ref{fig:anglerel}, the Min angle and Max angle in Table \ref{table:loadcase} are the corrected min and max angle, and thus the angle input in the local analyses. The minimum dynamic tension and maximum dynamic tension were found through interpolation, and the mean tension represents the static tension at the top of the cable after current has been applied in far position. The analyses were run by a Cygwin script, making it easy to change variables in each case. 
+
+
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|c|c|c|}
+\hline
+	Case Nr. & Max Angle [deg] & Min angle [deg] & Mean tens.[kN] & Max tens.[kN]  & Min tens.[kN]   \\
+ \hline
+ \hline
+	1 & 16.43 & 12.18 & 13.7 & 25.07 & 11.50   \\ 
+	2 &  16.91 & 11.71 & 13.7 & 25.52 & 11.44   \\
+	3 &  17.14 & 11.47 & 13.7 & 25.75 & 11.41   \\ 
+	4 &  17.38 & 11.23 & 13.7 & 25.97 & 11.37  \\ 
+	5 &  17.61 & 11.00 & 13.7 & 26.20 & 11.34  \\ 
+	6 &  17.85 & 10.76 & 13.7 & 26.42 & 11.31  \\ 
+	7 &  18.09 & 10.52 & 13.7 & 26.65 & 11.28   \\ 
+	8 &  18.32 & 10.29 & 13.7 & 26.88 & 11.25  \\ 
+	9 &  18.56 & 10.05 & 13.7 & 27.10 & 11.22  \\ 
+	10 &  18.80 & 9.82 & 13.7 & 27.33 & 11.18  \\ 
+	11 & 19.27 & 9.34 & 13.7 & 27.78 & 11.12  \\ 
+	12 &  19.74 & 8.87 & 13.7 & 28.24 & 11.06  \\ 
+	13 &  20.92 & 7.69 & 13.7 & 29.37 & 10.90  \\ 
+	14 &  28.49 & 0.13 & 13.7 & 36.62 & 9.89  \\ 
+	15 &  32.74 & -4.13 & 13.7 & 40.69 & 9.32 \\ 
+ \hline
+\end{tabular}
+\caption{Parameters for load cases in the Local Analyses}
+\label{table:loadcase}
+\end{table} 
+
+\section{Calculation of Fatigue Life}
+The the results in terms of curvature and tension in the conductor from the local analyses were used to calculate the fatigue life of the dynamic power cable. The stress range in the copper conductor on wire level were calculated for each of the two layers of wires in the conductor, based on the equations presented in Section \ref{sec:fatcop} that were derived by \cite{s300}. The curvature plots for all 15 cases were examined at max and min angle, and the position in x direction with the largest curvature range was decided to be the location where the most severe fatigue damage would occur, and thus the location where the fatigue life would be calculated. This was at approximately at x=0.90m (tension and curvature were not stored for the exact same positions, but the difference between each case was negligible). \\\\
+From now, the inner core wire of the conductor will be referred to as layer 1, the middle layer with 6 wires will be referred to as layer two, and the outer layer with 12 wires will be referred to as layer 3. The lay angle for layer 2 and layer 3 in the copper conductor are: $\alpha_2=-4.1^\circ$ and $\alpha_3=+7.3^\circ$ according to \cite{Nasution2013}. The tension range($\Delta T$) and curvature range ($\Delta \kappa)$ were extracted and calculated from each case at the location described above. $\epsilon_c$ (Equation \ref{eq:stressvariation2}) was calculated with the tension at max angle at location x=0.90, but min tension and mean tension was also tested as a sensitivity study. The friction coefficient, $\mu$ was set to 0.2 in line with the recommendation from \cite{NASUTION2014}. The stress concentration factor (SCF) for layer 2 and 3 were set to 1.058 and 1.238 respectively also from \cite{NASUTION2014}. \\\\
+The endurance limits were calculated from Equation \ref{eq:sn}, and the damage from each case were calculated by using the calculated number of cycles in each case from the rainflow counting and summed up according to Miner-Palmgren sum in Equation \ref{eq:MP}. By inverting the damage caused in one year, the fatigue life in year was calculated. 
 
 
 
