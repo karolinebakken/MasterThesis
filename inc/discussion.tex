@@ -17,10 +17,92 @@ The cable cross section was based on guidance from Professor Svein Sævik, who h
 \subsection{Local Model}
 The local model was created in BFLEX and was modelled from the inner layer and outwards. Only the very upper part of the cable was modelled as this is considered to be the area with the most fatigue damage. The friction models used to describe the contact between the layers could have been explored more and other alternative friction models could have been considered. In reality, a conductor with area 95mm$^2$ consists of 19 wires. These were not modelled, and instead equations developed by \cite{s300} was used to include the effect of the wires of the conductor. The armouring layers was only modelled with 4 wires in each layer, but this was accounted for by scaling factor. \\\\ The contact element used to describe the contact between the conductors was HCONT454. This is a brand new element developed by Professor Svein Sævik, and has actually not been used much in modelling before. Whether using this element will improve the modelling of the contact between the conductors or not is still unknown at this point. \\\\The dimensions of the bend stiffener were based on very rough calculations and guidance from Professor Svein Sævik, and later optimized some what through testing and failing. Figure \ref{fig:bendstiff} shows the curvature in the bend stiffener, the "jump" at the end of the plot indicates that the bend stiffener is not perfect, and could probably have been optimized even further. 
 \section{Discussion of Analyses Methodology}
-\subsection{Global Model}
-The global analyses were performed for one hout each
+\subsection{Global Analyses}
+The global analyses were performed for one hour for each sea state, and rainflow counting was used to count the number of cycle sin each angle class. the classes were rearranged into 15 classes. An even more accurate result could have been obtained by increasing the number of classes to be analyzed, but at the cost of computation time in the local analyses in Bflex. 
 
  
-\subsection{Local Model}
- 
- 
+\subsection{Local Analyses}
+The local analyses were based on the results from the global analyses, where the 15 cases established. Due the the nature of the boundary conditions of the local model, the angle ranges from the global analyses had to be corrected as described in Section \ref{sec:localmodel}. The study to find a relation between the applied angle and total angle in bflex illustrated by Figure \ref{fig:anglecorr} shows a clear linear relation, with very good fit, although it is not perfect. From Table \ref{table:angleclass} it is clear that the angle ranges in the middle of the table are very close to each other as the classes were rearranged to inflict approximately the same damage on the cable. When correcting the angle for application in Bflex, the solution is very sensitive to small changes. If different cases were studied when attempting to find the relation, a slightly different scaling factor would have made a large impact on the results as the classes are so close together.\\\\
+The angle was chosen as the master over the tension. It was assumed that the max tension occurred at max angle, min tension occurred at min angle linear,and linear interpolation was used to find the corresponding tension to each angle. This approach was very simple, and other methods could have been used. The initial plan was to look at the max and min tension that occurred for each angle range class, however, this proved to be difficult due to the nature of the Rainflow counting algorithm in Pyhton. Interpolating the tension was a simple solution, but conservative.\\\\
+When the stress range was calculated form the results of the local analyses, the max tension was used for Equation \ref{eq:stressvariation2}, as this was the most conservative choice.\\\\ As the cable is covered with an outer sheath, and thus cannot be inspected for crack initiation, High Safety Class was chosen for the DFF (DFF=10.0). 
+\section{Results}
+
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|c|}
+\hline
+	Case nr & n cycles pr. year & N & damage pr year \\ 
+ \hline
+ \hline
+	1 & 6930399.80 & 4.77E+11 & 1.45E-05 \\ 
+	2 & 571967.90 & 1.97E+11 & 2.91E-06 \\ 
+	3 & 237278.52 & 1.38E+11 & 1.73E-06 \\ 
+	4 & 219492.01 & 9.71E+10 & 2.26E-06 \\ 
+	5 & 198970.39 & 6.96E+10 & 2.86E-06 \\ 
+	6 & 154052.12 & 5.00E+10 & 3.08E-06 \\ 
+	7 & 130555.01 & 3.64E+10 & 3.58E-06 \\ 
+	8 & 93955.72 & 2.70E+10 & 3.48E-06 \\ 
+	9 & 68946.29 & 2.00E+10 & 3.45E-06 \\ 
+	10 & 46839.21 & 1.49E+10 & 3.13E-06 \\ 
+	11 & 54651.77 & 8.72E+09 & 6.27E-06 \\ 
+	12 & 24288.68 & 5.45E+09 & 4.46E-06 \\ 
+	13 & 16385.80 & 1.98E+09 & 8.27E-06 \\ 
+	14 & 3355.41 & 4.00E+07 & 8.39E-05 \\ 
+	15 & 139.30 & 1.16E+07 & 1.20E-05 \\ 
+	\specialrule{.2em}{.1em}{.1em}
+	\multicolumn{2}{c}{Total damage pr year}
+&                                           
+\multicolumn{2}{c}{1.56E-04} \\
+	\multicolumn{2}{c}{Fatigue life}
+&                                           
+\multicolumn{2}{c}{6412.94 years} \\
+\multicolumn{2}{c}{Fatigue life w/security}
+&                                           
+\multicolumn{2}{c}{641.29 years} \\
+\specialrule{.2em}{.1em}{.1em} 
+\end{tabular}
+\caption{Fatigue life calculations for layer 2}
+\label{table:fatlay2}
+\end{table} 
+
+
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|c|}
+\hline
+	Case nr & n cycles pr. year & N & damage pr year \\ 
+ \hline
+ \hline
+	1 & 6930399.80 & 3.06E+12 & 2.27E-06 \\ 
+	2 & 571967.90 & 1.07E+12 & 5.37E-07 \\ 
+	3 & 237278.52 & 7.02E+11 & 3.38E-06 \\ 
+	4 & 219492.01 & 4.68E+11 & 4.69E-07 \\ 
+	5 & 198970.39 & 3.18E+10 & 6.25E-07 \\ 
+	6 & 154052.12 & 2.17E+11 & 7.09E-07 \\ 
+	7 & 130555.01 & 1.51E+11 & 8.63E-07 \\ 
+	8 & 93955.72 & 1.07E+11 & 8.74E-07 \\ 
+	9 & 68946.29 & 7.42E+10 & 9.29E-07 \\ 
+	10 & 46839.21 & 5.51E+10 & 8.50E-06 \\ 
+	11 & 24288.68 & 3.01E+10 & 1.18E-06 \\ 
+	12 & 54651.77 & 1.79E+10 & 1.36E-06 \\ 
+	13 & 16385.80 & 5.87E+09 & 2.79E-06 \\ 
+	14 & 3355.41 & 8.51E+07 & 3.49E-05 \\ 
+	15 & 139.30 & 2.18E+07 & 6.39E-06 \\ 
+	\specialrule{.2em}{.1em}{.1em}
+	\multicolumn{2}{c}{Total damage pr year}
+&                                           
+\multicolumn{2}{c}{6.03E-05} \\
+	\multicolumn{2}{c}{Fatigue life}
+&                                           
+\multicolumn{2}{c}{16595.53 years} \\
+\multicolumn{2}{c}{Fatigue life w/security}
+&                                           
+\multicolumn{2}{c}{1659.55 years} \\
+\specialrule{.2em}{.1em}{.1em} 
+\end{tabular}
+\caption{Fatigue life calculations for layer 3}
+\label{table:fatlay3}
+\end{table} 
+As layer 2 has the shortest fatigue life, this is the dimension layer. The fatigue life of the dynamic power cable is calculated to be 641.29 years with a safety factor of 10.0. 
+
+

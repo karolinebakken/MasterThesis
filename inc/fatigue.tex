@@ -194,10 +194,28 @@ Several methods can be used to calculate the cumulative damage due to irregular 
     D=\sum_i \frac{n_i}{N} 
     \label{eq:MP}
 \end{equation}
-Where $n_i$ is the number of cycles with a certain stress range experienced by the structure and N is the fatigue life of at that stress range.\newline
+Where D is the accumulated damage, $n_i$ is the number of cycles with a certain stress range experienced by the structure and N is the fatigue life of at that stress range.\newline
 \newline
-The specimen will fail due to fatigue if D exceeds 1.
+According to \cite{riserfat}, the fatigue criterion, which shall be satisfied is expressed as:
+\begin{equation}
+    D \cdot \text{DFF} \leq 1.0
+\end{equation}
+Where D is the accumulated damage and DFF is the Design Safety Factor.\\\\ Table \ref{table:dff} show the different Design Safety factors recommended by \cite{riserfat}. 
 
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|}
+\hline
+\multicolumn{3}{|l|}{\hspace{0.8cm}Safety Class}\\
+ \hline
+ \hline
+Low & Medium & High \\
+3.0 & 6.0 & 10.0\\
+ \hline
+\end{tabular}
+\caption{Design Safety Facros (DFF) for different safety classes  recomended by \cite{riserfat}.}
+\label{table:dff}
+\end{table}
 \subsection{Mean Stress Correction}
 According to \cite{Savik2016}, fatigue tests of steel or copper wires are often done with wither keeping the mean stress or the R-ratio constant and always positive to avoid compression. Testing in tension-tension mode normally has a R-ratio of 0.1-0.5, and often SN-Diagrams are only available for the given R-ratio.  The applied stress range can be calculated for a given R-ratio as:
 
