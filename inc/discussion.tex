@@ -22,16 +22,18 @@ The global analyses were performed for one hour for each sea state, and rainflow
 
  
 \subsection{Local Analyses}
-The local analyses were based on the results from the global analyses, where the 15 cases established. Due the the nature of the boundary conditions of the local model, the angle ranges from the global analyses had to be corrected as described in Section \ref{sec:localmodel}. The study to find a relation between the applied angle and total angle in bflex illustrated by Figure \ref{fig:anglecorr} shows a clear linear relation, with very good fit, although it is not perfect. From Table \ref{table:angleclass} it is clear that the angle ranges in the middle of the table are very close to each other as the classes were rearranged to inflict approximately the same damage on the cable. When correcting the angle for application in Bflex, the solution is very sensitive to small changes. If different cases were studied when attempting to find the relation, a slightly different scaling factor would have made a large impact on the results as the classes are so close together.\\\\
+The local analyses were based on the results from the global analyses, where the 15 cases established. Due the the nature of the boundary conditions of the local model, the angle ranges from the global analyses had to be corrected as described in Section \ref{sec:localmodel}. The study to find a relation between the applied angle and total angle in Bflex illustrated by Figure \ref{fig:anglecorr} shows a clear linear relation, with very good fit, although it is not perfect. From Table \ref{table:angleclass} it is clear that the angle ranges in the middle of the table are very close to each other as the classes were rearranged to inflict approximately the same damage on the cable. When correcting the angle for application in Bflex, the solution is very sensitive to small changes. If different cases were studied when attempting to find the relation, a slightly different scaling factor would have made a large impact on the results as the classes are so close together.\\\\
 The angle was chosen as the master over the tension. It was assumed that the max tension occurred at max angle, min tension occurred at min angle linear,and linear interpolation was used to find the corresponding tension to each angle. This approach was very simple, and other methods could have been used. The initial plan was to look at the max and min tension that occurred for each angle range class, however, this proved to be difficult due to the nature of the Rainflow counting algorithm in Pyhton. Interpolating the tension was a simple solution, but conservative.\\\\
 When the stress range was calculated form the results of the local analyses, the max tension was used for Equation \ref{eq:stressvariation2}, as this was the most conservative choice.\\\\ As the cable is covered with an outer sheath, and thus cannot be inspected for crack initiation, High Safety Class was chosen for the DFF (DFF=10.0). 
 \section{Results}
+In this section the estimated fatigue life of the power cable will be presented. This section also contains the results from the study of the friction mechanisms and the different effects from the different friction models will be discussed in terms of their impact on the fatigue life. 
 
+\subsection{Fatigue Life}
 \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|c|c|}
 \hline
-	Case nr & n cycles pr. year & N & damage pr year \\ 
+Case nr & $n_i$ pr year & $N_i$ & $d_i$ pr year \\ 
  \hline
  \hline
 	1 & 6930399.80 & 4.77E+11 & 1.45E-05 \\ 
@@ -70,7 +72,7 @@ When the stress range was calculated form the results of the local analyses, the
 \centering
 \begin{tabular}{ |c|c|c|c|}
 \hline
-	Case nr & n cycles pr. year & N & damage pr year \\ 
+Case nr & $n_i$ pr year & $N_i$ & $d_i$ pr year \\ 
  \hline
  \hline
 	1 & 6930399.80 & 3.06E+12 & 2.27E-06 \\ 
@@ -103,6 +105,319 @@ When the stress range was calculated form the results of the local analyses, the
 \caption{Fatigue life calculations for layer 3}
 \label{table:fatlay3}
 \end{table} 
-As layer 2 has the shortest fatigue life, this is the dimension layer. The fatigue life of the dynamic power cable is calculated to be 641.29 years with a safety factor of 10.0. 
+As layer 2 has the shortest fatigue life, this is the dimension layer. The fatigue life of the dynamic power cable is calculated to be 641.29 years with a safety factor of 10.0.
+\section{Results from Study of Friction Mechanisms}
+\subsection{Fatigue Life Calculated Without at Location with max Tension Range}
+
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|c|}
+\hline
+Case nr & $n_i$ pr year & $N_i$ & $d_i$ pr year \\ 
+ \hline
+ \hline
+	1 & 6930399.80 & 6.73E+10 & 1.03E-4 \\ 
+	2 & 571967.90 & 4.08E+10 & 1.40E-5 \\ 
+	3 & 237278.52 & 3.34E+10 & 7.10E-6 \\ 
+	4 & 219492.01 & 2.75E+10 & 7.98E-6 \\ 
+	5 & 198970.39 & 2.27E+10 & 8.75E-6 \\ 
+	6 & 154052.12 & 1.88E+10 & 8.18E-6 \\ 
+	7 & 130555.01 & 1.57E+10 & 8.32E-6 \\ 
+	8 & 93955.72 & 1.32E+10 & 7.14E-6 \\ 
+	9 & 68946.29 & 1.11E+10 & 6.22E-6 \\ 
+	10 & 46839.21 & 9.32E+09 & 5.03E-6 \\ 
+	11 & 54651.77 & 6.80E+09 & 8.04E-6 \\ 
+	12 & 24288.68 & 5.20E+09 & 4.67E-6 \\ 
+	13 & 16385.80 & 2.93E+09 & 5.59E-6 \\ 
+	14 & 3355.41 & 1.68E+08 & 2.00E-5 \\ 
+	15 & 139.30 & 6.02E+07 & 2.31E-6 \\ 
+	\specialrule{.2em}{.1em}{.1em}
+	\multicolumn{2}{c}{Total damage pr year}
+&                                           
+\multicolumn{2}{c}{2.16E-04
+} \\
+	\multicolumn{2}{c}{Fatigue life}
+&                                           
+\multicolumn{2}{c}{4623.09
+ years} \\
+\multicolumn{2}{c}{Fatigue life w/security}
+&                                           
+\multicolumn{2}{c}{662.30 years} \\
+\specialrule{.2em}{.1em}{.1em} 
+\end{tabular}
+\caption{Fatigue life calculations for layer 2 at location with max tension}
+\label{table:fatlaytens2}
+\end{table} 
+
+
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|c|}
+\hline
+	Case nr & $n_i$ pr year & $N_i$ & $d_i$ pr year \\ 
+ \hline
+ \hline
+	1 & 6930399.78 & 4.50E+11 & 1.54E-5  \\ 
+	2 & 571967.90 & 2.49E+11 & 2.30E-6  \\
+	3 & 237278.52 & 1.97E+11 & 1.20E-6  \\ 
+	4 & 219492.01 & 1.57E+11 & 1.40E-6  \\ 
+	5 & 198970.39 & 1.26E+11 & 1.58E-6   \\ 
+	6 & 154052.13 & 1.01E+11 & 1.52E-6   \\ 
+	7 & 130555.01 & 8.22E+10 & 1.59E-6  \\
+	8 & 93955.72 & 6.72E+10 & 1.40E-6  \\ 
+	9 & 68946.29 & 5.51E+10 & 1.25E-6  \\
+	10 & 46839.21 & 4.53E+10 & 1.03E-6   \\
+	11 & 54651.77 & 3.16E+10 & 1.73E-6   \\ 
+	12 & 24288.68 & 2.34E+10 & 1.04E-6  \\
+	13 & 16385.80 & 1.24E+10 & 1.32E-6  \\ 
+	14 & 3355.41 & 5.01E+08 & 6.70E-6   \\ 
+	15 & 139.30 & 1.55E+08 & 9.01E-7  \\
+	\specialrule{.2em}{.1em}{.1em}
+	\multicolumn{2}{c}{Total damage pr year}
+&                                           
+\multicolumn{2}{c}{4.04E-05
+} \\
+	\multicolumn{2}{c}{Fatigue life}
+&                                           
+\multicolumn{2}{c}{24782.03
+ years} \\
+\multicolumn{2}{c}{Fatigue life w/security}
+&                                           
+\multicolumn{2}{c}{2478.20
+
+ years} \\
+\specialrule{.2em}{.1em}{.1em} 
+\end{tabular}
+\caption{Fatigue life calculations for layer 3 at location with max tension}
+\label{table:fatlaytens3}
+\end{table}
+Table \ref{table:fatlay2} and \ref{table:fatlay3} are based on calculations at the location on the conductors with max curvature range (x=0.900), while \ref{table:fatlaytens2} and \ref{table:fatlaytens3} are based on calculations at the location on the conductors with max tension range (x=0.625). Both the calculations show what the dimension layer is the inner layer, with a fatigue life of 641.29 for the conductor calculated at max curvature range and a fatigue life of 662.30 for the conductor calculated at max tension range. In this case study, the most conservative estimation of fatigue life is calculated at max curvature range, but the difference is very small at only 3.28\%. 
+
+\subsection{Fatigue Life Calculated Without Contact Between Conductors}
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|c|}
+\hline
+Case nr & $n_i$ pr year & $N_i$ & $d_i$ pr year \\ 
+ \hline
+ \hline
+1 & 6930399.80 & 7.E+11 & 8.74E-6  \\
+	2 & 571967.90 & 4.78E+11 & 1.20E-6\\ 
+	3 & 237278.52 & 3.92E+11 & 6.06E-7   \\ 
+	4 & 219492.01 & 3.22E+11 & 6.81E-7   \\ 
+	5 & 198970.39 & 2.67E+11 & 7.46E-7   \\ 
+	6 & 154052.12 & 2.21E+11 & 6.98E-7 \\ 
+	7 & 130555.01 & 1.83E+11 & 7.13E-7  \\ 
+	8 & 93955.72 & 1.53E+11 & 6.15E-7  \\ 
+	9 & 68946.29 & 1.28E+11 & 5.41E-7  \\ 
+	10 & 46839.21 & 1.06E+11 & 4.40E-7  \\ 
+	11 & 54651.77 & 7.55E+10 & 7.24E-7  \\ 
+	12 & 24288.68 & 5.52E+10 & 4.40E-7   \\ 
+	13 & 16385.80 & 2.68E+10 & 6.12E-7   \\ 
+	14 & 3355.41 & 4.93E+08 & 6.81E-6   \\ 
+	15 & 139.30 & 1.02E+08 & 1.37E-6   \\
+	\specialrule{.2em}{.1em}{.1em}
+	\multicolumn{2}{c}{Total damage pr year}
+&                                           
+\multicolumn{2}{c}{2.49E-05
+
+} \\
+	\multicolumn{2}{c}{Fatigue life}
+&                                           
+\multicolumn{2}{c}{40111.55
+
+ years} \\
+\multicolumn{2}{c}{Fatigue life w/security}
+&                                           
+\multicolumn{2}{c}{4011.16
+ years} \\
+\specialrule{.2em}{.1em}{.1em} 
+\end{tabular}
+\caption{Fatigue life calculations for layer 2 without effect of contact between conductors }
+\label{table:fatlaycond2}
+\end{table} 
+
+
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|c|}
+\hline
+	Case nr & $n_i$ pr year & $N_i$ & $d_i$ pr year \\ 
+ \hline
+ \hline
+	1 & 6930399.78 & 4.50E+11 & 1.54E-5  \\ 
+	2 & 571967.90 & 2.49E+11 & 2.30E-6  \\
+	3 & 237278.52 & 1.97E+11 & 1.20E-6  \\ 
+	4 & 219492.01 & 1.57E+11 & 1.40E-6  \\ 
+	5 & 198970.39 & 1.26E+11 & 1.58E-6   \\ 
+	6 & 154052.13 & 1.01E+11 & 1.52E-6   \\ 
+	7 & 130555.01 & 8.22E+10 & 1.59E-6  \\
+	8 & 93955.72 & 6.72E+10 & 1.40E-6  \\ 
+	9 & 68946.29 & 5.51E+10 & 1.25E-6  \\
+	10 & 46839.21 & 4.53E+10 & 1.03E-6   \\
+	11 & 54651.77 & 3.16E+10 & 1.73E-6   \\ 
+	12 & 24288.68 & 2.34E+10 & 1.04E-6  \\
+	13 & 16385.80 & 1.24E+10 & 1.32E-6  \\ 
+	14 & 3355.41 & 5.01E+08 & 6.70E-6   \\ 
+	15 & 139.30 & 1.55E+08 & 9.01E-7  \\
+	\specialrule{.2em}{.1em}{.1em}
+	\multicolumn{2}{c}{Total damage pr year}
+&                                           
+\multicolumn{2}{c}{4.04E-05
+} \\
+	\multicolumn{2}{c}{Fatigue life}
+&                                           
+\multicolumn{2}{c}{24782.03
+ years} \\
+\multicolumn{2}{c}{Fatigue life w/security}
+&                                           
+\multicolumn{2}{c}{2478.20
+
+ years} \\
+\specialrule{.2em}{.1em}{.1em} 
+\end{tabular}
+\caption{Fatigue life calculations for layer 3 without effect of contact between conductors}
+\label{table:fatlaycond3}
+\end{table}
+
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|c|}
+\hline
+	Case nr.  & $\Delta T$ $N/m^2$ & $\Delta T_f$ $N/m^2$ & $\%$ of $\ Delta T$ \\ 
+ \hline
+ \hline
+	1 & 2442.63 & 1142.47 & 0.46  \\ 
+	2 & 2589.11 & 1210.25 & 0.47   \\ 
+	3 & 2645.16 & 1239.32 & 0.47   \\ 
+	4 & 2701.09 & 1268.36 & 0.47   \\
+	5 & 2757.21 & 1297.21 & 0.47   \\ 
+	6 & 2812.61 & 1326.23 & 0.47  \\ 
+	7 & 2867.66 & 1353.73 & 0.47   \\ 
+	8 & 2921.06 & 1379.66 & 0.47  \\ 
+	9 & 2972.15 & 1404.10 & 0.47  \\ 
+	10 & 3025.85 & 1429.00 & 0.47   \\ 
+	11 & 3121.18 & 1469.23 & 0.47   \\ 
+	12 & 3200.23 & 1492.39 & 0.47  \\ 
+	13 & 3353.31 & 1507.64 & 0.45   \\ 
+	14 & 3835.45 & 1101.39 & 0.29   \\ 
+	15 & 3628.41 & 627.45 & 0.17   \\ 
+\hline
+\end{tabular}
+\caption{Comparison of $\Delta T$ and $\Delta T_f$ due to contact between conductors}
+\label{table:tensfri}
+\end{table}
+Table \ref{table:tensfri} shows that for almost all of the cases, the contact between the conductors contributes with around 47\% of the tension range. \todo{kommenter case 14 og 15}. When subtracting the tension range from the contact between the conductors, layer 2 is still the dimension layer. Excluding the effect of contact between conductors increased the fatigue life from 641.29 years to 4011.16 year, meaning it increased with 8.70 times. 
+
+\subsection{Fatigue Life Calculated Without Friction Between Layers in Conductor}
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|c|}
+\hline
+Case nr & $n_i$ pr year & $N_i$ & $d_i$ pr year \\ 
+ \hline
+ \hline
+1 & 6930399.80 & 5.8E+12 & 1.19E-6  \\ 
+	2 & 571967.90 & 1.89E+12 & 3.03E-7  \\ 
+	3 & 237278.52 & 1.21E+12 & 1.95E-7   \\ 
+	4 & 219492.01 & 7.91E+11 & 2.76E-7  \\ 
+	5 & 198970.39 & 5.27E+11 & 3.78E-7   \\
+	6 & 154052.12 & 3.52E+11 & 4.37E-7  \\ 
+	7 & 130555.01 & 2.41E+11 & 5.41E-7   \\ 
+	8 & 93955.72 & 1.69E+11 & 5.57E-7   \\ 
+	9 & 68946.29 & 1.18E+11 & 5.83E-7 \\ 
+	10 & 46839.21 & 8.39E+10 & 5.58E-7  \\ 
+	11 & 54651.77 & 4.47E+10 & 1.22E-6  \\ 
+	12 & 24288.68 & 2.60E+10 & 9.34E-7   \\ 
+	13 & 16385.80 & 8.23E+09 & 1.99E-6   \\ 
+	14 & 3355.41 & 1.06E+08 & 3.16E-5 \\ 
+	15 & 139.30 & 2.63E+07 & 5.29E-6\\
+	\specialrule{.2em}{.1em}{.1em}
+	\multicolumn{2}{c}{Total damage pr year}
+&                                           
+\multicolumn{2}{c}{4.60E-05
+
+} \\
+	\multicolumn{2}{c}{Fatigue life}
+&                                           
+\multicolumn{2}{c}{21723.37
+ years} \\
+\multicolumn{2}{c}{Fatigue life w/security}
+&                                           
+\multicolumn{2}{c}{2172.34
+ years} \\
+\specialrule{.2em}{.1em}{.1em} 
+\end{tabular}
+\caption{Fatigue life calculations for layer 2 without effect friction between layers in conductor }
+\label{table:fatlaynofri2}
+\end{table} 
+
+
+
+
+
+
+
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|c|}
+\hline
+	Case nr & $n_i$ pr year & $N_i$ & $d_i$ pr year \\ 
+ \hline
+ \hline
+		1 & 6930399.78 & 3.05E+12 & 2.27E-6  \\ 
+	2 & 571967.90 & 1.06E+12 & 5.37E-7  \\ 
+	3 & 237278.52 & 7.01E+12 & 3.38E-7   \\ 
+	4 & 219492.01 & 4.67E+11 & 4.70E-7  \\ 
+	5 & 198970.39 & 3.18E+11 & 6.26E-7   \\ 
+	6 & 154052.12 & 2.17E+11 & 7.09E-7   \\ 
+	7 & 130555.01 & 1.51E+11 & 8.63E-7  \\ 
+	8 & 93955.72 & 1.07E+11 & 8.74E-7  \\ 
+	9 & 68946.29 & 7.66E+10 & 9.00E-7   \\ 
+	10 & 46839.21 & 5.51E+10 & 8.50E-7   \\ 
+	11 & 54651.77 & 3.01E+10 & 1.81E-6  \\ 
+	12 & 24288.68 & 1.79E+10 & 1.36E-6   \\ 
+	13 & 16385.80 & 5.87E+09 & 2.79E-6   \\ 
+	14 & 3355.41 & 8.48E+07 & 3.96E-5   \\ 
+	15 & 139.30 & 2.18E+07 & 6.40E-6  \\
+	\specialrule{.2em}{.1em}{.1em}
+	\multicolumn{2}{c}{Total damage pr year}
+&                                           
+\multicolumn{2}{c}{6.03E-05
+
+} \\
+	\multicolumn{2}{c}{Fatigue life}
+&                                           
+\multicolumn{2}{c}{16570.30
+
+ years} \\
+\multicolumn{2}{c}{Fatigue life w/security}
+&                                           
+\multicolumn{2}{c}{1657.03
+
+ years} \\
+\specialrule{.2em}{.1em}{.1em} 
+\end{tabular}
+\caption{Fatigue life calculations for layer 3 without effect of friction between layers in conductor}
+\label{table:fatlaynofri3}
+\end{table}
+Table \ref{table:fatlaynofri2} and Table \ref{table:fatlaynofri3} shows the calculations of the fatigue life of the cable when the effect of the friction between the layers in the conductor. An interesting observation in this case is that it is the outer layer that is the design layer, with fatigue life of 1657.03 years. This is almost identical of the fatigue life calculated in the outer layer of the first calculation, displayed in Table \ref{table:fatlay3}. This shoes that the effect of friction between the layers plays a major role for the inner layer's fatigue life. When effect of friction between layers in the conductor is excluded, the fatigue life is 2.58 times higher.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -441,7 +441,16 @@ If $\alpha \rightarrow \infty$ the contact condition is recovered exactly.\newli
 \end{figure}
 
 \subsubsection{HCONT454}
-The purpose of the HCONT454 element is to connect two HSHEAR454 element groups (A and B) together in the same layer by considering hoop contact between them and the reduction and expansion of gap due to curvature. The element has 36 degrees of freedom as can be seen in Figure \ref{fig:HCONT454},  where the extra 12 dofs are used to describe the beam strains of the center as this will affect the gap in compression and tension. All three directions, $X^1$, $X^2$ and $X^3$ are included where the $X^2$ direction represents contact, and the others friction. The energy functional described for the HSHEAR463 element in equation \ref{eq:energy} to \ref{eq:contact} are also valid for the HCONT454 element. The contact kinematics in the normal direction can be expressed as: 
+The purpose of the HCONT454 element is to connect two HSHEAR454 element groups (A and B) together in the same layer by considering hoop contact between them and the reduction and expansion of gap due to curvature. Figure \ref{fig:HCONT4541} illustrates how the element was used in this study to describe the contact between the conductors in the cross section.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{figures/HCONT4541}
+\caption[$\; \:$Illustration of HCONT454]{Illustration of HCONT454}
+ \label{fig:HCONT4541}
+\end{figure}
+
+
+The element has 36 degrees of freedom as can be seen in Figure \ref{fig:HCONT454},  where the extra 12 dofs are used to describe the beam strains of the center as this will affect the gap in compression and tension. All three directions, $X^1$, $X^2$ and $X^3$ are included where the $X^2$ direction represents contact, and the others friction. The energy functional described for the HSHEAR463 element in equation \ref{eq:energy} to \ref{eq:contact} are also valid for the HCONT454 element. The contact kinematics in the normal direction can be expressed as: 
 \begin{equation}
     \Delta u_n=(\Delta \boldsymbol{u}_B-\Delta \boldsymbol{u}_A) \cdot \bold{n}=(\Delta \boldsymbol{u}_2^{0B}-\Delta \boldsymbol{u}_2^{0A}+\frac{b}{Ff}(\Delta \epsilon_\psi+\Delta \epsilon_{Z^1}))
 \end{equation}
