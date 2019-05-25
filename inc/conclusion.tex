@@ -1,10 +1,22 @@
 \chapter{Conclusion and Further Work}
 \label{chap:conclusion}
 \section{Conclusion}
-
+The goal for this master thesis was to calculate the fatigue life of a dynamic power cable applied in offshore wind farms. Dr. Techn. Olav Olsen's design OO-Star was chosen as a case study, with West of Barra as the location. A global model was created in SIMA RIFLEX, and 160 sea states were analyzed for one hour each. The cycles in the time series for the angle between the vessel and the cable was counted with Rainflow counting, the count were rearranged into 15 classes. Each combination of angle ans tension was analyzed for one cycle, and by using the equations developed by \cite{s300}, the fatigue life was calculated for each of the layers in the conductors, with the layer with shortest fatigue life as the the design layer. Several sensitivity studies were also performed to get an idea of the importance of the different fatigue mechanisms had on the fatigue life.\\\\The main findings in this study are:
+\begin{itemize}
+    \item The main analysis showed that the fatigue life for a dynamic power cable applied in offshore wind farms with OO-Star as the support structure, West of Barra as location and the chosen cable cross section was calculated to be 642.28 years with a safety factor of 10.0. The layer 2 was the design layer
+    \item When fatigue life was calculated at the location on the cable with max tension, the fatigue life comes out as almost identical to the main analyses, only 3.28\% longer fatigue life and layer 2 as the design layer. The fatigue life at th location on the cable with max curvature is still dimensioning to keep a conservative approach.
+    \item When excluding the effect of friction between the conductors, $\Delta T$ is reduced by 47\% in almost all of the cases, and fatigue life was increased by 8.70 times. This shows that the contact between the conductors plays a major role in the estimation of fatigue life, and should be included in further analyses. Layer 2 was the design layer. 
+    \item When excluding the effect of contact between layers within the conductors fatigue life was calculated to be 1657.03 years, 2.58 times the original fatigue life calculated in the main estimate. An interesting observation was that the design layer was layer 3, emphasizing the importance of including this effect in analyses in the future. 
+\end{itemize}
+It can be concluded that the dynamic power cable exhibits good resistance towards fatigue, with a fatigue life much longer than what is considered a common service time for slender marine structures. The effect of contact between conductors as well as contact between layers within one conductor has proven to be significant and worth including for further analyses. 
 
 \section{Further Work}
-Teste de andre sjøtilstandene\newline
-Flere retningner, ikke bare frem og tilbake\newline
-flere kabler\newline
+The topic of fatigue in dynamic power cables applied in offshore wind farms is not well studied yet, and thus are there many possible approaches for further work. A few suggestions of interesting topics follows:
+\begin{itemize}
+    \item It would be interesting to perform the same modelling and analyses procedure as used in this project with other case scenarios. With the Lifes50+ project as a base, several combinations of location and support structure designs could be analyzed, and fatigue lives could be estimated. 
+    \item In terms of the global analyses, several simplifications were done to be able to complete the work in the scheduled time frame. Motions of the vessel due to wind was not included, and the floating turbine only had 3 possible conditions and positions, Near, Neutral and Far in one direction. In reality the motions of the floating turbine is restricted through its mooring system, but smaller displacements in all direction are still very possible. With the global model described in this project as a base, a more complex global model could be developed gradually by including more complex weather conditions and less restrictions of displacement.
+    \item it would also be interesting to run the same analyses with a double armoring layers to increase the inertia of the cable as was suggested in Section \ref{sec:dis}. 
+    \item Studies of optimization of cable configuration and cross sections in terms of fatigue life could also be conducted. 
+\end{itemize}
+
   
