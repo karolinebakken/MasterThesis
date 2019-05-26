@@ -7,7 +7,7 @@ The finite element method is a numerical procedure for solving differential equa
 \begin{equation}
     \boldsymbol{R}= \boldsymbol{K}\boldsymbol{r}
 \end{equation}
-Where R is the global load matrix, K is the global stiffness matrix, and r is the nodal displacement vector.\newline
+Where \textbf{R} is the global load matrix, \textbf{K} is the global stiffness matrix, and \textbf{r} is the nodal displacement vector.\newline
 \newline
 This is based on the following principles:
 \begin{itemize}
@@ -52,7 +52,7 @@ The stiffness matrix is often written on differential form, with the incremental
   d\boldsymbol{R}= \boldsymbol{K_I(r)}d\boldsymbol{r}
   \label{eq:system}
 \end{equation}
-In general it can be challenging to determine $\boldsymbol{r}$ for a given $\boldsymbol{R}$ analytically, and thus iterative methods will have to be used. Only the methods relevant for this Master Thesis will be presented here. 
+In general it can be challenging to determine $\boldsymbol{r}$ for a given $\boldsymbol{R}$ analytically, and thus iterative methods will have to be used. Only the methods relevant for this project will be presented here. 
 
 \subsection{Combined Method}
 The combined method is a combination of the Euler-Cauchy Method and the Newton-Raphson Method. 
@@ -197,7 +197,9 @@ According to \cite{Mathisen1990}, the Newmark-$\boldsymbol{\beta}$ method may ha
 \label{sec:HHT}
 The problem with accuracy when removing the higher modes can be fixed by using Hilber-Hughes-Taylor Method, often referred to as HHT-$\alpha$. The method maintains accuracy while introducing artificial damping of the higher modes. This is done through modification of equation \ref{eq:new}. 
 \begin{equation}
-   \boldsymbol{M_t \ddot{r}_{t+\Delta t}} + (1+\alpha_H)\boldsymbol{C_{T,t}\dot{r}_{t+\Delta t}}  -\alpha_H\boldsymbol{C_{T,t}\dot{r}}_{n}+ (1+\alpha_H)\boldsymbol{R_{t+\Delta t}^S}-\alpha_H\boldsymbol{R_{t}^S}=(1+\alpha_H) \boldsymbol{R_{t+\Delta t}^E}-\alpha_H\boldsymbol{R_{t}^E}
+\begin{split}
+   \boldsymbol{M_t \ddot{r}_{t+\Delta t}} + (1+\alpha_H)\boldsymbol{C_{T,t}\dot{r}_{t+\Delta t}}  -\alpha_H\boldsymbol{C_{T,t}\dot{r}}_{n}+ (1+\alpha_H)\boldsymbol{R_{t+\Delta t}^S}-\alpha_H\boldsymbol{R_{t}^S}\\=(1+\alpha_H) \boldsymbol{R_{t+\Delta t}^E}-\alpha_H\boldsymbol{R_{t}^E}
+   \end{split}
 \end{equation}
 
 The method is unconditionally stable when:
@@ -207,7 +209,7 @@ The method is unconditionally stable when:
     \item  $\beta = \frac{1}{4} (1- \alpha_H)^2$
 \end{itemize}
 
-\noindent The method is effectively suppressing high frequency and also retains second-order accuracy. \cite{Mathisen1990}
+\noindent The method is effectively suppressing high frequency and also retains second-order accuracy, \cite{Mathisen1990}.
 
 \section{Global Model in SIMA RIFLEX}
 SIMA RIFLEX is a computer program made for analyzing slender structures such as flexible risers and mooring lines developed by SINTEF Ocean. The Combined Method is used for the static calculation and Newmark-$\boldsymbol{\beta}$ is used for dynamic analysis. These methods are described in section \ref{sec:combined} and \ref{sec:newmark} respectively. 
@@ -228,7 +230,7 @@ Piola-Kirchhoff stresses as the Total Lagrangian formulation, but adapts the pro
 \begin{equation}
     \boldsymbol{K_I}= \boldsymbol{K_0} + \boldsymbol{K_\sigma}
 \end{equation}
-This is convenient when it is assumed that the initial configuration deforms as a rigid body, and will move and rotate with the motion of the body. At any time the initial configuration is close to the deformed configuration \cite{sintef2017}. \cite{Mathisen1990} explains that each beam element has a local coordinate system, $i_i^0$. This is illustrated in Figure \ref{fig:coro} where the initial configuration $C_0$ moves as a rigid body with the element and becomes $C_{0n}$. The deformed beam element will have its local coordinate system rotated, now denoted $i_ia$ and $i_i^b$. This forms the reference for calculation of stresses and strains. 
+This is convenient when it is assumed that the initial configuration deforms as a rigid body, and will move and rotate with the motion of the body. At any time the initial configuration is close to the deformed configuration, \cite{sintef2017}. \cite{Mathisen1990} explains that each beam element has a local coordinate system, $i_i^0$. This is illustrated in Figure \ref{fig:coro} where the initial configuration $C_0$ moves as a rigid body with the element and becomes $C_{0n}$. The deformed beam element will have its local coordinate system rotated, now denoted $i_ia$ and $i_i^b$. This forms the reference for calculation of stresses and strains. 
 
 \begin{figure}[H]
 \centering
@@ -238,7 +240,7 @@ This is convenient when it is assumed that the initial configuration deforms as 
 \end{figure}
 
 \subsection{Element Description}
-In this section, the relevant element type and its kinematics will be presented. Only  the element that will be used in the project/master thesis is included. 
+In this section, the relevant element type and its kinematics will be presented. Only  the element used in the master thesis is included. 
 \subsubsection{Beam element}
 \noindent The beam element in SIMA RIFLEX has 2 nodes with 6 degrees of freedom for each node, 3 translational and 3 rotational that can be seen in Figure \ref{fig:beamri} that are defined in relation to the local Cartesian coordinate system in the initial C0n configuration,
 \cite{sintef2017}.
@@ -281,11 +283,11 @@ Where $\boldsymbol{C^S}$ is the  internal structural damping matrix, $\boldsymbo
 \newline
 \noindent The external load vector consists of:
 \begin{itemize}
-\item Weight and buoyancy
-\item Forced displacements due to support vessel movements
-\item Wave and particle accelerations in accordance to Morison's equation, (see equation \ref{eq:morison})
+\item Weight and buoyancy.
+\item Forced displacements due to support vessel movements.
+\item Wave and particle accelerations in accordance to Morison's Equation, (see Equation \ref{eq:morison}).
 \end{itemize}
-In SIMA RIFLEX the water velocity and motion is decomposed into x,y and z, where x is in the longitudinal direction and y and z as the symmetry axes for the cross section.
+In SIMA RIFLEX the water velocity and motion are decomposed into x,y and z, where x is in the longitudinal direction and y and z as the symmetry axes for the cross section.
 
 \section{Local Model in BFLEX }
 BFLEX is a computer program developed by Professor Svein Sævik. \cite{Bflextheory2013}  and \cite{Bflextheory2017} are used as a basis for this section.  The Newton-Raphson method, described in section \ref{sec:newton} is used for calculations in the static analysis. While for the dynamic analysis the modified HHT-$\alpha$ method described in section \ref{sec:HHT} is used.
@@ -339,7 +341,7 @@ The displacement of an arbitrary point p defined by the local coordinates in the
 \end{equation}
 \noindent Where $\sigma_{ij}$ is the stress in i,j direction, E is Young's modulus for the material, $\nu$ is the Poisson's number, $\epsilon_ij$ is the strain in i,j direction, $\gamma$ is the shear strain, $u_i$ is the displacement in i direction and $\theta$ is the torsion.  
 \subsubsection{HSHEAR353}
-Helix beam element with 4 nodes, 2 centroid nodes, and 2 helix nodes. The nodal points have to be defined in polar coordinates. There are 24 active degrees of freedom in the element where 12 are connected to the standard beam degrees of freedom to describe the global strain quantities, and 12 degrees of freedom are used to describe the local displacement of the wire relative to the core as shown in Figure \ref{fig:353} . Due to this, cubic interpolation is possible in all directions, and membrane locking due to curvature coupling is avoided. The torsion DOF at the helix nodes are not yet activated because of kinematic constraints, and always have to be suppressed when using the element.
+Helix beam element with 4 nodes; 2 centroid nodes, and 2 helix nodes. The nodal points have to be defined in polar coordinates. There are 24 active degrees of freedom in the element where 12 are connected to the standard beam degrees of freedom to describe the global strain quantities, and 12 degrees of freedom are used to describe the local displacement of the wire relative to the core as shown in Figure \ref{fig:353} . Due to this, cubic interpolation is possible in all directions, and membrane locking due to curvature coupling is avoided. The torsion DOF at the helix nodes are not yet activated because of kinematic constraints, and always have to be suppressed when using the element.
 
 \begin{figure}[H]
 \centering
@@ -381,7 +383,7 @@ The rotations can be expressed as:
 \end{equation}
 
 \subsubsection{HSHEAR363}
-Helix beam element with 3 nodes, 2 centroid nodes and 1 radial node to describe the radial motion. The centroid nodes have 6 degrees of freedom each and take care of the axial and torsional stiffness, while the radial node has 1 degree of freedom to be able to describe the radial motion and take care of circumferential strain.  The nodal points can be described with Cartesian coordinates. It can be interpreted as a simplified shell, and the aim for this element is to describe plastic layers, tape layers, and pressure armor. 
+Helix beam element with 3 nodes; 2 centroid nodes and 1 radial node to describe the radial motion. The centroid nodes have 6 degrees of freedom each and take care of the axial and torsional stiffness, while the radial node has 1 degree of freedom to be able to describe the radial motion and take care of circumferential strain.  The nodal points can be described with Cartesian coordinates. It can be interpreted as a simplified shell, and the aim for this element is to describe plastic layers, tape layers, and pressure armor. 
 
 \begin{figure}[H]
 \centering
@@ -413,7 +415,7 @@ While for the plastic layer the strains can be described as:
 \end{equation}
 
 \subsubsection{HCONT463}
-HCONT463 is used to model contact between different layers in a cross-section.  Considering two different bodies, A and B where a is inside B. The HCONT463 is made to match the quantities of the HSHEAR353 and the HSHEAR363 elements. For the HSHEAR363 element, the radial displacement is considered only, while for HSHEAR353 the longitudinal and transverse direction are included. Figure \ref{fig:HCONT463} shows the element connecting a HSHEAR353 element and a HSHEAR363 element. The HSHEAR353 side includes 10 DOFs while the HSHEAR363 side includes 3 DOFs resulting in 13 nodes in total. The element is in reality equipped with 15 DOFs where the torsion DOFs are dummy.\\\\ When the element is used it is important to begin in the inner layer of the cross-section. This element will begin as the master element and connect its radial node nodes to the two radial nodes of the slave element. Then the slave element will become the master element and connect its two radial nodes to the radial node of the element on the outside again. This continues until the outer layer is reached.\\\\The energy functional $\Delta \pi$ is can be described as:
+HCONT463 was used to model contact between different layers in a cross-section.  Considering two different bodies, A and B where a is inside B. The HCONT463 is made to match the quantities of the HSHEAR353 and the HSHEAR363 elements. For the HSHEAR363 element, the radial displacement is considered only, while for HSHEAR353 the longitudinal and transverse direction are included. Figure \ref{fig:HCONT463} shows the element connecting a HSHEAR353 element and a HSHEAR363 element. The HSHEAR353 side includes 10 DOFs while the HSHEAR363 side includes 3 DOFs resulting in 13 nodes in total. The element is in reality equipped with 15 DOFs where the torsion DOFs are dummy.\\\\ When the element is used it is important to begin in the inner layer of the cross-section. This element will begin as the master element and connect its radial node nodes to the two radial nodes of the slave element. Then the slave element will become the master element and connect its two radial nodes to the radial node of the element on the outside again. This continues until the outer layer is reached.\\\\The energy functional $\Delta \pi$ is can be described as:
 \begin{equation}
     \Delta \pi = \sum_{l=A}^B \Delta \bar{\pi}^{l} - \int_{S_c} (\lambda_n + \Delta \lambda_n) \cdot gds - \frac{1}{2 \alpha} \int_{S_c} \Delta \lambda_n^2 ds - \int_{S_c} \lambda_t \cdot \Delta \gamma ds - \frac{1}{2} \int_{Sc} \Delta \lambda_t \Delta \gamma ds
     \label{eq:energy}
@@ -436,7 +438,7 @@ If $\alpha \rightarrow \infty$ the contact condition is recovered exactly.\newli
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{figures/hcont463}
-\caption[$\; \:$HCONT463]{Degrees of freedom for HCONT463\cite{Bflextheory2013} }
+\caption[$\; \:$HCONT463]{Degrees of freedom for HCONT463,\cite{Bflextheory2013} }
  \label{fig:HCONT463}
 \end{figure}
 
@@ -445,12 +447,12 @@ The purpose of the HCONT454 element is to connect two HSHEAR454 element groups (
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{figures/HCONT4541}
-\caption[$\; \:$Illustration of HCONT454]{Illustration of HCONT454}
+\caption[$\; \:$Illustration of HCONT454]{Illustration of HCONT454 connecting 3 conductors in a cable cross section}
  \label{fig:HCONT4541}
 \end{figure}
 
 
-The element has 36 degrees of freedom as can be seen in Figure \ref{fig:HCONT454},  where the extra 12 dofs are used to describe the beam strains of the center as this will affect the gap in compression and tension. All three directions, $X^1$, $X^2$ and $X^3$ are included where the $X^2$ direction represents contact, and the others friction. The energy functional described for the HSHEAR463 element in equation \ref{eq:energy} to \ref{eq:contact} are also valid for the HCONT454 element. The contact kinematics in the normal direction can be expressed as: 
+The element has 36 degrees of freedom as can be seen in Figure \ref{fig:HCONT454},  where the extra 12 dofs are used to describe the beam strains of the center as this will affect the gap in compression and tension. All three directions, $X^1$, $X^2$ and $X^3$ are included where the $X^2$ direction represents contact, and the others friction. The energy functional described for the HSHEAR463 element in Equations \ref{eq:energy} to \ref{eq:contact} are also valid for the HCONT454 element. The contact kinematics in the normal direction can be expressed as: 
 \begin{equation}
     \Delta u_n=(\Delta \boldsymbol{u}_B-\Delta \boldsymbol{u}_A) \cdot \bold{n}=(\Delta \boldsymbol{u}_2^{0B}-\Delta \boldsymbol{u}_2^{0A}+\frac{b}{Ff}(\Delta \epsilon_\psi+\Delta \epsilon_{Z^1}))
 \end{equation}
