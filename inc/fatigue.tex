@@ -1,6 +1,6 @@
 \chapter{Fatigue due to Environmental Loads}
 \label{chap:fatigue}
-In the case of a floating wind turbine, environmental loads that will work on the model includes waves, wind, current and more. In this project/master thesis the focus will be on wave loads and current. Due to the cyclic nature of waves, failure of a dynamic power cable applied in offshore wind farms can be caused by either overloading or fatigue. In this Master Thesis the focus will be on failure due to fatigue. This section will attempt to explain the basic principles on how waves can give fatigue damage for a dynamic power cable attached to a floating wind turbine, as can be seen in the simple flowchart in Figure \ref{fig:flowchart}. 
+In the case of a floating wind turbine, environmental loads that will work on the model includes waves, wind, current and more. In this master thesis the focus will be on wave loads and current. Due to the cyclic nature of waves, failure of a dynamic power cable applied in offshore wind farms can be caused by either overloading or fatigue. In this study the focus will be on failure due to fatigue. This section will attempt to explain the basic principles on how waves can give fatigue damage for a dynamic power cable attached to a floating wind turbine, as can be seen in the simple flowchart in Figure \ref{fig:flowchart}. 
 
 \begin{figure}[h!]
 \centering
@@ -19,7 +19,7 @@ Where $\omega$ is the circular frequency, $t$ is time, $k$ is the wave number, $
 \begin{equation}
     \frac{1}{2}A_j=S(\omega_j) \Delta \omega
 \end{equation}
-Where $\Delta \omega$ is the difference between successive frequencies. The wave elevation is Gaussian distributed with mean at zero and variance at $\sigma^2= \int_0 ^ \infty S(\omega) d\omega $. The wave spectrum assumes that the sea can be described as a stationary random process, meaning that it is a short-time description of the sea state. The sea state is defined by the significant wave height, Hs and the peak period, Tp. Hs is the mean height of the $\frac{1}{3}$ highest waves in the sea state, and Tp is the peak frequency of the wave spectrum. There exist several different spectres but according to \cite{Lifes50+D1.1}: the JONSWAP (Joint North Sea Wave Project) is suitable for "wind seas", and thus this is what will be used in this study. The JONSWAP spectrum can be described as:
+Where $\Delta \omega$ is the difference between successive frequencies. The wave elevation is Gaussian distributed with mean at zero and variance at $\sigma^2= \int_0 ^ \infty S(\omega) d\omega $. The wave spectrum assumes that the sea can be described as a stationary random process, meaning that it is a short-time description of the sea state. The sea state is defined by the significant wave height, Hs and the peak period, Tp. Hs is the mean height of the $\frac{1}{3}$ highest waves in the sea state, and Tp is the peak frequency of the wave spectrum. There exist several different spectres but according to \cite{Lifes50+D1.1}: "[...]the JONSWAP (Joint North Sea Wave Project) is suitable for "wind seas", and thus this is what will be used in this study. The JONSWAP spectrum can be described as:
 \begin{equation}
     S(\omega)=155 \frac{H_s^2}{T_1^4 \omega ^5} \exp{(\frac{-994}{T_1^4 \omega ^4})} 3.3^Y
 \end{equation}
@@ -69,7 +69,7 @@ Where $u$ and $a_1$ depend on position and dot represents time derivative.
 \label{fig:transex}
 \end{figure}
 
-\noindent Motion transfer functions give an efficient description of the motion characteristics of a floating vessel. They are calculated for all 6 degrees of freedom on a specified point on the vessel from either potential theory or experimental tests. \cite{sintef2017}. Due to linearity, the response can be analyzed for each wave component in equation \ref{eq:elevation} separately, \cite{Faltinsen1990}. Recalling equation \ref{eq:elevation}, for wave elevation, the steady state response can be written as:
+\noindent Motion transfer functions give an efficient description of the motion characteristics of a floating vessel. They are calculated for all 6 degrees of freedom on a specified point on the vessel from either potential theory or experimental tests, \cite{sintef2017}. Due to linearity, the response can be analyzed for each wave component in equation \ref{eq:elevation} separately, \cite{Faltinsen1990}. Recalling equation \ref{eq:elevation}, for wave elevation, the steady state response can be written as:
 
 \begin{equation}
     A_j |H(\omega)|\sin(\omega_jt-\delta_j(\omega)+\epsilon_j)
@@ -78,13 +78,8 @@ Where $|H(\omega)|$ is called the transfer function. For irregular sea, the resp
 \begin{equation}
     \sum_{j=1}^N  A_j |H(\omega)|\sin(\omega_jt-\delta_j(\omega)+\epsilon_j)
 \end{equation}
- $|H(\omega)|$ and $\delta(\omega_j)$ are functions of frequency, $\omega$.\newline 
- \newline
-
-
-\noindent In this study, the results from the global analysis will be expressed as time series, in the time domain, and Fourier transformations are necessary to convert the response from the frequency domain to the time domain. \newline
-\newline 
-\noindent For the global model in SIMA RIFLEX, the transfer functions of OO-Star have been provided by Dr. Techn. Olav Olsen, to simulate the motions of the vessel when subjected to waves. As the transfer functions are regarded as confidential they cannot be reproduced in this Master Thesis report.   
+ $|H(\omega)|$ and $\delta(\omega_j)$ are functions of frequency, $\omega$.\\\\
+\noindent For the global model in SIMA RIFLEX, the transfer functions of OO-Star have been provided by Dr. Techn. Olav Olsen, to simulate the motions of the vessel when subjected to waves. As the transfer functions are regarded as confidential they cannot be reproduced in this report.   
 
 \section{Fatigue}
 Fatigue is damage due to cyclic loading over time where the stress is usually lower than the yield stress for a given material. In this section, some basic concepts related to fatigue will be presented, as well as some methods that are to be used in this master thesis. The following is taken from the compendium by \cite{fatigue2016}. \newline
@@ -95,30 +90,30 @@ In Figure \ref{fig:fatigue} some basic concepts are defined.
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.6]{figures/cycle}
-\caption[$\; \:$Example of fatigue load history]{Example of fatigue load history  \cite{fatigue2016} }
+\caption[$\; \:$Example of fatigue load history]{Example of fatigue load history, reproduced from  \cite{fatigue2016} }
  \label{fig:fatigue}
 \end{figure}
 
 From this Figure, it can be seen that:
 \begin{itemize}
-    \item $S_{max}$ -  Max stress/strain in a cycle
-    \item $S_{min}$ -  Min stress/strain in a cycle
-    \item $S_{m}$ - Mean stress/strain in a cycle
+    \item $\sigma_{max}$ -  Max stress/strain in a cycle
+    \item $\sigma_{min}$ -  Min stress/strain in a cycle
+    \item $\sigma_{m}$ - Mean stress/strain in a cycle
 \end{itemize}
 
-From this it follows that the stress range, $\Delta S$ is:
+From this it follows that the stress range, $\Delta \sigma$ is:
 
 \begin{equation}
-    \Delta S =S_{max} - S_{min}
+    \Delta \sigma =\sigma_{max} - \sigma_{min}
 \end{equation}
 
 \noindent And the stress ratio, R is:
 \begin{equation}
-    R=\frac{S_{min}}{S_{max}}
+    R=\frac{\sigma_{min}}{\sigma_{max}}
 \end{equation}
 Fatigue data can be plotted in an SN diagram where stress or strain range is plotted against the number of cycles until failure, as can be seen in Figure \ref{fig:sn}. For most applications, fatigue life spans over a high number of cycles, so the SN plot is presented as a log-log-diagram. It is common to differentiate between high cycle fatigue and low cycle fatigue, where high cycle fatigue has a fatigue life at more than $10^5$ cycles, and the stress is elastic. High cycle fatigue tends to follow a log-linear relationship called the SN curve and can be found by the Basquin’s Equation:
 \begin{equation}
-    N(\Delta s)^m = \text{c}
+    N(\Delta \sigma)^m = \text{c}
 \end{equation}
 \label{eq:sn}
 \noindernt Where N is the number of cycles before failure, $\Delta S$ is the stress range, m is an exponent and c is a constant. \cite{dnvfatigue} elaborates that by subtracting two standards deviations, the SN-curve will represent 97.6\% of survival. \newline
@@ -169,8 +164,8 @@ There are several ways of counting cycles, and rainflow counting is one of them.
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.6]{figures/count}
-\caption[$\; \:$Cyclic load and stress-strain response]{(a)Cyclic load (b) Stress-strain response.   \cite{fatigue2016} }
+\includegraphics[scale=0.7]{figures/count}
+\caption[$\; \:$Cyclic load and stress-strain response]{(a) Cyclic load, (b) Stress-strain response.   \cite{fatigue2016} }
  \label{fig:count}
 \end{figure}
 
@@ -194,7 +189,7 @@ Several methods can be used to calculate the cumulative damage due to irregular 
     D=\sum_i \frac{n_i}{N} 
     \label{eq:MP}
 \end{equation}
-Where D is the accumulated damage, $n_i$ is the number of cycles with a certain stress range experienced by the structure and N is the fatigue life of at that stress range.\newline
+where D is the accumulated damage, $n_i$ is the number of cycles with a certain stress range experienced by the structure and N is the fatigue life of at that stress range.\newline
 \newline
 According to \cite{riserfat}, the fatigue criterion, which shall be satisfied is expressed as:
 \begin{equation}
@@ -222,7 +217,7 @@ According to \cite{Savik2016}, fatigue tests of steel or copper wires are often 
 \begin{equation}
     \Delta \sigma = 2 \bar{\sigma} \frac{1-R}{1+R}
 \end{equation}
-A Haigh diagram gives the relationship between the stress range ($\Delta \sigma$) and the mean stress ($\bar{\sigma}$),  and fatigue tests at given R-ratios will form a straight line in the Haigh diagram, illustrated in Figure \ref{fig:gerber}. Often, the SN curve is only available for a certain R-ratio: Goodman or Gerber assumptions can be used to transform between different mean stresses using the following expressions:\newline
+A Haigh diagram gives the relationship between the stress range ($\Delta \sigma$) and the mean stress ($\bar{\sigma}$),  and fatigue tests at given R-ratios will form a straight line in the Haigh diagram, illustrated in Figure \ref{fig:gerber}. Often, the SN curve is only available for a certain R-ratio: Goodman, Gerber or Söderberg assumptions can be used to transform between different mean stresses using the following expressions:\newline
 \newline
 \noindent Goodman assumption:
 \begin{equation}
@@ -234,7 +229,12 @@ A Haigh diagram gives the relationship between the stress range ($\Delta \sigma$
     \Delta \sigma_0 = \frac{\Delta \sigma}{1-(\frac{\bar{\sigma}}{\sigma_u})^2}
 \end{equation}
 
-\noindent where $\Delta \sigma_0$ is the stress range at zero mean stress, $\Delta \sigma$ is the calculated stress range, $\bar{\sigma}$ is the mean stress level and $\sigma_u$ is the ultimate stress level of the material. The Goodman and Gerber assumptions can also be seen in Figure \ref{fig:gerber}. 
+\noindent Söderberg assumption, \cite{fatiguehand}:
+\begin{equation}
+    \Delta \sigma_0 = \frac{\Delta \sigma}{1-(\frac{\bar{\sigma}}{\sigma_y})^2}
+\end{equation}
+
+\noindent where $\Delta \sigma_0$ is the stress range at zero mean stress, $\Delta \sigma$ is the calculated stress range, $\bar{\sigma}$ is the mean stress level, $\sigma_u$ is the ultimate stress level of the material, and $\sigma_y$ is the yield stress level of the material. The Goodman and Gerber assumptions can also be seen in Figure \ref{fig:gerber}. 
 
 \begin{figure}[H]
 \centering
@@ -267,14 +267,14 @@ There are mainly three reasons for mechanical failure in marine power cables app
 \label{sec:fatcop}
 According to a study done by \cite{Nasution2013}, when testing individual wires as well as a full cross-section of a three-phase 95mm$^2$, all failures occurred in the inner layer for the cross-section bent over a bell mouth. In addition, individual wires from the outer layer of the cross section were tested in controlled tension-tension loading. Here, all initiation of crack growth happened within or at the edge of the trellis contact area, that has been deformed due to the compacting process of the cable. The study concluded with that the difference in fatigue life between layers is due to the variance of surface irregularities. Another study, performed by \cite{NASUTION2014} states that the first fatigue failure for a copper conductor subjected to tension-tension fatigue happens in the outer layer. this indicates that the fatigue performance is governed by local effects due to surface irregularities of the different layers. \newline
 \newline
-\noindent \cite{s300} developed a model for stress variation in individual wires in the conductor cross section. This model applies for conductors exposed to static and dynamic tension in combination with dynamic curvature, and the maximum longitudinal stress will occur in the outer fiber of the conductor. The stress variation can be calculated as:   
+\noindent \cite{s300} developed a model for stress variation in individual wires in the conductor cross section. This model applies for conductors exposed to static and dynamic tension in combination with dynamic curvature. The stress variation can be calculated as:   
 \begin{equation}
     \Delta \sigma = \Delta \sigma_T + \Delta \sigma_{tc} + \Delta \sigma_{nc} + \Delta \sigma_{f}
     \label{eq:stressvariation}
 \end{equation}
-\noindentWhere $\Delta \sigma_T$ is the stress range due to dynamic tension, $\Delta \sigma_{tc}$ is the stress range from transverse curvature of the wire, $\Delta \sigma_{nc}$ is the stress range from normal curvature of the wire and $\Delta \sigma_{f}$ is the stress range from friction. By looking at a position with the polar coordinate angle $\psi = 0$, Expression\ref{eq:stressvariation} can be reduced to:
+\noindentWhere $\Delta \sigma_T$ is the stress range due to dynamic tension, $\Delta \sigma_{tc}$ is the stress range from transverse curvature of the wire, $\Delta \sigma_{nc}$ is the stress range from normal curvature of the wire and $\Delta \sigma_{f}$ is the stress range from friction. By looking at a position with the polar coordinate angle $\psi = 0$, Expression \ref{eq:stressvariation} can be reduced to:
 \begin{equation}
-    \Delta \sigma = (\Delta \sigma_f + \Delta \sigma_{T})\text{SCF} + \Delta \sigma_{nc}
+    \Delta \sigma = (\Delta \sigma_f + \Delta \sigma_{T})\cdot \text{SCF} + \Delta \sigma_{nc}
     \label{eq:stressvariationred}
 \end{equation}Where SCF is the stress concentration factor. \\\\The stress variation in the individual wires due to dynamic tension can be found from:
 \begin{equation}
@@ -287,13 +287,13 @@ According to a study done by \cite{Nasution2013}, when testing individual wires 
 \end{equation}
 \noindent Where EA is the axial stiffness of each wire, $n_i$ is the number of wires in layer i and $\alpha_i$ is the lay angle of layer i. \newline
 \newline
-The bending stress range for small lay angles can be approximated as:
+The bending stress range from normal curvature of the wires for small lay angles can be approximated as:
 \begin{equation}
-    \Delta \sigma_{nc} = R_{nominal} E \cos^2 \alpha_i \cos2 \alpha_i \Delta \kappa \cos \Psi \approx R_{nominal}E \Delta \kappa \cos \Psi
+    \Delta \sigma_{nc} = R_{nominal} E \cos^2 \alpha_i \cos2 \alpha_i \Delta \kappa \cos \Psi \approx R_{nominal}E \Delta \kappa
 \end{equation}
-where $\Delta \kappa$ is the curvature range and $\Psi$ is the polar coordinate angle defining the helix position (assuming \psi=0). \newline
+where $\Delta \kappa$ is the curvature range and $\Psi$ is the polar coordinate angle defining the helix position (assuming $\psi=0$). \newline
 \newline
-The friction stress range will be the smallest stress range from either the max allowed due to friction between the interfaces and the plane surfaces remain plane solution:
+The friction stress range will be the smallest stress range from either the plane surfaces remain plane solution or max allowed due to friction between the interfaces:
 \begin{equation}
     \Delta \sigma_f^i =\text{min}\left(E \cos^2 \alpha_i R_i \Delta \kappa , \frac{\pi R_i \tau_i}{\sin \alpha_i A_i}\right)
 \end{equation}
