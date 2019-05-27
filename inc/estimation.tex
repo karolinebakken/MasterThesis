@@ -220,9 +220,12 @@ The location with the largest curvature range was at at x=0.90m for all the case
 From now, the inner core wire of the conductor will be referred to as layer 1, the middle layer with 6 wires will be referred to as layer 2, and the outer layer with 12 wires will be referred to as layer 3. The lay angle for layer 2 and layer 3 in the copper conductor are: $\alpha_2=-4.1^\circ$ and $\alpha_3=+7.3^\circ$ according to \cite{Nasution2013}. The tension range($\Delta T$) and curvature range ($\Delta \kappa)$ were extracted and calculated from each case at the location described above. $\epsilon_c$ (Equation \ref{eq:stressvariation2}) was calculated with the tension at max angle at location x=0.90, but min tension and mean tension was also tested as a sensitivity study. The friction coefficient, $\mu$ was set to 0.2 in line with the recommendation from \cite{NASUTION2014}. The stress concentration factor (SCF) for layer 2 and 3 were set to 1.058 and 1.238 respectively, also from \cite{NASUTION2014}. \\\\
 The endurance limits were calculated from Equation \ref{eq:sn}, and the damage from each case were calculated by using the calculated number of cycles in each case from the rainflow counting and summed up according to Miner-Palmgren sum in Equation \ref{eq:MP}. By inverting the damage caused in one year, the fatigue life in year was calculated with DFF=10.0
 
-\section{Study of Friction Mechanisms}
+\section{Sensitivity Studies and Study of Friction Mechanisms}
 To get an increased understanding of the friction mechanisms in the conductors affecting the fatigue life, several additional studies were performed with the results from the global and local analyses.
-\subsection{Study of Tension as Master Over Curvature}
+\subsection{Study of Sensitivity for Max, Mean and Min Tension}
+\label{sec:min}
+When calculating the fatigue life as explained in Section \ref{sec:fatiguelife}, one of the variables in Equation \ref{eq:stressvariation2} is tension (T). The paper presenting the mathematical model for fatigue life down to wire level (\cite{s300}) does not specify which tension to be used, the min tension, mean tension or max tension. It is obvious that the most conservative approach is to use the max tension, and for the main calculation of fatigue life in Section \ref{sec:fatiguelife}, the max tension was used. But as a sensitivity study, the fatigue life was also calculated using the mean and min tension to see what effect this would have on the fatigue life. 
+\subsection{Study of Fatigue Life at Max Tension Range}
 When the fatigue life was calculated in Section \ref{sec:fatiguelife}, the location with the highest curvature range (x=0.90) was investigated. There was some offset between the max curvature range and the max tension range in the analyses, and  the location with the highest tension range was also investigated to see if the fatigue total fatigue damage was more severe her. The location with the highest tension rang was at x=0.63m. The same calculations as described in Section \ref{sec:fatiguelife} were performed for this location.  
 \subsection{Study of Effect of Friction Between Conductors on Fatigue Life}
 The three helical conductors were ordered as a triangle, with the HCONT454 element describing the hoop contact between them, as shown in Figure \ref{fig:HCONT4541}. The effect of this contact was investigated by looking at the plot of tension in the conductors over the length of the cable at max angel and min angle for each case. The effect of the contact between the conductors could be seen in the tension plot as the difference between the $\Delta T_{max}$ illustrated by the green arrow, and the $\Delta T_T$ from the tension at the end of the model, illustrated by the yellow arrow. 
@@ -243,9 +246,9 @@ $\Delta T_f$ was subtracted from $\Delta T$ in Equation \ref{eq:sigmaT}, and the
 \subsection{Study of Effect of Friction Between Layers in Conductors on Fatigue Life}
 The friction between the layers in the conductor was included in the fatigue life calculation by the friction term: $\Delta \sigma_f^i$ in Equation \ref{eq:stressvariationred}. By removing this term, the friction between the layers in the conductor was removed, and Equation \ref{eq:stressvariationred} for the stress range was reduced to:
 \begin{equation}
-    \Delta \sigma_T \cdot SCF + \Delta \sigma_{nc}
+    \Delta \sigma=\Delta \sigma_T \cdot SCF + \Delta \sigma_{nc}
 \end{equation}
-Where $\Delta \sigma_T$ is the stress range due to dynamic tension, SCF is the stress concentration factor for each layer and $\Delta \sigma_{nc}$ is the stress range from normal curvature of the wire. \\\\
+where $\Delta \sigma$ is the total stress $\Delta \sigma_T$ is the stress range due to dynamic tension, SCF is the stress concentration factor for each layer and $\Delta \sigma_{nc}$ is the stress range from normal curvature of the wire. \\\\
 The calculations were performed as in Section \ref{sec:fatiguelife} excluding the friction term. 
 
 
