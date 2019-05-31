@@ -1,23 +1,49 @@
 \chapter{Conclusion and Further Work}
 \label{chap:conclusion}
 \section{Conclusion}
-The goal for this master thesis was to calculate the fatigue life of a dynamic power cable applied in offshore wind farms, as well as get an insight in the contact mechanisms of the cross section of the cable. Dr. Techn. Olav Olsen's design OO-Star, at West of Barra Scotland, was chosen as a base for a case study. The whole dynamic part of the power cable was modeled in a global model in SIMA RIFLEX. As the focus of the study was to investigate local effects in the cross section rather than perform a full fatigue analysis, several simplifications were done in terms of the possible displacements of the floating wind turbine. The upper part of the power cable was modelled in a local model in B, with the different layers and components of the cable cross section, and also a bend stiffener. Contact between layers was modelled with contact elements, giving a complex fatigue   
+This study set out to determine the fatigue life of a dynamic power cable applied in offshore wind farms, as well as to get an insight into the contact mechanisms of the cable cross-section. Dr. Techn. Olav Olsen's design OO-Star, at West of Barra Scotland, was chosen as a basis for a case study. SIMA RIFLEX was used to build a global model that included the whole dynamic part of the power cable.  As the focus of the study was to examine local effects in the cross-section rather than complete a full fatigue analysis, several simplifications were done in terms of the possible displacements of the floating wind turbine. \\\\The upper part of the power cable was modeled in a local model in Bflex, with the different layers and components of the cable cross-section, and also a bend stiffener. Contact between layers was modeled with contact elements, yielding a complex fatigue situation.\\\\
+The global analyses were performed by exposing the global model for all 160 sea states from the scatter diagram for one hour each. The angle between the vessel and the cable and the tension in the upper element were converted into time series and counted by the Rainflow counting algorithm. The cycle counts and angle range classes were rearranged into 15 cases with dynamic angles and corresponding tensions. Each dynamic angle and tension pair was applied to the local model for one full cycle each. Equation \ref{eq:stressvariation} to \ref{eq:stressvariation2} were used to calculate the stress range on wire level, from the results obtained by the local analysis. By the use of an SN-curve and Miner Palmgren sum, the fatigue life was calculated on two separate points on the conductor with DFF=10.0. The results were mean stress corrected by Söderberg correction. Studies were also performed to investigate contact mechanisms in the cross section on two different levels.
+\\\\The main findings in this study are summarized in Table \ref{table:mainfind}:
 
-and 160 sea states were analyzed for one hour each. The cycles in the time series for the angle between the vessel and the cable was counted with Rainflow counting, the count were rearranged into 15 classes. Each combination of angle ans tension was analyzed for one cycle, and by using the equations developed by \cite{s300}, the fatigue life was calculated for each of the layers in the conductors, with the layer with shortest fatigue life as the the design layer. Several sensitivity studies were also performed to get an idea of the importance of the different fatigue mechanisms had on the fatigue life.\\\\The main findings in this study are:
+\begin{table} [H]
+\centering
+\begin{tabular}{ |c|c|c|c|}
+\hline
+Analysis & Fatigue life [years] & Fatigue life w/o Söderberg corr. [years] & Design layer \\
+ \hline
+ \hline
+ A & 477.95 & 640.28 & Inner\\
+ B & 267.37 &462.31 & Inner\\
+ C & 1530.16 & 4011.16 &Inner\\
+ D &1507.39  &4142.13 &Inner\\
+ \hline
+\end{tabular}
+\caption{Main findings summarized}
+\label{table:mainfind}
+\end{table} 
+where:
+\begin{enumerate}[label=\Alph*]
+\item  is analysis at max curvature range, all contacts included
+\item is analysis at max tension range, all contacts included
+\item is analysis at max tension range, the effect of contact between conductors is excluded
+\item is analysis at max tension range, the effect of contact between layers in conductors is excluded
+\end{enumerate}
+Elaborations of the main findings follow:
 \begin{itemize}
-    \item The main analysis showed that the fatigue life for a dynamic power cable applied in offshore wind farms with OO-Star as the support structure, West of Barra as location and the chosen cable cross section was calculated to be 642.28 years with a safety factor of 10.0. The layer 2 was the design layer
-    \item When fatigue life was calculated at the location on the cable with max tension, the fatigue life comes out as almost identical to the main analyses, only 3.28\% longer fatigue life and layer 2 as the design layer. The fatigue life at th location on the cable with max curvature is still dimensioning to keep a conservative approach.
-    \item When excluding the effect of friction between the conductors, $\Delta T$ is reduced by 47\% in almost all of the cases, and fatigue life was increased by 8.70 times. This shows that the contact between the conductors plays a major role in the estimation of fatigue life, and should be included in further analyses. Layer 2 was the design layer. 
-    \item When excluding the effect of contact between layers within the conductors fatigue life was calculated to be 1657.03 years, 2.58 times the original fatigue life calculated in the main estimate. An interesting observation was that the design layer was layer 3, emphasizing the importance of including this effect in analyses in the future. 
+\item All failures occur in the inner layer, suggesting that the fatigue life of the copper conductor is governed by local effect in the cross-section.
+    \item The fatigue life of the dynamic power cable was calculated to be 267.37 years at the point on the conductor with the highest tension range. The point on the conductor with max curvature range, on the other hand, exhibited more than 1.5 times the fatigue life in comparison.
+    \item Excluding effect of contact between conductors increases the fatigue life roughly by a factor of 5. It was also found that the effect of contact between the conductors contributes to almost half of the tension range. 
+    \item Excluding the effect of friction between layers also increased the fatigue life with roughly 5 times
 \end{itemize}
-It can be concluded that the dynamic power cable exhibits good resistance towards fatigue, with a fatigue life much longer than what is considered a common service time for slender marine structures. The effect of contact between conductors as well as contact between layers within one conductor has proven to be significant and worth including for further analyses. 
+These findings suggest that in general the local effects in the cable cross-section play an important role in the calculation of fatigue life. The two contact mechanisms investigated are of approximately the same importance in this case, after Söderberg corrections. These results may not be applicable to determine the exact effect of excluding the contact mechanisms,  as only one case study was examined. Nevertheless, it can be suggested that contact between conductors and contact between layers in conductors should be included fatigue analyses in the future. 
 
 \section{Further Work}
-The topic of fatigue in dynamic power cables applied in offshore wind farms is not well studied yet, and thus are there many possible approaches for further work. A few suggestions of interesting topics follows:
+The topic of fatigue in dynamic power cables applied in offshore wind farms is not adequately studied yet, and thus, there are many possible approaches for further work. A number of possible future studies using the same numerical set up are apparent: 
 \begin{itemize}
-    \item It would be interesting to perform the same modelling and analyses procedure as used in this project with other case scenarios. With the Lifes50+ project as a base, several combinations of location and support structure designs could be analyzed, and fatigue lives could be estimated. 
-    \item In terms of the global analyses, several simplifications were done to be able to complete the work in the scheduled time frame. Motions of the vessel due to wind was not included, and the floating turbine only had 3 possible conditions and positions, Near, Neutral and Far in one direction. In reality the motions of the floating turbine is restricted through its mooring system, but smaller displacements in all direction are still very possible. With the global model described in this project as a base, a more complex global model could be developed gradually by including more complex weather conditions and less restrictions of displacement.
-    \item it would also be interesting to run the same analyses with a double armoring layers to increase the inertia of the cable as was suggested in Section \ref{sec:dis}. 
+    \item Future trials need to be done to establish a statistical foundation to determine the true effect of excluding contact mechanisms in the cross sections of dynamic power cables.  
+    \item A natural progression of this work is to perform the same modeling and analysis procedure as used in this project with other case scenarios. With the Lifes50+ project as a basis, several combinations of location and support structure designs could be analyzed, and fatigue lives could be estimated. The results could further be used to optimize designs of support structures in terms of power cable fatigue life.  
+    \item The global model can be expanded by introducing more complex weather conditions and fewer restrictions on displacement. The advancement of the global model would allow for a more accurate cycle count and fatigue analysis.  
+    \item It would be interesting to assess the effects of double armoring layers. This would increase the inertia of the cable, and thus reduce its motions.
     \item Studies of optimization of cable configuration and cross sections in terms of fatigue life could also be conducted. 
 \end{itemize}
 
