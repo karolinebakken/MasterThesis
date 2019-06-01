@@ -1,9 +1,9 @@
 \chapter{Case Scenario}
-To investigate fatigue of dynamic power cable applied in offshore wind, a realistic case study was investigated. In this chapter, the chosen concept will be described as well as the weather conditions at the proposed location and SN fatigue data. 
+To study fatigue of dynamic power cable applied in offshore wind, a realistic case study was examined. In this chapter, the chosen concept is described as well as the weather conditions at the proposed location and SN fatigue data. 
 \section{Floating Wind Turbine}
-OO-Star was chosen as the floating wind turbine for the case study. This is a design by Dr. Techn. Olav Olsen, and the project Lifes50+ has been used as a base for the design and other relevant information. 
+OO-Star was chosen as the floating wind turbine for the case study. It is a design by Dr. Techn. Olav Olsen, and the project Lifes50+ was used as a groundwork for the design and other relevant information. 
 \subsection{Lifes50+}
-Lifes50+ is a large research project whose goal is to develop cost-effective floating solutions for 10MW wind turbines. The project is financed by the Horizon 2020 program, "[...]the biggest EU research and innovation program ever, with nearly 80 billion euros of funding available over 7 years (2014-2020)" \cite{Horizon2010}. According to \cite{Olavolsen}, the total budget on the project is 7.3 million euros. There are 12 partners involved with the project, including DNV GL and SINTEF. The project consists of 4 different designs and 3 different locations, with water depths deeper than 50m. Figure \ref{fig:concept} shows the different designs in the project, and Figure \ref{fig:sites} shows the different locations in the project. 
+Lifes50+ is a comprehensive research project whose objective is to develop cost-effective floating solutions for 10MW wind turbines. The project is funded by the Horizon 2020 program, "[...]the biggest EU research and innovation program ever, with nearly 80 billion euros of funding available over 7 years (2014-2020)" \cite{Horizon2010}. According to \cite{Olavolsen}, the total budget on the project is 7.3 million euros. There are 12 partners associated with the project, including DNV GL and SINTEF. The project consists of 4 different designs and 3 different locations, with water depths deeper than 50m. Figure \ref{fig:concept} presents the different designs in the project, and Figure \ref{fig:sites} shows the different locations in the project. 
 
 \begin{figure}[H]
 \centering
@@ -31,7 +31,7 @@ The support structure is a semi-submersible consisting of one column in the cent
  \label{fig:oostar}
 \end{figure}
 
-\noindent The main material is post-tensioned concrete, and the main dimensions are displayed in Figure \ref{fig:designoostar}
+\noindent OO-Star's primary material is post-tensioned concrete, and its main dimensions are displayed in Figure \ref{fig:designoostar}
 
 \begin{figure}[H]
 \centering
@@ -41,7 +41,7 @@ The support structure is a semi-submersible consisting of one column in the cent
 \end{figure}
 
 \subsection{Wind Turbine Floater Motions}
-To simulate the motion of OO-Star, Dr. Techn. Olav Olsen have provided the transfer functions for all 6 degrees of freedom of the vessel. The transfer functions are valid for the center of the model, however, the cable is attached some distance from the center of gravity as can be seen in Figure \ref{fig:cabhang}. This distance has been calculated to be 9.24m, and had to be taken into consideration in the modelling process. 
+To reproduce the motion of OO-Star, Dr. Techn. Olav Olsen have provided the transfer functions for all 6 degrees of freedom of the vessel. The transfer functions apply for the center of the model, but the cable was attached some distance from the center of gravity as can be seen in Figure \ref{fig:cabhang}. The distance between the center and the cable hang off was  9.24m, and was accounted for in the modeling process. 
 
 \begin{figure}[H]
 \centering
@@ -52,10 +52,10 @@ To simulate the motion of OO-Star, Dr. Techn. Olav Olsen have provided the trans
  \noindent The transfer functions of OO-Star are confidential and can not be reproduced in this report. 
  
 \section{Power Cable}
- The power cable used in this master thesis had three-phase AC circuits placed in one cable. The choice of power cable cross section was based on guidance from Professor Svein Sævik. 
+ The power cable used in this master thesis had three-phase AC circuits placed in one cable. The choice of power cable cross-section was based on guidance from Professor Svein Sævik. 
 
 \subsection{Cable Cross Section}
- An illustration of the model cross section used is shown in Figure \ref{fig:cross2}. 
+ An illustration of the model cross section is shown in Figure \ref{fig:cross2}. 
 
 \begin{figure}[H]
 \centering
@@ -69,13 +69,13 @@ To simulate the motion of OO-Star, Dr. Techn. Olav Olsen have provided the trans
 \item Center tube
 \item Electrical conductor + insulation
 \item Sheath around conductors
-\item 1st layer of Armouring 
-\item Tape between the two layers of armouring
-\item 2nd layer of armouring
+\item 1st layer of armoring 
+\item Tape between the two layers of armoring
+\item 2nd layer of armoring
 \item Protective sheath
 \end{enumerate}
 
-\noindent The dimensions of components of the cross-section are based on the conductor + insulation cross-section, and all other dimensions are calculated from this. The conductor itself has an area of 95$mm^2$, and in addition, there is a layer of insulation, making the radius of the of conductor + insulation 15mm.  The calculations of the radius of the center tube and the 1st sheath are based on trigonometry. By imagining a like-sided triangle with its corners in the center of each of the conductors, the following relations can be derived: 
+\noindent The dimensions of the components of the cross-section are based on the conductor + insulation cross-section. The conductor itself had an area of 95$mm^2$, and combined with a layer of insulation, the radius of the conductor + insulation was 15mm.  The calculations of the radius of the center tube and the 1st sheath were based on trigonometry. By imagining a like-sided triangle with its corners in the center of each of the conductors, the following relations can be derived: 
 
 
   \begin{equation}
@@ -90,7 +90,7 @@ To simulate the motion of OO-Star, Dr. Techn. Olav Olsen have provided the trans
  
   \noindent Where $r_{s}$ is the radius of the sheath around the conductors and $r_c$ is the radius of the conductor. \newline
   \newline 
-  \noindent The dimensions of the cable cross section are given in Table \ref{table:cabledim}, and were determined in agreement with Professor Svein Sævik.  
+  \noindent The dimensions of the cable cross-section are given in Table \ref{table:cabledim}, and were determined in agreement with Professor Svein Sævik.  
 
 
 \begin{table} [H]
@@ -118,14 +118,14 @@ Sheath 3 & 42.82& 3  \\
 \label{table:cabledim}
 \end{table} 
 
-\noindent There are 63 steel armouring fibers in the inner layer of the armouring, and 71 in the outer layer. This was calculated by the following expression:
+\noindent There are 63 steel armoring fibers in the inner layer of the armoring, and 71 in the outer layer, determined by the following expression:
 \begin{equation}
     n_i=\frac{F_j\cos(\alpha)\pi D_c}{D_s}
 \end{equation}
 Where $F_j$ is the fill factor (0.9 was used), $\alpha$ is the lay angle (20 degrees was used), $D_c$ is the diameter of the cable and $D_s$ is the diameter of one steel fibre. 
 
 \section{Environmental Conditions}
- This section contains information mainly from the report \cite{Lifes50+D1.1}.\\\\As mentioned earlier in this section, 3 possible locations were used for the Lifes50+ project with different degrees of challenging conditions. For this study, the chosen location was West of Barra, Scotland. The main basis for this choice was that this was the site with the deepest water, and this is also the site with the most challenging weather conditions. The exact proposed location was in the area with the coordinates 56.609$^\circ$N, 7.996$^\circ$W. 
+ This section contains information mainly from the Report \cite{Lifes50+D1.1}.\\\\ The main basis for choosing West of Barra as case location was its deep water and challenging weather conditions. The exact proposed location was in the area with the coordinates 56.609$^\circ$N, 7.996$^\circ$W, see Figure \ref{fig:wob}.  The water depth at the location is between 56-118m, and 118m was used in this study.
 
 
 \begin{figure}[H]
@@ -134,8 +134,6 @@ Where $F_j$ is the fill factor (0.9 was used), $\alpha$ is the lay angle (20 deg
 \caption[$\; \:$West of Barra, Scotland]{Possible location for floating wind turbine, West of Barra, Scotland \cite{Lifes50+D1.1} }
  \label{fig:wob}
 \end{figure}
-
-\noindent The water depth at the location West of Barra is between 56-118m, and 118m was used in this study.
 
 \subsection{Wind Climate}
 \label{sec:windcli}
@@ -187,7 +185,7 @@ Table \ref{table:wind} shows the ten minute mean wind speed profile at different
 \label{table:windex}
 \end{table}
 
-\noindent Figure \ref{fig:scatterwind} shows the scatter diagram for wind conditions at west of Barra. With north being 0 degrees
+\noindent Figure \ref{fig:scatterwind} shows the scatter diagram for wind conditions at West of Barra. With north being 0 degrees
 
 \begin{figure}[H]
 \centering
@@ -201,7 +199,7 @@ Table \ref{table:wind} shows the ten minute mean wind speed profile at different
 
 
 \subsection{Wave Climate}
-The wave loads applied to the floating wind turbine were based on the scatter diagram for West of Barra. According to the transfer functions for heave, obtained from Dr.Techn. Olav Olsen, severe resonance in heave will occur at periods around 19s-24s in heave. As Tp is only the average of the 1/3 highest waves, resonance was observed for Tps lower than 19s in the global analyses. To avoid the area of severe resonance, an thus extreme response for the wind floater, the sea states for the periods 16 -17, 17-18 seconds and 18-19 seconds were moved to the 15-16 seconds column, and thus maintaining the total number of observations. The original and modified scatter diagrams can be seen in Figures \ref{fig:scato} and \ref{fig:scatn}.
+The wave loads applied to the floating wind turbine were based on the scatter diagram for West of Barra. Due to the nature of the transfer functions,  resonance occurred in several of the analyses and modifications to the scatter diagram were inevitable to enable the study. To avoid the area of severe resonance, an thus extreme response for the wind floater, the sea states for the periods 16 -17, 17-18 seconds and 18-19 seconds were moved to the 15-16 seconds column, and thus maintaining the total number of observations. The original and modified scatter diagrams can be seen in Figures \ref{fig:scato} and \ref{fig:scatn}.
 
 \begin{figure}[H]
 \centering
@@ -220,10 +218,10 @@ The wave loads applied to the floating wind turbine were based on the scatter di
  \noindent \cite{Lifes50+D1.1} states that there is no data on the correlation between the wind direction and the wave direction.
  \subsection{Current}
  \label{sec:current}
- According to \cite{Lifes50+D1.1}, the coast of Scotland is located on the UK Continental Shelf, so that it is directly affected by the oceanic circulations. However, the amount of water traveling from deep waters of the Atlantic sea to the shallower waters of the continental shelf is reduced due to the steepness of the slope of the shelf. Tidal currents are stronger and easier to predict than the non-tidal currents in the area. Winds, jets and density-driven currents affects the non-tidal currents strongly, and this may lead to large changes of the general current patterns for short periods. There are no specific data on the current conditions of West for Barra. However, according to \cite{dnvenviroment}, when detailed field measurements are missing, the current speed profile can be modelled with two components: wind generated current and tidal current. \newline
+ According to \cite{Lifes50+D1.1}, the coast of Scotland is located on the UK Continental Shelf, so that it is directly affected by the oceanic circulations. However, the amount of water traveling from deep waters of the Atlantic sea to the shallower waters of the continental shelf is reduced due to the steepness of the slope of the shelf. Tidal currents are stronger and easier to predict than the non-tidal currents in the area. Winds, jets, and density-driven currents affect the non-tidal currents strongly, and this may lead to large changes in the general current patterns for short periods. There are no specific data on the current conditions of West for Barra. However, according to \cite{dnvenviroment}, when detailed field measurements are missing, the current speed profile can be described with two components: wind-generated current and tidal current. \newline
   \newline
   \subsubsection{Wind Generated Current}
-  The wind induced current speed at still water level (z=0) can be calculated, if no statistical data is available, as:
+  The wind-induced current speed at still water level (z=0) can be calculated, if no statistical data is available, as:
   
   \begin{equation}
       V_{c,wind}(0)=k U_{1hour,10m}
@@ -239,13 +237,13 @@ $$V_{c,wind}(0)=0.881$$
       V_{c,wind}(z)= V_{c,wind}(0) \left( \frac{d_0+z}{d_0}\right)
   \end{equation}
   
-  \noindent Where $ V_{c,wind}(z)$ is the current speed at still water level, $d_0$ is the reference depth for wind generated current $d_0$=50m, and z is the distance from still water level, positive upwards. \newline
+  \noindent Where $ V_{c,wind}(z)$ is the current speed at still water level, $d_0$ is the reference depth for wind-generated current $d_0$=50m, and z is the distance from still water level, positive upwards. \newline
   \newline
   
 \subsubsection{Deep Water Current } 
  The data in this section is taken from \cite{hseenironmental} and reproduced by \cite{Lifes50+D1.1}.\newline
    \newline
-   The 50 year return period speed and directions for tidal current and storm surge current was found to be 0.44 m/s with North-East direction, and 0.6 m/s with North direction respectively. From this, the 1 year return period velocities could be calculated by a correction factor of 0.89. The combined velocity and direction was calculated as the vectorial sum.
+   The 50 year return period speed and directions for tidal current and storm surge current was found to be 0.44 m/s with North-East direction, and 0.6 m/s with North direction respectively. Subsequently, the 1 year return period velocities can be calculated by a correction factor of 0.89. The combined velocity and direction were calculated as the vectorial sum of the two components.
    
    
 \begin{table} [H]
@@ -274,7 +272,7 @@ Return Period & Tidal Current & Storm Surge Current & Combined Current \\
   \noindent Where $ V_{c,tide}(z)$ is the current speed at still water level, $d$ is the water depth to still water level (taken positive), and z is the distance from still water level, positive upwards, $\alpha$ is the exponent, typically $\alpha = \frac{1}{7}$
 
    \subsubsection{Current Speed Profile}
-  As a simplification, only three different weather conditions are considered: 
+  As a simplification, only three different weather conditions were considered: 
   \begin{itemize}
       \item Far: Wind direction and wind induced current direction is the same as wave direction
      \item Neutral: No wind, only tide and storm surge current
@@ -363,7 +361,7 @@ Depth [m] & Wind & Tidal and Surge & Total Current Profile \\
 \end{table} 
 
 \section{SN Fatigue Data}
-To estimate the life time of the power cable, the S-N curve in Figure \ref{fig:snplot} was used. 
+The S-N curve in Figure \ref{fig:snplot} was used to estimate the lifetime of the power cable. 
 
 \begin{figure}[H]
 \centering
