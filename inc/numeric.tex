@@ -17,7 +17,7 @@ This is based on the following principles:
 \end{itemize}
  \cite{moan2003}
 \subsection{Principle of Virtual Work}
-The element stiffness relationship can be derived based on virtual work (Galerkin's Method). This method assumes a displacement for each element so that the displacement is continuous between elements. The method can be generalized and used for all kinds of structural problems in all dimensions, \cite{moan2003}. The method gives an approximation rather than the exact solution. This is done by, on average, fulfilling the differential equations in the problem. By setting the internal work equal to the external work, it is assumed that the error from assuming the weight function in the external work is equal to the error in the internal work. If the weight functions are selected so that the boundary conditions are fulfilled appropriately, the error in the external work will cancel out. This means that the total error in the volume integration is zero on average, but at an arbitrary point, the equilibrium equation is not necessarily fulfilled. This is referred to as integrated equilibrium. The principle of virtual work in a body with deformed volume and surfaces in equilibrium:   
+The element stiffness relationship can be derived based on virtual work (Galerkin's Method). This method assumes a displacement for each element so that the displacement is continuous between elements. The method can be generalized and used for all kinds of structural problems in all dimensions, \cite{moan2003}. The method gives an approximation rather than the exact solution. This is done by, on average, fulfilling the differential Equations in the problem. By setting the internal work equal to the external work, it is assumed that the error from assuming the weight function in the external work is equal to the error in the internal work. If the weight functions are selected so that the boundary conditions are fulfilled appropriately, the error in the external work will cancel out. This means that the total error in the volume integration is zero on average, but at an arbitrary point, the equilibrium Equation is not necessarily fulfilled. This is referred to as integrated equilibrium. The principle of virtual work in a body with deformed volume and surfaces in equilibrium:   
 
 \begin{equation}
     \int_v (\rho \boldsymbol{\ddot{u}} - \boldsymbol{f}) \cdot \delta \boldsymbol{u}dV + \int_V \boldsymbol{\sigma}: \delta \epsilon dV - \int_S \boldsymbol{t} \cdot \delta \boldsymbol{u} dS =0
@@ -30,7 +30,7 @@ In BFLEX and SIMA RIFLEX(?) the stress tensor is given as:
 \begin{equation}
 \boldsymbol{S}=\frac{\rho_0}{\rho} \boldsymbol{F^{-1}} \cdot \boldsymbol{\sigma} \cdot \boldsymbol{F}
 \end{equation}
-Where $\rho_0$ is the density of the material in the initial configuration, and $\rho$ is the density of the material in the deformed configuration, $\boldsymbol{F}$ is the deformed gradient. In this case, strains are usually small so that $\boldsymbol{S}$ and $\boldsymbol{\sigma}$ can be treated equally. However, equation \ref{eq:virtual} need to be modified as change of are will affect pressure loads. The equation then becomes:
+Where $\rho_0$ is the density of the material in the initial configuration, and $\rho$ is the density of the material in the deformed configuration, $\boldsymbol{F}$ is the deformed gradient. In this case, strains are usually small so that $\boldsymbol{S}$ and $\boldsymbol{\sigma}$ can be treated equally. However, Equation \ref{eq:virtual} need to be modified as change of are will affect pressure loads. The Equation then becomes:
 
 \begin{equation}
     \int_v (\rho \boldsymbol{\ddot{u}} - \boldsymbol{f}) \cdot \delta \boldsymbol{u}dV_0 + \int_V \boldsymbol{\sigma}: \delta \epsilon dV_0 - \int_S \boldsymbol{t} \cdot \delta \boldsymbol{u} dS_0 -  \int_S \boldsymbol{p} \cdot \delta \boldsymbol{u}(1+\epsilon_{11} + \epsilon_{33})  dS_0 =0
@@ -117,14 +117,14 @@ When combining the two methods load is applied according to the Euler-Cauchy met
  \label{fig:combined}
 \end{figure}
 \section{Method for Dynamic Calculation}
-Dynamic analysis has to be considered when external loads are not applied in a very slow manner. Dynamic loads are different from static loads by implying a time dependent solution and by introducing inertia loads throughout the structure, and often also damping. The equilibrium equation for a dynamic system is stated by \cite{Langen1999} as:
+Dynamic analysis has to be considered when external loads are not applied in a very slow manner. Dynamic loads are different from static loads by implying a time dependent solution and by introducing inertia loads throughout the structure, and often also damping. The equilibrium Equation for a dynamic system is stated by \cite{Langen1999} as:
 
 \begin{equation}
   \boldsymbol{M \ddot{r}} + \boldsymbol{C \dot{r}} + \boldsymbol{Kr} =  \boldsymbol{Q}(t)
   \label{eq:eq}
 \end{equation}
 
-\noindent A variation of Equation \ref{eq:eq} is the semi-discrete global equation describing the instantaneous equation of motion of a non-linear system at time t. This relation is presented by \cite{Mathisen1990} as:
+\noindent A variation of Equation \ref{eq:eq} is the semi-discrete global Equation describing the instantaneous Equation of motion of a non-linear system at time t. This relation is presented by \cite{Mathisen1990} as:
 \begin{equation}
     \boldsymbol{R^I}+ \boldsymbol{R^D} + \boldsymbol{R^S}=\boldsymbol{R^E}
 \end{equation}
@@ -159,7 +159,7 @@ And the tangential damping matrix is:
 Where $\alpha_1$ and $\alpha_2$ are the damping coefficients for the Rayleigh damping and $C_d$ is the damping coefficient matrix for additional discrete nodal points.  
 \newline
 \newline 
-\noindent  The dynamic equilibrium equation is an initial value problem, meaning that start values determine the solution. Practical numerical integration methods use a step-by-step approach, where the time interval is divided into sub-intervals with step length h. Displacement, velocity, and acceleration are known for the beginning of the sub-interval, and the solution for the end of the sub-interval is calculated by assuming the variation of the acceleration over the time step. The computed value is used to determine the velocity and displacement across the time step, and they are the start values for the next sub-interval. This way, an approximated solution is calculated at instants along the time axis, and accuracy increases as h decreases, \cite{Langen1999}.
+\noindent  The dynamic equilibrium Equation is an initial value problem, meaning that start values determine the solution. Practical numerical integration methods use a step-by-step approach, where the time interval is divided into sub-intervals with step length h. Displacement, velocity, and acceleration are known for the beginning of the sub-interval, and the solution for the end of the sub-interval is calculated by assuming the variation of the acceleration over the time step. The computed value is used to determine the velocity and displacement across the time step, and they are the start values for the next sub-interval. This way, an approximated solution is calculated at instants along the time axis, and accuracy increases as h decreases, \cite{Langen1999}.
 \newline 
 \newline
  \noindent How the acceleration changes during a time step is suggested by several methods and can be explicit or implicit. A non-linear implicit method requires iteration at each time step to establish for each time step, while this is not necessary for an explicit method. Only the methods relevant to this master thesis are presented\newline
@@ -167,7 +167,7 @@ Where $\alpha_1$ and $\alpha_2$ are the damping coefficients for the Rayleigh da
 \noindent 
 \subsection{Newmark's $\boldsymbol{\beta}$ Family}
 \label{sec:newmark}
-Newmark-$\boldsymbol{\beta}$ is a family of numerical integration of the dynamic equilibrium equations. It can easily be derived from assuming a constant average acceleration over the time step. The following equations are taken from \cite{sintef2017} and \cite{Mathisen1990}: 
+Newmark-$\boldsymbol{\beta}$ is a family of numerical integration of the dynamic equilibrium Equations. It can easily be derived from assuming a constant average acceleration over the time step. The following Equations are taken from \cite{sintef2017} and \cite{Mathisen1990}: 
 \begin{equation}
    \boldsymbol{M_t \ddot{r}_{t+\Delta t}} + \boldsymbol{C_{T,t}\dot{r}_{t+\Delta t}} + \boldsymbol{R_{t+\Delta t}^S}=\boldsymbol{{R_{t+\Delta t}^E}}
    \label{eq:new}
@@ -180,7 +180,7 @@ Newmark-$\boldsymbol{\beta}$ is a family of numerical integration of the dynamic
 \end{equation}
 where  $\Delta \tau =\theta \Delta t, \leq 1.0$\newline
 \newline
-$\gamma$ and $\beta$ are parameters defining the change in acceleration, velocity and displacement vectors in time step $\Delta t$. \cite{Langen1999} explains that the equations are obtained from Taylor-series expansion.  Different values of these parameters give different methods in the Newmark-$\boldsymbol{\beta}$ family. $\gamma$ represents the numerical damping, taken from \cite{sintef2017}: 
+$\gamma$ and $\beta$ are parameters defining the change in acceleration, velocity and displacement vectors in time step $\Delta t$. \cite{Langen1999} explains that the Equations are obtained from Taylor-series expansion.  Different values of these parameters give different methods in the Newmark-$\boldsymbol{\beta}$ family. $\gamma$ represents the numerical damping, taken from \cite{sintef2017}: 
 \begin{itemize}
     \item $\gamma > \frac{1}{2}$: Positive numerical damping
     \item $\gamma < \frac{1}{2}$: Negative numerical damping
@@ -194,7 +194,7 @@ According to \cite{Mathisen1990}, the Newmark-$\boldsymbol{\beta}$ method may ha
 
 \subsection{Modified Hilber-Hughes-Taylor Method}
 \label{sec:HHT}
-The problem with accuracy when removing the higher modes can be fixed by using Hilber-Hughes-Taylor Method, often referred to as HHT-$\alpha$. The method maintains accuracy while introducing artificial damping of the higher modes. This is done through the modification of equation \ref{eq:new}. 
+The problem with accuracy when removing the higher modes can be fixed by using Hilber-Hughes-Taylor Method, often referred to as HHT-$\alpha$. The method maintains accuracy while introducing artificial damping of the higher modes. This is done through the modification of Equation \ref{eq:new}. 
 \begin{equation}
 \begin{split}
    \boldsymbol{M_t \ddot{r}_{t+\Delta t}} + (1+\alpha_H)\boldsymbol{C_{T,t}\dot{r}_{t+\Delta t}}  -\alpha_H\boldsymbol{C_{T,t}\dot{r}}_{n}+ (1+\alpha_H)\boldsymbol{R_{t+\Delta t}^S}-\alpha_H\boldsymbol{R_{t}^S}\\=(1+\alpha_H) \boldsymbol{R_{t+\Delta t}^E}-\alpha_H\boldsymbol{R_{t}^E}
@@ -211,7 +211,7 @@ The method is unconditionally stable when:
 \noindent The method is effectively suppressing high frequency and also retains second-order accuracy, \cite{Mathisen1990}.
 
 \section{Global Model in SIMA RIFLEX}
-SIMA RIFLEX is a computer program made for analyzing slender structures such as flexible risers and mooring lines developed by SINTEF Ocean. The Combined Method is used for the static calculation, and Newmark-$\boldsymbol{\beta}$ is used for dynamic analysis. These methods are described in section \ref{sec:combined} and \ref{sec:newmark} respectively. 
+SIMA RIFLEX is a computer program made for analyzing slender structures such as flexible risers and mooring lines developed by SINTEF Ocean. The Combined Method is used for the static calculation, and Newmark-$\boldsymbol{\beta}$ is used for dynamic analysis. These methods are described in Section \ref{sec:combined} and \ref{sec:newmark} respectively. 
 
 
 \subsection{Element Formulation}
@@ -289,11 +289,11 @@ Where $\boldsymbol{C^S}$ is the  internal structural damping matrix, $\boldsymbo
 In SIMA RIFLEX the water velocity and motion are decomposed into x,y and z, where x is in the longitudinal direction and y and z as the symmetry axes for the cross section.
 
 \section{Local Model in BFLEX }
-BFLEX is a computer program developed by Professor Svein Sævik. \cite{Bflextheory2013}  and \cite{Bflextheory2017} are used as a basis for this section.  The Newton-Raphson method, described in section \ref{sec:newton}, is used for calculations in the static analysis. While for the dynamic analysis, the modified HHT-$\alpha$ method described in section \ref{sec:HHT} is used.
+BFLEX is a computer program developed by Professor Svein Sævik. \cite{Bflextheory2013}  and \cite{Bflextheory2017} are used as a basis for this section.  The Newton-Raphson method, described in Section \ref{sec:newton}, is used for calculations in the static analysis. While for the dynamic analysis, the modified HHT-$\alpha$ method described in Section \ref{sec:HHT} is used.
 
 \subsection{Element Formulation}
-BFLEX also uses co-rotated ghost reference described in section \ref{sec:ghost}, 
-where small strains are assumed, but at the same time allowing large rigid body motions due to a 4 base vector system. \\\\By looking at equation \ref{eq:virtual} for an infinite small increment, $\Delta$, and only including static terms the following is obtained: 
+BFLEX also uses co-rotated ghost reference described in Section \ref{sec:ghost}, 
+where small strains are assumed, but at the same time allowing large rigid body motions due to a 4 base vector system. \\\\By looking at Equation \ref{eq:virtual} for an infinite small increment, $\Delta$, and only including static terms the following is obtained: 
  \begin{equation}
     \int_V \boldsymbol{C}: (\epsilon + \Delta \boldsymbol{E}) : \delta (\epsilon + \Delta \boldsymbol{E})dV_0 - \int_S (\boldsymbol{t} + \Delta \boldsymbol{t}) \cdot \delta \boldsymbol{u} dS_0 =0
 \end{equation}
@@ -419,11 +419,11 @@ HCONT463 was used to model contact between different layers in a cross-section. 
     \Delta \pi = \sum_{l=A}^B \Delta \bar{\pi}^{l} - \int_{S_c} (\lambda_n + \Delta \lambda_n) \cdot gds - \frac{1}{2 \alpha} \int_{S_c} \Delta \lambda_n^2 ds - \int_{S_c} \lambda_t \cdot \Delta \gamma ds - \frac{1}{2} \int_{Sc} \Delta \lambda_t \Delta \gamma ds
     \label{eq:energy}
 \end{equation}
-where $\Delta \bar{\pi}^{l}$ is the incremental potential of the bodies of A and B, $\lambda_t$ is the shear stress, $\lambda_n$ is can be found from equation \ref{eq:contact}, $\alpha$ is a scaling parameter related ot the surface stiffness. \\\\ To fulfill equilibrium for the two bodies on the time interva $[t,t+\Delta t]$ it is necessary that:
+where $\Delta \bar{\pi}^{l}$ is the incremental potential of the bodies of A and B, $\lambda_t$ is the shear stress, $\lambda_n$ is can be found from Equation \ref{eq:contact}, $\alpha$ is a scaling parameter related ot the surface stiffness. \\\\ To fulfill equilibrium for the two bodies on the time interva $[t,t+\Delta t]$ it is necessary that:
 \begin{equation}
     \delta \Delta \pi =0
 \end{equation}
-In addition to the traditional Euler equations and boundary conditions the following constraint condition is recovered: 
+In addition to the traditional Euler Equations and boundary conditions the following constraint condition is recovered: 
 \begin{equation}
     (\Delta \boldsymbol{u_B} - \Delta \boldsymbol{u_A}) \cdot \boldsymbol{n} + g_0=\frac{\Dela \lambda_n}{\alpha}
     \label{eq:contact}
