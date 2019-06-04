@@ -8,7 +8,7 @@ The OO-Star from Dr. Techn. Olav Olsen, and Lifes50+was chosen as the basis for 
 West of Barra was chosen as the location for the study, due to its deep water and challenging weather conditions. However, as the work was carried out, the wave conditions proved to be slightly too challenging, as some wave periods coincided with severe resonance in the transfer functions. The most extreme sea state observations were moved to lower Tps in the scatter diagram while maintaining the total number of observations. The relevant extreme sea states had low occurrence, and consequently, a small impact on the total fatigue life. In retrospect, other less extreme locations could have been considered.
 \subsection{Cable}
 \label{sec:disccable}
-The cable cross section was based on guidance from Professor Svein Sævik, who has extensive experience in the field. Another approach could have been to contact a subsea cable manufacturer and adopt one of their designs.  However, the majority of dynamic power cables are designed specifically for its use, and standardized models are rare. The cable proved to be slightly too lightweight and exhibited a large response to the vessel motions. 6 $\frac{kg}{m}$ of lead was added to the cross section to increase the cable inertia, but double armoring could have been included in the cross-section. The price of steel would have had to be taken into consideration for such a discussion.
+The cable cross-section was based on guidance from Professor Svein Sævik, who has extensive experience in the field. Another approach could have been to contact a subsea cable manufacturer and adopt one of their designs.  However, the majority of dynamic power cables are designed specifically for its use, and standardized models are rare. The cable proved to be slightly too lightweight and exhibited a large response to the vessel motions. 6 $\frac{kg}{m}$ of lead was added to the cross-section to increase the cable inertia, but double armoring could have been included in the cross-section. The price of steel would have had to be taken into consideration for such a discussion.
 \section{Discussion of Modeling Methodology}
 \subsection{Global Model}
  The global model was modeled in SIMA RIFLEX, and consisted of the whole dynamic part of the cable. The transfer functions provided by Dr. Techn. Olav Olsen induced the appropriate vessel motions at the cable hangoff. The main design criteria were no compression and maximum curvature not to be exceeded in the cable.  The cable was modeled with the lazy wave configuration, which usually implies a thether to ensure a stable touchdown. Nonetheless, the area of interest was the upper segment of the cable, and a thether was not included in the model. Moreover, the cable configuration could probably be optimized further. As the focus of the thesis was to investigate the contact mechanisms in the cable cross-section, the weather conditions were simplified only to contain 3 possible wind conditions and corresponding vessel positions. 
@@ -18,13 +18,13 @@ The cable cross section was based on guidance from Professor Svein Sævik, who h
 Due to the assumption of critical fatigue location, the local model only included the upper segment of the cable, including a bend stiffener. The bend stiffener served its purpose for most of the load cases, but the sudden increase in curvature in Figure \ref{fig:bendstiff} indicates a small optimization potential. Also, Figures \ref{fig:c14} and \ref{fig:c15}  show that the curvature at the termination of the cable is not equal to zero, suggesting that the bend stiffener performs inadequately for these load cases.   The helical layers of the conductors were not modeled, but included by the analytical model. Several friction models used to describe the contact between the layers could have been explored more, and alternative models could have been considered.
 
 \section{Discussion of Analyses Methodology}
-The local analysis was performed with 15 different load cases generated from the global analysis. Expanding the number of load cases would have increased the accuracy of the results, though at the cost of computation time. Due to the nature of the boundary conditions of the local model, the angle ranges from the global analyses had to be corrected as described in Section \ref{sec:localmodel}. The relationship between the applied angle and the total angle proved to linear with a close to perfect fit. As the original angle range classes from the Rainflow Counting was rearranged based on damage, many of the angle ranges are very close in magnitude as can be seen in Table \ref{table:angleclass}. The results are thus sensitive to small changes, and a slightly different linear relationship could have yielded significantly different results. \\\\ The angle was chosen as the master over the tension. Initially, the plan was to determine the max and min tension for each angle range class from the sea states that contributed to the angle range class. However, this proved to be difficult due to the nature of the Rainflow counting algorithm in Python. Instead, a simple but conservative approach was adopted. It was assumed that the maximum tension occurred at the maximum angle, minimum tension occurred at the minimum angle, and linear interpolation was used to find the corresponding tension to each angle.\\\\ Max tension was used in Equation \ref{eq:stressvariation2} when the analytical model calculated stress range on wire level, to grant a conservative procedure. Additionally, a sensitivity study was conducted to investigate the effect on fatigue life if mean or min tension would have been used (see Section \ref{sec:min}). \\\\ The cable was covered with an outer sheath, and thus cannot be inspected for crack initiation once in service. Consequently, High Safety Class was chosen for the design safety factor. 
+The local analysis was performed with 15 different load cases generated from the global analysis. Expanding the number of load cases would have increased the accuracy of the results, though at the cost of computation time. Due to the nature of the boundary conditions of the local model, the angle ranges from the global analyses had to be corrected as described in Section \ref{sec:localmodel}. The relationship between the applied angle and the total angle proved to linear with a close to perfect fit. As the original angle range classes from the Rainflow Counting was rearranged based on damage, many of the angle ranges are very close in magnitude as can be seen in Table \ref{table:angleclass}. The results are thus sensitive to small changes, and a slightly different linear relationship could have yielded significantly different results. \\\\ The angle was chosen as the master over the tension. Initially, the plan was to determine the maximum and minimumtension for each angle range class from the sea states that contributed to the angle range class. However, this proved to be difficult due to the nature of the Rainflow Counting algorithm in Python. Instead, a simple but conservative approach was adopted. It was assumed that the maximum tension occurred at the maximum angle, minimum tension occurred at the minimum angle, and linear interpolation was used to find the corresponding tension to each angle.\\\\ Maximum tension was used in Equation \ref{eq:stressvariation2} when the analytical model calculated stress range on wire level, to grant a conservative procedure. Additionally, a sensitivity study was conducted to investigate the effect on fatigue life if mean or minimumtension would have been used (see Section \ref{sec:min}). \\\\ The cable was covered with an outer sheath, and thus cannot be inspected for crack initiation once in service. Consequently, High Safety Class was chosen for the design safety factor. 
 
 \section{Results and Discussion of Results}
 In this section, the estimated fatigue life of the power cable is presented. The section also contains the results from the sensitivity studies and the study of the friction mechanisms and their influence upon fatigue life. The results displayed in the tables of this section are mean stress corrected according to Söderberg correction, and calculated with DFF=10.0.\\\\
 \subsection{Fatigue Life of Dynamic Power Cable}
-The fatigue life was calculated at two points on the dynamic power cable; max curvature range and max tension range. The results are displayed in Tables \ref{table:fatlay2} to \ref{table:fatlaytens3}.
-\subsubsection{Fatigue Life at Point With Max Curvature Range}
+The fatigue life was calculated at two points on the dynamic power cable; maximum curvature range and maximum tension range. The results are displayed in Tables \ref{table:fatlay2} to \ref{table:fatlaytens3}.
+\subsubsection{Fatigue Life at Point With Maximum Curvature Range}
 \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|c|c|c|}
@@ -61,7 +61,7 @@ Case nr & Cycles ($n_i$) pr year & $\Delta \sigma$ [MPa]& Cycles to failure ($N_
 \multicolumn{1}{c}{640.28 years} \\
 \specialrule{.2em}{.1em}{.1em} 
 \end{tabular}
-\caption{Fatigue life calculations for innermost layer at max curvature range}
+\caption{Fatigue life calculations for innermost layer at maximum curvature range}
 \label{table:fatlay2}
 \end{table} 
 
@@ -102,11 +102,11 @@ Case nr & Cycles ($n_i$) pr year & $\Delta \sigma$ [MPa]& Cycles to failure ($N_
 \multicolumn{1}{c}{1657.03 years} \\
 \specialrule{.2em}{.1em}{.1em} 
 \end{tabular}
-\caption{Fatigue life calculations for outer layer at max curvature range}
+\caption{Fatigue life calculations for outer layer at maximum curvature range}
 \label{table:fatlay3}
 \end{table} 
 
-\subsubsection{Fatigue Life at Point with Max Tension Range}
+\subsubsection{Fatigue Life at Point with Maimum Tension Range}
 \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|c|c|c|}
@@ -143,7 +143,7 @@ Case nr & Cycles ($n_i$) pr year & $\Delta \sigma$ [MPa]& Cycles to failure ($N_
 \multicolumn{1}{c}{462.31 years} \\
 \specialrule{.2em}{.1em}{.1em} 
 \end{tabular}
-\caption{Fatigue life calculations for innermost layer at location with max tension range}
+\caption{Fatigue life calculations for innermost layer at location with maximum tension range}
 \label{table:fatlaytens2}
 \end{table} 
 
@@ -184,16 +184,16 @@ Case nr & Cycles ($n_i$) pr year & $\Delta \sigma$ [MPa]& Cycles to failure ($N_
 \multicolumn{1}{c}{2478.20 years} \\
 \specialrule{.2em}{.1em}{.1em} 
 \end{tabular}
-\caption{Fatigue life calculations for the outer layer at the location with max tension}
+\caption{Fatigue life calculations for the outer layer at the location with maximum tension}
 \label{table:fatlaytens3}
 \end{table}
-The fatigue life calculations displayed in Tables \ref{table:fatlay2} to \ref{table:fatlaytens3} show that fatigue damage is more severe at the point with max tension range, as this point exhibits the shortest fatigue life. The fatigue life of the dynamic power cable was thus estimated to be 267.37 years. The inner layer prove to be the critical layer for both points of the conductor, indicating that local effects govern fatigue life.\\\\
+The fatigue life calculations displayed in Tables \ref{table:fatlay2} to \ref{table:fatlaytens3} show that fatigue damage is more severe at the point with maximum tension range, as this point exhibits the shortest fatigue life. The fatigue life of the dynamic power cable was thus estimated to be 267.37 years. The inner layer prove to be the critical layer for both points of the conductor, indicating that local effects govern fatigue life.\\\\
 The mean stress corrections, according to the Söderberg Assumption, was the most conservative choice. The exponent in the SN-curve was high as  m=8.424, making the results sensitive to correction.   
 
 \subsection{Results from Sensitivity Studies and Study of Friction Mechanisms}
 In this section, the results from the sensitivity study and the studies of the contact mechanisms are presented. 
 \subsubsection{Study of sensitivity by using Mean and Minimum Tension in Equation \ref{eq:stressvariation2}}
-When using minimum, mean and max tension for T in Equation \ref{eq:stressvariation2}, the fatigue life increased as shown in Table \ref{table:maxmin}
+When using minimum, mean and maximum tension for T in Equation \ref{eq:stressvariation2}, the fatigue life increased as shown in Table \ref{table:maxmin}
 
 \begin{table} [H]
 \centering
@@ -202,15 +202,15 @@ When using minimum, mean and max tension for T in Equation \ref{eq:stressvariati
 Tension level & Fatigue life [yrs] & Fatigue life before mean stress correction [yrs]\\ 
  \hline
  \hline
-    Max tension & 267.37 & 640.28 \\ 
+    Maximum tension & 267.37 & 640.28 \\ 
     Mean tension & 412.32 & 980.66 \\ 
-    Min tension & 837.24 & 2228.80 \\ 
+    Minimum tension & 837.24 & 2228.80 \\ 
     \hline
 \end{tabular}
-\caption{Fatigue life with max, mean and min tension used in Equation \ref{eq:stressvariation2}.}
+\caption{Fatigue life with max, mean and minimumtension used in Equation \ref{eq:stressvariation2}.}
 \label{table:maxmin}
 \end{table} 
-Table \ref{table:maxmin} show the increase in fatigue life, when applying the less concervative approaces for tension in Equation \ref{eq:stressvariation2} in the analytical model. Compared to the original approach, using maximum tension, the tension roughly doubles and quadruples with mean tension and minimum tension respectively. The importance of using max tension in the analytical model is hence not negligible. 
+Table \ref{table:maxmin} show the increase in fatigue life, when applying the less concervative approaces for tension in Equation \ref{eq:stressvariation2} in the analytical model. Compared to the original approach, using maximum tension, the tension roughly doubles and quadruples with mean tension and minimum tension respectively. The importance of using maximum tension in the analytical model is hence not negligible. 
  
 \subsubsection{Study of effect of contact between conductors}
 The results from the study of the effect of contact between the conductors are shown in Table \ref{table:fatlaycond2} and Table \ref{table:fatlaycond3}.

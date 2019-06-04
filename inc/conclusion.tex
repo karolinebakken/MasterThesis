@@ -2,7 +2,7 @@
 \label{chap:conclusion}
 \section{Conclusion}
 This study was carried out to determine the fatigue life of a dynamic power cable applied in offshore wind farms, as well as obtaining insights into the contact mechanisms of the cable cross-section. Dr. Techn. Olav Olsen's design OO-Star, at West of Barra Scotland, was chosen as a basis for a case study. SIMA RIFLEX was used to build a global model that included the whole dynamic part of the power cable.  As the focus of the study was to examine local effects in the cross-section rather than complete a full fatigue analysis, several simplifications were done in terms of the possible displacements of the floating wind turbine. \\\\The upper part of the power cable was modeled in a local model in Bflex, with the different layers and components of the cable cross-section, and also a bend stiffener. Contact between layers was modeled by contact elements, yielding a complex stress model situation.\\\\
-The global analyses were performed by exposing the global model to 160 sea states with one hour record length from the scatter diagram. The angle between the vessel and the cable and the tension in the upper element were converted into time series and counted by the Rainflow counting algorithm. The cycle counts and angle range classes were rearranged into 15 cases with dynamic angles and corresponding tensions. Each dynamic angle and tension pair was applied to the local model for one full cycle. Then, an analytical model was applied to calculate the stress range on wire level, from the results obtained by the local analysis. By the use of an SN-curve and the Miner Palmgren summation concept, the fatigue life was calculated at two separate points of the conductor by applying a safety factor 10 in the calculations. The results were mean stress corrected by the Söderberg correction. Studies were also performed to investigate the sensitivity to contact mechanisms of the cross section.
+The global analyses were performed by exposing the global model to 160 sea states with one hour record length from the scatter diagram. The angle between the vessel and the cable and the tension in the upper element were converted into time series and counted by the Rainflow Counting algorithm. The cycle counts and angle range classes were rearranged into 15 cases with dynamic angles and corresponding tensions. Each dynamic angle and tension pair was applied to the local model for one full cycle. Then, an analytical model was applied to calculate the stress range on wire level, from the results obtained by the local analysis. By the use of an SN-curve and the Miner Palmgren summation concept, the fatigue life was calculated at two separate points of the conductor by applying a safety factor 10 in the calculations. The results were mean stress corrected by the Söderberg correction. Studies were also performed to investigate the sensitivity to contact mechanisms of the cross-section.
 \\\\The main findings in this study are summarized in Table \ref{table:mainfind}:
 
 \begin{table} [H]
@@ -31,7 +31,7 @@ where:
 Furthermore:
 \begin{itemize}
 \item All failures occurred in the inner layer, suggesting that the fatigue life of the copper conductor is governed by local friction effect in the cross-section.
-    \item The fatigue life of the dynamic power cable was calculated to be 267.37 years at the point of the conductor having the highest tension range. The point on the conductor with max curvature range, on the other hand, exhibited more than 1.5 times the fatigue life in comparison.
+    \item The fatigue life of the dynamic power cable was calculated to be 267.37 years at the point of the conductor having the highest tension range. The point on the conductor with maximum curvature range, on the other hand, exhibited more than 1.5 times the fatigue life in comparison.
     \item Excluding the effect of contact between conductors increased the fatigue life roughly by a factor of 5. It was also found that the effect of contact between the conductors contributed to almost half of the tension range. 
     \item Excluding the effect of friction between layers also increased the fatigue life with roughly 5 times
 \end{itemize}
@@ -40,11 +40,11 @@ These findings suggest that in general the local effects in the cable cross-sect
 \section{Further Work}
 The topic of fatigue in dynamic power cables applied in offshore wind farms is not adequately studied yet, and thus, there are many possible approaches for further work. A number of possible future studies using the same numerical set up are apparent: 
 \begin{itemize}
-    \item Future trials need to be done to establish a statistical foundation to determine the true effect of excluding contact mechanisms in the cross sections of dynamic power cables.  
+    \item Future trials need to be done to establish a statistical foundation to determine the true effect of excluding contact mechanisms in the cross-sections of dynamic power cables.  
     \item A natural extension of this work is to perform the same modeling and analysis procedure as used in this project with other case scenarios. With the Lifes50+ project as a basis, several combinations of location and support structure designs could be analyzed, and fatigue lives could be estimated. The results could then be used to optimize designs of support structures in terms of power cable fatigue life.  
     \item The global model can be expanded by introducing more complex weather conditions and fewer restrictions on displacement. The advancement of the global model would allow for a more accurate cycle count and fatigue analysis.  
     \item It would be interesting to assess the effects of double armoring layers. This would increase the inertia of the cable, and thus reduce its motions.
-    \item Studies of optimization of cable configuration and cross sections in terms of fatigue life could also be conducted. 
+    \item Studies of optimization of cable configuration and cross-sections in terms of fatigue life could also be conducted. 
 \end{itemize}
 
   

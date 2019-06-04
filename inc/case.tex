@@ -39,28 +39,27 @@ The support structure is a semi-submersible consisting of one column in the cent
 \caption[$\; \:$Main dimensions of OO-Star]{Main dimensions of OO-Star, \cite{Lifes50+D4.2} }
  \label{fig:designoostar}
 \end{figure}
-
+\\\\
 \subsection{Wind Turbine Floater Motions}
-To reproduce the motion of OO-Star, Dr. Techn. Olav Olsen have provided the transfer functions for all 6 degrees of freedom of the vessel. The transfer functions apply for the center of the model, but the cable was attached some distance from the center of gravity as can be seen in Figure \ref{fig:cabhang}. The distance between the center and the cable hang off was 9.24m, and was accounted for in the modeling process. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=1.2]{figures/cabhang}
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \vskip -1.0 cm 
+    \centering
+    \includegraphics[scale=1.2]{figures/cabhang}
 \caption[$\; \:$Cable hang off position]{Cable hang off position, modified from \cite{Lifes50+D4.2}}
  \label{fig:cabhang}
-\end{figure}
- \noindent The transfer functions of OO-Star are confidential and can not be reproduced in this report. 
+\end{wrapfigure}
+To reproduce the motion of OO-Star, Dr. Techn. Olav Olsen have provided the transfer functions for all 6 degrees of freedom of the vessel. The transfer functions apply for the center of the model, but the cable was attached some distance from the center of gravity as can be seen in Figure \ref{fig:cabhang}. The distance between the center and the cable hang off was 9.24m, and was accounted for in the modeling process. The transfer functions of OO-Star are confidential and can not be reproduced in this report. 
  
 \section{Power Cable}
  The power cable used in this master thesis had three-phase AC circuits placed in one cable. The choice of power cable cross-section was based on guidance from Professor Svein Sævik. 
 
-\subsection{Cable Cross Section}
- An illustration of the model cross section is shown in Figure \ref{fig:cross2}. 
+\subsection{Cable Cross-section}
+ An illustration of the model cross-section is shown in Figure \ref{fig:cross2}. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.9]{figures/cross2}
-\caption[$\; \:$Cable cross section in local model]{Illustration of cable cross section in local model}
+\caption[$\; \:$Cable cross-section]{Illustration of cable cross-section}
  \label{fig:cross2}
 \end{figure}
 
@@ -82,7 +81,7 @@ To reproduce the motion of OO-Star, Dr. Techn. Olav Olsen have provided the tran
    r_{ct} = r_c (\tan(60)-\tan(30)-1)
 \end{equation}
 
- \noindent Where $r_{ct}$ is the radius of the core and $r_c$ is the radius of the conductor.
+ \noindent Where $r_{ct}$ is the radius of the center tube and $r_c$ is the radius of the conductor.
 
  \begin{equation}
    r_{s} = r_c (1+\tan(60)-\tan(30))
@@ -90,7 +89,7 @@ To reproduce the motion of OO-Star, Dr. Techn. Olav Olsen have provided the tran
  
   \noindent Where $r_{s}$ is the radius of the sheath around the conductors and $r_c$ is the radius of the conductor. \newline
   \newline 
-  \noindent The dimensions of the cable cross-section are given in Table \ref{table:cabledim}, and were determined in agreement with Professor Svein Sævik.  
+  \noindent The dimensions of the cable cross-section are given in Table \ref{table:cabledim}.  
 
 
 \begin{table} [H]
@@ -194,7 +193,7 @@ Table \ref{table:wind} shows the ten minute mean wind speed profile at different
  \label{fig:scatterwind}
 \end{figure}
  
- \noindent The max annual wind speed at 10 m above sea surface with 1-year return period is calculated by \cite{Lifes50+D1.1} to be  29.36 $\frac{m}{s}$
+ \noindent The maximum annual wind speed at 10 m above sea surface with 1-year return period is calculated by \cite{Lifes50+D1.1} to be  29.36 $\frac{m}{s}$
 
 \subsection{Wave Climate}
 The wave loads applied to the floating wind turbine were based on the scatter diagram for West of Barra. Due to the nature of the transfer functions,  resonance occurred in several of the analyses and modifications to the scatter diagram were inevitable to enable the study. To avoid the area of severe resonance, an thus extreme response for the wind floater, the sea states for the periods 16 -17, 17-18 seconds and 18-19 seconds were moved to the 15-16 seconds column, and thus maintaining the total number of observations. The original and modified scatter diagrams can be seen in Figures \ref{fig:scato} and \ref{fig:scatn}.
@@ -202,14 +201,14 @@ The wave loads applied to the floating wind turbine were based on the scatter di
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{figures/scatteroriginal}
-\caption[$\; \:$Original scatter diagram]{Original scatter diagram,\cite{Lifes50+D1.1} }
+\caption[$\; \:$Original wave scatter diagram]{Original wave scatter diagram,\cite{Lifes50+D1.1} }
  \label{fig:scato}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{figures/scatternew}
-\caption[$\; \:$Modified scatter diagram ]{Modified scatter diagram  }
+\caption[$\; \:$Modified wave scatter diagram ]{Modified wave scatter diagram  }
  \label{fig:scatn}
 \end{figure}
  
@@ -300,7 +299,7 @@ Depth [m] & Wind & Tidal and Surge & Total Current Profile \\
  -100 & 0.0 \hspace{0.7cm} - & 0.0 \hspace{0.7cm} -  & 0.0 \hspace{1.15cm} - \\ 
  \hline
 \end{tabular}
-\caption{Current Speed and Direction Profile for Near wind condition, partly from \cite{Lifes50+D1.1}}
+\caption{Current Speed and Direction Profile for near wind condition, partly from \cite{Lifes50+D1.1}}
 \label{table:tidcurnear}
 \end{table}   
 
@@ -354,7 +353,7 @@ Depth [m] & Wind & Tidal and Surge & Total Current Profile \\
  -100 & 0.0 \hspace{0.7cm} - & 0.0 \hspace{0.7cm} -  & 0.0 \hspace{1.15cm} - \\ 
  \hline
 \end{tabular}
-\caption{Current Speed and Direction Profile for Far wind condition, partly from \cite{Lifes50+D1.1}}
+\caption{Current Speed and Direction Profile for far wind condition, partly from \cite{Lifes50+D1.1}}
 \label{table:tidcurfar}
 \end{table} 
 
@@ -364,7 +363,7 @@ The S-N curve in Figure \ref{fig:snplot} was used to estimate the lifetime of th
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{figures/SNplot}
-\caption[$\; \:$S-N data]{S-N data for case scenario, \cite{s300} }
+\caption[$\; \:$S-N data for case scenario]{S-N data for case scenario, \cite{s300} }
  \label{fig:snplot}
 \end{figure}
 \noindent The blue S-N curve follows the log-linear relationship of Equation \ref{eq:sn}, with m=8.424 and c=2.88e25  according to \cite{Nasution2013}. The red plot is the S-N curve with two standard deviations subtracted, and was used in this study. The constants of the red plot are m=8.424 and c=1.57e25. 

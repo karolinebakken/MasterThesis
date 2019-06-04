@@ -5,7 +5,7 @@ In the case of a floating wind turbine, environmental loads that work on the mod
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.75]{figures/box}
-\caption[$\; \:$Flowchart of how waves can give fatigue damage in floating structure]{Flowchart of how waves can give fatigue damage in floating structure}
+\caption[$\; \:$Flowchart of how waves can give fatigue damage in floating structures]{Flowchart of how waves can give fatigue damage in floating structures}
  \label{fig:flowchart}
 \end{figure}
 
@@ -88,14 +88,14 @@ In Figure \ref{fig:fatigue}, some basic concepts are defined.
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.6]{figures/cycle}
-\caption[$\; \:$Example of fatigue load history]{Example of fatigue load history, reproduced from  \cite{fatigue2016} }
+\caption[$\; \:$Example of a fatigue load history]{Example of a fatigue load history, reproduced from  \cite{fatigue2016} }
  \label{fig:fatigue}
 \end{figure}
 
 From Figure \ref{fig:fatigue}, it can be seen that:
 \begin{itemize}
-    \item $\sigma_{max}$ -  Max stress/strain in a cycle
-    \item $\sigma_{min}$ -  Min stress/strain in a cycle
+    \item $\sigma_{max}$ -  Maximum stress/strain in a cycle
+    \item $\sigma_{min}$ -  Minimum stress/strain in a cycle
     \item $\sigma_{m}$ - Mean stress/strain in a cycle
 \end{itemize}
 
@@ -114,18 +114,17 @@ Fatigue data can be described in an SN diagram where stress or strain range is p
     N(\Delta \sigma)^m = \text{c}
     \label{eq:sn}
 \end{equation}
-\noindernt Where N is the number of cycles before failure, $\Delta S$ is the stress range, m is an exponent and c is a constant. \cite{dnvfatigue} elaborates that by subtracting two standards deviations, the SN-curve represents 97.6\% of survival. \newline
-\newline
-For the low cycle fatigue, the material undergoes plastic deformation. For marine structure applications, the stress is usually in the high cycle fatigue range. If the stress range is sufficiently low, fatigue life can approach "infinite". A stress range of this nature is called the fatigue limit and only applies in non-corrosive environments. 
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=1]{figures/sn}
-\caption[$\; \:$Example of SN curve]{Example of SN curve, \cite{fatigue2016} }
+\begin{wrapfigure}{r}{0.6\textwidth}
+    \vskip -1.0 cm 
+    \centering
+    \includegraphics[scale=1]{figures/sn}
+\caption[$\; \:$Example of an SN curve]{Example of an SN curve, \cite{fatigue2016} }
  \label{fig:sn}
-\end{figure}
+\end{wrapfigure}
 
- \noindent The damage done by one cycle is usually close to insignificant, and undetectable by instruments. Failure due to fatigue is a result of the cumulative damage induced by the cyclic loading. For marine structures, load from waves, current, motions, and vortex-induced vibrations may cause severe damage. Fatigue damage can be divided into three stages:
+Where N is the number of cycles before failure, $\Delta \sigma$ is the stress range, m is an exponent and c is a constant. \cite{dnvfatigue} elaborates that by subtracting two standards deviations, the SN-curve represents 97.6\% of survival. \newline
+\newline
+For the low cycle fatigue, the material undergoes plastic deformation. For marine structure applications, the stress is usually in the high cycle fatigue range. If the stress range is sufficiently low, fatigue life can approach "infinite". A stress range of this nature is called the fatigue limit and only applies in non-corrosive environments. \\\\ The damage done by one cycle is usually close to insignificant, and undetectable by instruments. Failure due to fatigue is a result of the cumulative damage induced by the cyclic loading. For marine structures, load from waves, current, motions, and vortex-induced vibrations may cause severe damage. Fatigue damage can be divided into three stages:
  \begin{itemize}
      \item Crack initiation, $N_i$
      \item Crack growth, $N_g$
@@ -156,28 +155,23 @@ In Figure \ref{fig:irr}, a few concepts of irregular loading are defined:
     \item Bandwidth - Ratio of mean crossings with positive slopes to the number of peaks or valleys. 
 \end{itemize}
  
-\subsection{Rainflow counting}
+\subsection{Rainflow Counting}
 \label{sec:rainflow}
-There are several ways of counting cycles, and Rainflow counting is one of them. The name of this method stems from the thought of rain falling on the roof of a pagoda (Chinese architecture). In this procedure, the reversals are counted in accordance with the stress-strain response. The procedure can be seen in Figure \ref{fig:count}, where the cycle from 2-3-2' does not affect the rest of the stress-strain cycle. Each time a loop is completed, a cycle count is made, so that the counting of the cycles reflects the response of the material. The fatigue damage caused by a closed loop in the irregular amplitude loading is, according to this counting method, the same as one cycle in a constant amplitude test. Half cycles cannot be paired up with other half cycles, so the damage they do on the structure is not counted in this method. However, in a realistic case, there are few half cycles. Due to its versatility, the Rainflow method is considered superior to other counting methods. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.7]{figures/count}
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \vskip -1.0 cm 
+    \centering
+    \includegraphics[scale=0.6]{figures/count}
 \caption[$\; \:$Cyclic load and stress-strain response]{(a) Cyclic load, (b) Stress-strain response,   \cite{fatigue2016} }
  \label{fig:count}
-\end{figure}
-
-\noindent Figure \ref{fig:pagoda} shows the Rainflow counting method method:\newline 
-\newline
-Begin at the first valley. If the next valley is deeper or equal to the first one, the rainflow stops here and a cycle is counted, (see point 5 in Figure \ref{fig:pagoda}). If the valley is not deeper than the first one, the flow proceeds to the next valley, (see point 3 in Figure \ref{fig:pagoda}). The rain-flow is also considered to stop if it meets another flow from above, (see point 2' in Figure \ref{fig:pagoda}) When one rainflow has stopped, proceed to the next valley and repeat the procedure. After completion of counting of valleys, the same procedure is performed on the peaks. The results from the rainflow counting can be gathered in a histogram that easily shows the number of cycles for different classes. 
-
-\begin{figure}[H]
+\end{wrapfigure}
+There are several ways of counting cycles, and Rainflow Counting is one of them. The name of this method stems from the thought of rain falling on the roof of a pagoda (Chinese architecture). In this procedure, the reversals are counted in accordance with the stress-strain response. The procedure can be seen in Figure \ref{fig:count}, where the cycle from 2-3-2' does not affect the rest of the stress-strain cycle. Each time a loop is completed, a cycle count is made, so that the counting of the cycles reflects the response of the material. The fatigue damage caused by a closed loop in the irregular amplitude loading is, according to this counting method, the same as one cycle in a constant amplitude test. Half cycles cannot be paired up with other half cycles, so the damage they do on the structure is not counted in this method. However, in a realistic case, there are few half cycles. Due to its versatility, the Rainflow method is considered superior to other counting methods. \\\\
+The Rainflow Counting algorithm is illustrated in \ref{fig:pagoda}. Begin at the first valley. If the next valley is deeper or equal to the first one, the rainflow stops here and a cycle is counted, (see point 5 in Figure \ref{fig:pagoda}). If the valley is not deeper than the first one, the flow proceeds to the next valley, (see point 3 in Figure \ref{fig:pagoda}). The rain-flow is also considered to stop if it meets another flow from above, (see point 2' in Figure \ref{fig:pagoda}) When one rainflow has stopped, proceed to the next valley and repeat the procedure. After completion of counting of valleys, the same procedure is performed on the peaks. The results from the Rainflow Counting can be gathered in a histogram that easily shows the number of cycles for different classes. \begin{figure}[H]
 \centering
 \includegraphics[scale=0.9]{figures/pagoda}
-\caption[$\; \:$Rainflow counting]{Rainflow counting with illustration of the Chinese pagoda origin,   \cite{fatigue2016} }
+\caption[$\; \:$Rainflow Counting]{Rainflow Counting with illustration of the Chinese pagoda origin,   \cite{fatigue2016} }
  \label{fig:pagoda}
 \end{figure}
-\noindent In this master thesis, rainflow counting was utilized by using a module in Pyhton called rainflow.py. According to \cite{rf}, the module implements ASTM E1049-85 rainflow cycle counting
+\noindent In this master thesis, Rainflow Counting was utilized by using a module in Pyhton called rainflow.py. According to \cite{rf}, the module implements ASTM E1049-85 rainflow cycle counting
 algorithm, and is meant for fatigue analyses. The function rainflow.count\_cycles takes in a 1D array of numbers and returns a sorted list of the load ranges and the corresponding
 number of cycles.
 
@@ -193,7 +187,7 @@ According to \cite{riserfat}, the fatigue criterion which shall be satisfied is 
 \begin{equation}
     D \cdot \text{DFF} \leq 1.0
 \end{equation}
-Where D is the accumulated damage and DFF is the Design Safety Factor.\\\\ Table \ref{table:dff} show the different Design Safety factors recommended by \cite{riserfat}. 
+Where D is the accumulated damage and DFF is the Design Fatigue Factor.\\\\ Table \ref{table:dff} show the different Design Fatigue Factors recommended by \cite{riserfat}. 
 
 \begin{table} [H]
 \centering
@@ -218,6 +212,13 @@ According to \cite{Savik2016}, fatigue tests of steel or copper wires are often 
 \end{equation}
 A Haigh diagram gives the relationship between the stress range ($\Delta \sigma$) and the mean stress ($\bar{\sigma}$).  Fatigue tests at given R-ratios form a straight line in the Haigh diagram, as illustrated in Figure \ref{fig:gerber}. To remedy the limitation that  SN curves are only available for a certain R-ratio, Goodman, Gerber or Söderberg assumptions can be employed to transform between different mean stresses. They are described by the following expressions:\newline
 \newline
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \vskip -1.0 cm 
+    \centering
+   \includegraphics[scale=0.8]{figures/soder.PNG}
+\caption[$\; \:$Goodman, Gerber and Söderberg relations]{Goodman, Gerber and Söderberg relations, adapted from \cite{fatiguehand} }
+ \label{fig:gerber}
+\end{wrapfigure}
 \noindent Goodman assumption:
 \begin{equation}
     \Delta \sigma_0 = \frac{\Delta \sigma}{1-(\frac{\bar{\sigma}}{\sigma_u})}
@@ -234,13 +235,6 @@ A Haigh diagram gives the relationship between the stress range ($\Delta \sigma$
 \end{equation}
 
 \noindent where $\Delta \sigma_0$ is the stress range at zero mean stress, $\Delta \sigma$ is the calculated stress range, $\bar{\sigma}$ is the mean stress level, $\sigma_u$ is the ultimate stress level of the material, and $\sigma_y$ is the yield stress level of the material. The Goodman, Gerber, and Söderberg assumptions can also be seen in Figure \ref{fig:gerber}. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.8]{figures/soder.PNG}
-\caption[$\; \:$Goodman, Gerber and Söderberg relations]{Goodman, Gerber and Söderberg relations, adapted from \cite{fatiguehand} }
- \label{fig:gerber}
-\end{figure}
 
 \subsection{Fatigue of Dynamic Power Cables}
 \noindent \cite{Nasution2013} states that when the cable is in operation, it experiences loads from gravity, the motions of the floating vessel, and from the sea. The cable experiences a mean global tension and torque due to gravity. Surge and heave motions induce dynamic tensile and torque, while pitch and roll motions give a dynamic curvature of the cable. This can be seen in Figure \ref{fig:float}. 
@@ -264,9 +258,9 @@ There are mainly three causes of mechanical failure in marine power cables appli
 
 \subsubsection{Fatigue of Copper Conductors}
 \label{sec:fatcop}
-According to a study done by \cite{Nasution2013}, when testing individual wires as well as a full cross-section of a three-phase 95mm$^2$, all failures occurred in the inner layer for the cross-section bent over a bell mouth. Also, individual wires from the outer layer of the cross section were tested in controlled tension-tension loading. Here, all initiation of crack growth happened within or at the edge of the trellis contact area, that has been deformed due to the compacting process of the cable. The study concluded that the difference in fatigue life between layers is due to the variance of surface irregularities. Another study, performed by \cite{NASUTION2014} states that the first fatigue failure for a copper conductor subjected to tension-tension fatigue happens in the outer layer. this indicates that the fatigue performance is governed by local effects due to surface irregularities of the different layers. \newline
+According to a study done by \cite{Nasution2013}, when testing individual wires as well as a full cross-section of a three-phase 95mm$^2$, all failures occurred in the inner layer for the cross-section bent over a bell mouth. Also, individual wires from the outer layer of the cross-section were tested in controlled tension-tension loading. Here, all initiation of crack growth happened within or at the edge of the trellis contact area, that has been deformed due to the compacting process of the cable. The study concluded that the difference in fatigue life between layers is due to the variance of surface irregularities. Another study, performed by \cite{NASUTION2014} states that the first fatigue failure for a copper conductor subjected to tension-tension fatigue happens in the outer layer. this indicates that the fatigue performance is governed by local effects due to surface irregularities of the different layers. \newline
 \newline
-\subsubsection{Analytical Model} \cite{s300} developed an analytical model for stress variation in individual wires in the conductor cross section. This model applies for conductors exposed to static and dynamic tension in combination with dynamic curvature. The stress variation can be calculated as:   
+\subsubsection{Analytical Model} \cite{s300} developed an analytical model for stress variation in individual wires in the conductor cross-section. This model applies for conductors exposed to static and dynamic tension in combination with dynamic curvature. The stress variation can be calculated as:   
 \begin{equation}
     \Delta \sigma = \Delta \sigma_T + \Delta \sigma_{tc} + \Delta \sigma_{nc} + \Delta \sigma_{f}
     \label{eq:stressvariation}
@@ -280,7 +274,7 @@ According to a study done by \cite{Nasution2013}, when testing individual wires 
     \Delta \sigma_T^i = E \cos^2 \alpha_i \frac{\Delta T}{E A_{full}} 
     \label{eq:sigmaT}
 \end{equation}
-\noindent Where E is the Young's modulus of the material, $\Delta T$ is the tension range and $EA_{full}$  is the axial stiffness of the full cross section of the conductor and can be found from:
+\noindent Where E is the Young's modulus of the material, $\Delta T$ is the tension range and $EA_{full}$  is the axial stiffness of the full cross-section of the conductor and can be found from:
 \begin{equation}
     EA_{full}=EA \left( 1+\sum_{i=1}^m n_i \cos^3\alpha_i \right)
 \end{equation}
@@ -292,7 +286,7 @@ The bending stress range from normal curvature of the wires for small lay angles
 \end{equation}
 where $\Delta \kappa$ is the curvature range and $\Psi$ is the polar coordinate angle defining the helix position (assuming $\psi=0$). \newline
 \newline
-The friction stress range will be the smallest stress range from either the plane surfaces remain plane solution or max allowed due to friction between the interfaces:
+The friction stress range will be the smallest stress range from either the plane surfaces remain plane solution or maximu mallowed due to friction between the interfaces:
 \begin{equation}
     \Delta \sigma_f^i =\text{min}\left(E \cos^2 \alpha_i R_i \Delta \kappa , \frac{\pi R_i \tau_i}{\sin \alpha_i A_i}\right)
 \end{equation}

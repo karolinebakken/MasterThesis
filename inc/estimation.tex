@@ -4,7 +4,8 @@ In this section, an overview of the procedure to calculate the fatigue life is p
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.70]{figures/anaaalg}
-\caption[Algorithm for calculation of fatigue life ]{Algorithm for calculation of fatigue life  }
+\caption[$\; \:$Algorithm for calculation of fatigue life ]{Algorithm for calculation of fatigue life  }
+
  \label{fig:aanaalg}
 \end{figure}
 \section{Global Analysis}
@@ -28,7 +29,7 @@ Where $\boldsymbol{a}$ and $\boldsymbol{b}$ are the vectors of the dummy element
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{figures/angle}
-\caption[Angle between vessel and cable ]{Angle between vessel and cable  }
+\caption[$\; \:$Angle between vessel and cable ]{Angle between vessel and cable  }
  \label{fig:angle}
 \end{figure}
 
@@ -37,7 +38,7 @@ Where $\boldsymbol{a}$ and $\boldsymbol{b}$ are the vectors of the dummy element
   {\includegraphics[width=.45\linewidth]{figures/angleex}}\hfill
 \subfloat[Time series for tension in the upper element \label{fig:tensex}]
   {\includegraphics[width=.45\linewidth]{figures/tensex}}\hfill
-\caption{Example of time series for angle and tension}
+\caption[$\; \:$Example of time series for angle and tension]{Example of time series for angle and tension}
 \label{fig:timeex}
 \end{figure}
 
@@ -55,7 +56,7 @@ Where $\boldsymbol{a}$ and $\boldsymbol{b}$ are the vectors of the dummy element
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.9]{figures/initialcyc}
-\caption[Number of cycles in each class]{Number of cycles in each class}
+\caption[$\; \:$Distribution of cycles for each angle class]{Distribution of cycles for each angle class}
  \label{fig:initialcyc}
 \end{figure}
 
@@ -75,7 +76,7 @@ Figure \ref{fig:initialdam} demonstrates the damage from each angle range class.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.9]{figures/initialdam}
-\caption[Damage for each angle class]{Damage for each angle class}
+\caption[$\; \:$Damage for each angle class]{Damage for each angle class}
  \label{fig:initialdam}
 \end{figure}
 To obtain a high resolution of the final results, the angle range classes were rearranged and merged into 15 classes with approximately the same damage impact. Figure \ref{fig:newdam} shows the damage caused by 15 rearranged angle range classes, and Figure \ref{fig:newcyc} and Table \ref{table:angleclass} present the rearranged cycle distribution.  
@@ -83,14 +84,14 @@ To obtain a high resolution of the final results, the angle range classes were r
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.9]{figures/newdam}
-\caption[Damage for each angle class, rearranged]{Damage for each angle class, rearranged}
+\caption[$\; \:$Damage for each angle class, rearranged]{Damage for each angle class, rearranged}
  \label{fig:newdam}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1]{figures/newcyc}
-\caption[Distribution of cycles for each angle class, rearranged for equal damage]{Distribution of cycles for each angle class, rearranged for equal damage}
+\caption[$\; \:$Distribution of cycles for each angle class, rearranged]{Distribution of cycles for each angle class, rearranged for equal damage}
  \label{fig:newcyc}
 \end{figure}
 
@@ -148,14 +149,14 @@ Where $\theta_{tot}$ is the total angle experienced by the local model and $\the
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{figures/anglecorr1}
-\caption[Initial and deformed configuration of local model]{Illustration of initial and deformed configuration of local model}
+\caption[$\; \:$Initial and deformed configuration of local model]{Illustration of initial and deformed configuration of local model}
  \label{fig:anglecorr1}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{figures/anglecorrre}
-\caption[Deformed local model in XPOST]{Deformed local model in XPOST}
+\caption[$\; \:$Deformed local model in XPOST]{Deformed local model in XPOST}
  \label{fig:anglecorrre}
 \end{figure}
  Several analyses were done to establish the relation between the applied angle and the total angle. Figure \ref{fig:anglerel} show the linear regression with a coefficient of determination ($R^2$) of 0.9978, and the relationship:
@@ -163,21 +164,21 @@ Where $\theta_{tot}$ is the total angle experienced by the local model and $\the
     \theta_{tot}=1.2694\theta_{appl.}
 \label{eq:lincorr}
 \end{equation}
-Where $\theta_{tot}$ is the total angle experienced by the local model and $\theta_{appl.}$ is the angle applied by BFLEX.
+Where $\theta_{tot}$ is the total angle experienced by the local model and $\theta_{appl.}$ is the angle applied by Bflex.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{figures/anglerel}
-\caption[Relationship between applied angle and total angle]{Relationship between applied angle and total angle}
+\caption[$\; \:$Relationship between applied angle and total angle]{Relationship between applied angle and total angle}
  \label{fig:anglerel}
 \end{figure}
 
-To determine the input the local analysis, it was decided in line with Professor Svein Sævik's recommendations that the angle would be the master over the tension. Although the trends in the angle time series and the tension time series agreed, the high angles and tensions did not occur at the exact same time steps, resulting in no linear correlation. A simple but conservative approach, with the assumption that maximum tension occurred with maximum angle, and minimum tension occurred with minimum angle, was adopted. The maximum and minimum tension recorded at the top of the cable was 40.69 kN and 9.32 kN, respectively, and linear interpolation was used to calculate the dynamic tension levels corresponding to the dynamic angle ranges in Table \ref{table:cyclecount}. \\\\Bend stiffeners are usually mounted in a stress-free configuration, equivalent to the neutral vessel position in this study. The stress-free configuration angle was -2.32$^\circ$ found from the SIMA RIFLEX, with zero degrees being as if the cable was hanging straight down and positive angle is counterclockwise. The dynamic analyses were performed in the far position with current, where the static position of the bend stiffener was 15.78$^\circ$ due to the strong current as can be seen in Figure \ref{fig:statconc}. The total mean angle was, consequently, 18.16$^\circ$, and the max and min angle for each angle range were added and subtracted to the mean angle, so that the cable oscillated about this angle.\\\\
+To determine the input the local analysis, it was decided in line with Professor Svein Sævik's recommendations that the angle would be the master over the tension. Although the trends in the angle time series and the tension time series agreed, the high angles and tensions did not occur at the exact same time steps, resulting in no linear correlation. A simple but conservative approach, with the assumption that maximum tension occurred with maximum angle, and minimum tension occurred with minimum angle, was adopted. The maximum and minimum tension recorded at the top of the cable was 40.69 kN and 9.32 kN, respectively, and linear interpolation was used to calculate the dynamic tension levels corresponding to the dynamic angle ranges in Table \ref{table:cyclecount}. \\\\Bend stiffeners are usually mounted in a stress-free configuration, equivalent to the neutral vessel position in this study. The stress-free configuration angle was -2.32$^\circ$ found from the SIMA RIFLEX, with zero degrees being as if the cable was hanging straight down and positive angle is counterclockwise. The dynamic analyses were performed in the far position with current, where the static position of the bend stiffener was 15.78$^\circ$ due to the strong current as can be seen in Figure \ref{fig:statconc}. The total mean angle was, consequently, 18.16$^\circ$, and the maximum and minimum angle for each angle range were added and subtracted to the mean angle, so that the cable oscillated about this angle.\\\\
 Table  \ref{table:loadcase} display the 15 load cases for the local analysis. The angles displayed in the table are the corrected angles, calculated by Equation \ref{eq:lincorr}. The dynamic tensions were found through interpolation, and the mean tension represents the static tension at the top of the cable after the current was applied in far position. The analyses were administered by a Cygwin script, making it easy to change the variables in each case. 
 \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|c|c|c|c|}
 \hline
-    Case Nr. & Max Angle [deg] & Min angle [deg] & Mean tens.[kN] & Max tens.[kN]  & Min tens.[kN]   \\
+    Case Nr. & Max. Angle [deg] & Min. angle [deg] & Mean tens.[kN] & Max. tens.[kN]  & Min. tens.[kN]   \\
  \hline
  \hline
     1 & 16.43 & 12.18 & 13.7 & 25.07 & 11.50   \\ 
@@ -205,11 +206,11 @@ Table  \ref{table:loadcase} display the 15 load cases for the local analysis. Th
 \label{sec:fatiguelife}
  The fatigue life was calculated for each layer at two points of the conductors: 
 \begin{itemize}
-\item At max curvature range (x=0.900m)
-\item At max tension range  (x=0.625m)
+\item At maximum curvature range (x=0.900m)
+\item At maximum tension range  (x=0.625m)
 \end{itemize}
 The two points did not coincide due to a phase shift caused by friction. The calculation methodology was the same for both points.  \\\\ Tension and curvature plots served as outputs from the local analyses, and can be viewed in whole in Appendix \ref{appendix:C}. The output was used to calculate the stress range on wire level for each layer in each case according to the analytical model described in Section \ref{sec:fatcop}. Lay angles were $\alpha_2=-4.1^\circ$ and $\alpha_3=+7.3^\circ$ for the innermost layer and outer layer respectively,\cite{Nasution2013}. The friction coefficient was  $\mu=0.2$, and the stress concentration factor (SCF) for the innermost layer and the outer layer were 1.058 and 1.238 respectively, \cite{NASUTION2014}.\\\\
-The number of cycles until failure ($N_i$) was calculated from Equation \ref{eq:sn}. Damage from each case in one year was calculated according to the Miner-Palmgren summation concept from Equation \ref{eq:MP}, using the cycle counts ($n_i$) found by Rainflow counting in Table \ref{table:angleclass}. By inverting the damage generated in one year, the fatigue life in years was calculated with a DFF=10.0. The results were mean stress corrected according to the Söderberg assumption described in Section \ref{sec:meanstress}. 
+The number of cycles until failure ($N_i$) was calculated from Equation \ref{eq:sn}. Damage from each case in one year was calculated according to the Miner-Palmgren summation concept from Equation \ref{eq:MP}, using the cycle counts ($n_i$) found by Rainflow Counting in Table \ref{table:angleclass}. By inverting the damage generated in one year, the fatigue life in years was calculated with a DFF=10.0. The results were mean stress corrected according to the Söderberg assumption described in Section \ref{sec:meanstress}. 
 
 \section{Sensitivity Studies and Study of Friction Mechanisms}
 Several additional studies were performed to obtain insights into the contact mechanisms in the cable cross-section. By further examination of the results collected from the global and local analyses, the following aspects were investigated:
@@ -223,12 +224,12 @@ All studies above were performed at the point on the conductor with maximum tens
 \label{sec:min}
 Equation \ref{eq:stressvariation2}  in the analytical model does not contain specifications on which tension (T) to be used, but maximum tension yields the most conservative approach.  As a sensitivity study, the fatigue life was also calculated using the mean and minimum tension in Equation \ref{eq:stressvariation2} to see what effect this would have on the fatigue life. 
 \subsection{Study of Effect of Contact Between Conductors}
-The HCONT454 describes the contact between the three helical conductors in the cable cross-section. Including the contact mechanism between the conductors was investigated by looking at the plot of tension at the maximum and minimum angle in each case. Figure \ref{fig:condfric} show the contribution to the tension range from the contact between the conductors. It was represented as the difference between the max tension range($\Delta T_{max}$) illustrated by the green arrow, and the tension range from applied tension ($\Delta T_T$) at the end of the model, illustrated by the yellow arrow.
+The HCONT454 describes the contact between the three helical conductors in the cable cross-section. Including the contact mechanism between the conductors was investigated by looking at the plot of tension at the maximum and minimum angle in each case. Figure \ref{fig:condfric} show the contribution to the tension range from the contact between the conductors. It was represented as the difference between the maximum tension range($\Delta T_{max}$) illustrated by the green arrow, and the tension range from applied tension ($\Delta T_T$) at the end of the model, illustrated by the yellow arrow.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{figures/confric.PNG}
-\caption[$\; \:$ Effect of contact between conductors]{Effect of contact between conductors}
+\caption[$\; \:$Effect of contact between conductors]{Effect of contact between conductors}
  \label{fig:condfric}
 \end{figure}
 The contribution to the tension range from the contact friction could be calculated as:

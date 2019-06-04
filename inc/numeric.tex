@@ -216,43 +216,31 @@ SIMA RIFLEX is a computer program made for analyzing slender structures such as 
 
 \subsection{Element Formulation}
 \label{sec:ghost}
-SIMA RIFLEX uses co-rotated ghost reference as element formulation for beam elements. 
-\begin{comment}
-\subsection{Total Lagrangian Formulation}
-\label{sec:ghost}
-For non-linear analysis, an incremental approach is necessary as described above. According to \cite{sintef2017}, the initial configuration of the body, C0, and the deformed Cn at time t, and then the new incremental deformation Cn+1 at t+$\Delta$t. Cn+1 is similar to Cn, as $\Delta$t is small. This formulation where the strains in all the incremental configurations are referred to the initial configuration is called "Total Lagrangian Formulation." \cite{Mathisen1990} states that this method can produce false straining in beam elements when exposed to large rotations, and should thus only be used for small rotations
-\subsubsection{Co-Rotated Ghost Reference}
-\label{sec:ghost}
-\end{comment}
-Co-rotated beam elements use Green strain and 2nd
-Piola-Kirchhoff stresses as the Total Lagrangian formulation, but adapts the procedure of Updated Lagrange formulation where the configuration is updated. This yields the following stiffness matrix:
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \vskip -1.0 cm 
+    \centering
+    \includegraphics[scale=0.5]{figures/coro}
+\caption[$\; \:$Co-rotated Ghost Reference]{Co-rotated Ghost Reference, \cite{Mathisen1990} }
+ \label{fig:coro}
+\end{wrapfigure}
+SIMA RIFLEX uses co-rotated ghost reference as element formulation for beam elements. Co-rotated beam elements use Green strain and 2nd Piola-Kirchhoff stresses as the Total Lagrangian formulation, but adapts the procedure of Updated Lagrange formulation where the configuration is updated. This yields the following stiffness matrix:
 \begin{equation}
     \boldsymbol{K_I}= \boldsymbol{K_0} + \boldsymbol{K_\sigma}
 \end{equation}
 This is convenient when it is assumed that the initial configuration deforms as a rigid body, and will move and rotate with the motion of the body. At any time the initial configuration is close to the deformed configuration, \cite{sintef2017}. \cite{Mathisen1990} explains that each beam element has a local coordinate system, $i_i^0$ as illustrated in Figure \ref{fig:coro} where the initial configuration $C_0$ moves as a rigid body with the element and becomes $C_{0n}$. The deformed beam element will have its local coordinate system rotated, now denoted $i_ia$ and $i_i^b$. This forms the reference for the calculation of stresses and strains. 
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/coro}
-\caption[$\; \:$Co-rotated Ghost Reference]{Co-rotated Ghost Reference, \cite{Mathisen1990} }
- \label{fig:coro}
-\end{figure}
-
 \subsection{Element Description}
 In this section, the relevant element type and its kinematics are presented. Only the element used in the master thesis is included. 
 \subsubsection{Beam element}
-\noindent The beam element in SIMA RIFLEX has 2 nodes with 6 degrees of freedom for each node, 3 translational and 3 rotational that can be seen in Figure \ref{fig:beamri} that are defined in relation to the local Cartesian coordinate system in the initial C0n configuration,
-\cite{sintef2017}.
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{figures/beamri}
+\noindent \cite{sintef2017} states that the beam element in SIMA RIFLEX has 2 nodes with 6 degrees of freedom for each node, 3 translational and 3 rotational that can be seen in Figure \ref{fig:beamri} that are defined in relation to the local Cartesian coordinate system in the initial C0n configuration. It is assumed that straight lines normal to the midplane will remain straight and normal to the midplane, and that strains are small in the element in accordance with the Kirchhoff hypothesis.\newline
+\newline
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \vskip -1.0 cm 
+    \centering
+   \includegraphics[scale=0.5]{figures/beamri}
 \caption[$\; \:$Beam Element]{Degrees of freedom for the beam element, \cite{sintef2017} }
  \label{fig:beamri}
-\end{figure}
-
-\noindent \cite{sintef2017} states that it is assumed that straight lines normal to the midplane will remain straight and normal to the midplane, and that strains are small in the element in accordance with the Kirchhoff hypothesis.\newline
-\newline The displacement of an arbitrary point, P with coordinates x,y, and z can be expressed as the following:
+\end{wrapfigure} The displacement of an arbitrary point, P with coordinates x,y, and z can be expressed as the following:
 \begin{equation}
     u(x,y,z)=u_0(x) - y \frac{dv_0}{dx} - z \frac{dw_0}{dx}
 \end{equation}
@@ -286,18 +274,18 @@ Where $\boldsymbol{C^S}$ is the  internal structural damping matrix, $\boldsymbo
 \item Forced displacements due to support vessel movements.
 \item Wave and particle accelerations in accordance to Morison's Equation, (see Equation \ref{eq:morison}).
 \end{itemize}
-In SIMA RIFLEX the water velocity and motion are decomposed into x,y and z, where x is in the longitudinal direction and y and z as the symmetry axes for the cross section.
+In SIMA RIFLEX the water velocity and motion are decomposed into x,y and z, where x is in the longitudinal direction and y and z as the symmetry axes for the cross-section.
 
-\section{Local Model in BFLEX }
-BFLEX is a computer program developed by Professor Svein Sævik. \cite{Bflextheory2013}  and \cite{Bflextheory2017} are used as a basis for this section.  The Newton-Raphson method, described in Section \ref{sec:newton}, is used for calculations in the static analysis. While for the dynamic analysis, the modified HHT-$\alpha$ method described in Section \ref{sec:HHT} is used.
+\section{Local Model in Bflex }
+Bflex is a computer program developed by Professor Svein Sævik. \cite{Bflextheory2013}  and \cite{Bflextheory2017} are used as a basis for this section.  The Newton-Raphson method, described in Section \ref{sec:newton}, is used for calculations in the static analysis. While for the dynamic analysis, the modified HHT-$\alpha$ method described in Section \ref{sec:HHT} is used.
 
 \subsection{Element Formulation}
-BFLEX also uses co-rotated ghost reference described in Section \ref{sec:ghost}, 
+Bflex also uses co-rotated ghost reference described in Section \ref{sec:ghost}, 
 where small strains are assumed, but at the same time allowing large rigid body motions due to a 4 base vector system. \\\\By looking at Equation \ref{eq:virtual} for an infinite small increment, $\Delta$, and only including static terms the following is obtained: 
  \begin{equation}
     \int_V \boldsymbol{C}: (\epsilon + \Delta \boldsymbol{E}) : \delta (\epsilon + \Delta \boldsymbol{E})dV_0 - \int_S (\boldsymbol{t} + \Delta \boldsymbol{t}) \cdot \delta \boldsymbol{u} dS_0 =0
 \end{equation}
- This is used as a basis for the stiffness matrix in BFLEX.
+ This is used as a basis for the stiffness matrix in Bflex.
  
 \begin{comment}
  \begin{equation}
@@ -326,7 +314,7 @@ PIPE31 is an elastic element with two nodes and six degrees of freedom in each n
         \gamma\\[0.3em]
      \end{bmatrix}
 \end{equation}
-The displacement of an arbitrary point p defined by the local coordinates in the cross section can be expressed as:
+The displacement of an arbitrary point p defined by the local coordinates in the cross-section can be expressed as:
 \begin{equation}
     u_1(x,y,z)=u_{1,0}-yu_{2,0}-zu_{3,0}
 \end{equation}
@@ -340,7 +328,7 @@ The displacement of an arbitrary point p defined by the local coordinates in the
 \end{equation}
 \noindent Where $\sigma_{ij}$ is the stress in i,j direction, E is Young's modulus for the material, $\nu$ is the Poisson's number, $\epsilon_ij$ is the strain in i,j direction, $\gamma$ is the shear strain, $u_i$ is the displacement in i direction, and $\theta$ is the torsion.  
 \subsubsection{HSHEAR353}
-Helix beam element with 4 nodes; 2 centroid nodes, and 2 helix nodes. The nodal points have to be defined in polar coordinates. There are 24 active degrees of freedom in the element where 12 are connected to the standard beam degrees of freedom to describe the global strain quantities, and 12 degrees of freedom are used to describe the local displacement of the wire relative to the core as shown in Figure \ref{fig:353} . Due to this, cubic interpolation is possible in all directions, and membrane locking due to curvature coupling is avoided. The torsion DOF at the helix nodes are not yet activated because of kinematic constraints, and always have to be suppressed when using the element.
+Helix beam element with 4 nodes; 2 centroid nodes, and 2 helix nodes. The nodal points have to be defined in polar coordinates. There are 24 active degrees of freedom in the element where 12 are connected to the standard beam degrees of freedom to describe the global strain quantities, and 12 degrees of freedom are used to describe the local displacement of the wire relative to the core as shown in Figure \ref{fig:353}. Due to this, cubic interpolation is possible in all directions, and membrane locking due to curvature coupling is avoided. The torsion DOF at the helix nodes are not yet activated because of kinematic constraints, and always have to be suppressed when using the element.
 
 \begin{figure}[H]
 \centering
@@ -442,16 +430,14 @@ If $\alpha \rightarrow \infty$ the contact condition is recovered exactly.\newli
 \end{figure}
 
 \subsubsection{HCONT454}
-The purpose of the HCONT454 element is to connect two HSHEAR454 element groups (A and B) in the same layer by considering hoop contact between them and the reduction and expansion of gap due to curvature. Figure \ref{fig:HCONT4541} illustrates how the element was used in this study to describe the contact between the conductors in the cross-section.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.7]{figures/HCONT4541}
-\caption[$\; \:$Illustration of HCONT454]{Illustration of HCONT454 connecting 3 conductors in a cable cross section}
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \vskip -1.0 cm 
+    \centering
+   \includegraphics[scale=0.7]{figures/HCONT4541}
+\caption[$\; \:$Illustration of HCONT454]{Illustration of HCONT454 connecting 3 conductors in a cable cross-section}
  \label{fig:HCONT4541}
-\end{figure}
-
-
-The element has 36 degrees of freedom as can be seen in Figure \ref{fig:HCONT454},  where the extra 12 dofs are used to describe the beam strains of the center as this affect the gap in compression and tension. All three directions, $X^1$, $X^2$ and $X^3$ are included where the $X^2$ direction represents contact, and the others friction. The energy functional described for the HSHEAR463 element in Equations \ref{eq:energy} to \ref{eq:contact} are also valid for the HCONT454 element. The contact kinematics in the normal direction can be expressed as: 
+\end{wrapfigure}
+The purpose of the HCONT454 element is to connect two HSHEAR454 element groups (A and B) in the same layer by considering hoop contact between them and the reduction and expansion of gap due to curvature. Figure \ref{fig:HCONT4541} illustrates how the element was used in this study to describe the contact between the conductors in the cross-section.\\\\The element has 36 degrees of freedom as can be seen in Figure \ref{fig:HCONT454},  where the extra 12 dofs are used to describe the beam strains of the center as this affect the gap in compression and tension. All three directions, $X^1$, $X^2$ and $X^3$ are included where the $X^2$ direction represents contact, and the others friction. The energy functional described for the HSHEAR463 element in Equations \ref{eq:energy} to \ref{eq:contact} are also valid for the HCONT454 element. The contact kinematics in the normal direction can be expressed as: 
 \begin{equation}
     \Delta u_n=(\Delta \boldsymbol{u}_B-\Delta \boldsymbol{u}_A) \cdot \bold{n}=(\Delta \boldsymbol{u}_2^{0B}-\Delta \boldsymbol{u}_2^{0A}+\frac{b}{Ff}(\Delta \epsilon_\psi+\Delta \epsilon_{Z^1}))
 \end{equation}
@@ -474,7 +460,7 @@ Where R is the mean helix radius of the two bodies and $v_{,11}$ and $w_{,11}$ a
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.8]{figures/hcont454}
+\includegraphics[scale=0.7]{figures/hcont454}
 \caption[$\; \:$HCONT454]{Degrees of freedom for HCONT454, \cite{Bflextheory2017} }
  \label{fig:HCONT454}
 \end{figure}
