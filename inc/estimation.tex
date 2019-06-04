@@ -3,7 +3,7 @@
 In this section, an overview of the procedure to calculate the fatigue life is presented. Figure \ref{fig:aanaalg} illustrates the analysis algorithm. 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.73]{figures/anaaalg}
+\includegraphics[scale=0.70]{figures/anaaalg}
 \caption[Algorithm for calculation of fatigue life ]{Algorithm for calculation of fatigue life  }
  \label{fig:aanaalg}
 \end{figure}
@@ -41,7 +41,7 @@ Where $\boldsymbol{a}$ and $\boldsymbol{b}$ are the vectors of the dummy element
 \label{fig:timeex}
 \end{figure}
 
-section{Rainflow Counting}
+\section{Rainflow Counting}
  Rainflow Counting was performed in Python on the time series of the angle to determine the number of cycles for each angle range. The Rainflow Counting algorithm used by Python is explained in Section \ref{sec:rainflow}. The counts from each sea state were scaled for their occurrence in the scatter diagram in Figure \ref{fig:scatn} to apply for one year according to:
 
 \begin{equation}
@@ -78,7 +78,7 @@ Figure \ref{fig:initialdam} demonstrates the damage from each angle range class.
 \caption[Damage for each angle class]{Damage for each angle class}
  \label{fig:initialdam}
 \end{figure}
-To obtain a high resolution of the final results, the angle range classes were rearranged and merged into 15 classes with approximately the same damage impact. Figure \ref{fig:initialdam} shows the damage caused by 15 rearranged angle range classes, and Figure \ref{fig:newcyc} and Table \ref{table:angleclass} present the rearranged cycle distribution.  
+To obtain a high resolution of the final results, the angle range classes were rearranged and merged into 15 classes with approximately the same damage impact. Figure \ref{fig:newdam} shows the damage caused by 15 rearranged angle range classes, and Figure \ref{fig:newcyc} and Table \ref{table:angleclass} present the rearranged cycle distribution.  
 
 \begin{figure}[H]
 \centering
@@ -133,17 +133,17 @@ Angle range class [deg] & Number of cycles \\
 
  \hline
 \end{tabular}
-\caption{Number of cycles in each angle range}
+\caption{Number of cycles in each angle range class}
 \label{table:angleclass}
 \end{table} 
 It is important to note that the cycle counts in Table \ref{table:angleclass} are not just half and whole cycles, as they were already scaled for occurrence in one year.
 
 \section{Local Analysis}
-The results from the global analyses served as input for the local analyses. Due to the nature of the boundary conditions of the local model, both ends of the model experienced rotation when a dynamic angle was applied. This is shown in Figures \ref{fig:anglecorr} and \ref{fig:anglecorrre}, where $\theta_1$ was equal to the applied angle, but the total angle experienced by the model was: 
+The results from the global analyses served as input for the local analyses. Due to the nature of the boundary conditions of the local model, both ends of the model experienced rotation when a dynamic angle was applied. This is shown in Figures \ref{fig:anglecorr1} and \ref{fig:anglecorrre}, where $\theta_1$ was equal to the applied angle, but the total angle experienced by the model was: 
 \begin{equation}
     \theta_{tot}=\theta_1 + \theta_2
 \end{equation}
-Where $\theta_{tot}$ is the total angle experienced by the local model and $\theta_1$ and $\theta_2$ are illustrated in Figure \ref{fig:anglecorr}, and shown in the real model in Figure \ref{fig:anglecorrre}.
+Where $\theta_{tot}$ is the total angle experienced by the local model and $\theta_1$ and $\theta_2$ are illustrated in Figure \ref{fig:anglecorr1}.
 
 \begin{figure}[H]
 \centering
@@ -197,7 +197,7 @@ Table  \ref{table:loadcase} display the 15 load cases for the local analysis. Th
     15 &  32.74 & -4.13 & 13.7 & 40.69 & 9.32 \\ 
  \hline
 \end{tabular}
-\caption{Parameters for load cases in the Local Analyses}
+\caption{Parameters for load cases in the local analyses}
 \label{table:loadcase}
 \end{table} 
 
@@ -223,12 +223,12 @@ All studies above were performed at the point on the conductor with maximum tens
 \label{sec:min}
 Equation \ref{eq:stressvariation2}  in the analytical model does not contain specifications on which tension (T) to be used, but maximum tension yields the most conservative approach.  As a sensitivity study, the fatigue life was also calculated using the mean and minimum tension in Equation \ref{eq:stressvariation2} to see what effect this would have on the fatigue life. 
 \subsection{Study of Effect of Contact Between Conductors}
-The HCONT454 describes the contact between the three helical conductors in the cable cross-section. Including the contact mechanism between the conductors was investigated by looking at the plot of tension at the maximum and minimum angle in each case. Figure {fig:condfric} show the contribution to the tension range from the contact between the conductors. It was represented as the difference between the max tension range($\Delta T_{max}$) illustrated by the green arrow, and the tension range from applied tension ($\Delta T_T$) at the end of the model, illustrated by the yellow arrow.
+The HCONT454 describes the contact between the three helical conductors in the cable cross-section. Including the contact mechanism between the conductors was investigated by looking at the plot of tension at the maximum and minimum angle in each case. Figure \ref{fig:condfric} show the contribution to the tension range from the contact between the conductors. It was represented as the difference between the max tension range($\Delta T_{max}$) illustrated by the green arrow, and the tension range from applied tension ($\Delta T_T$) at the end of the model, illustrated by the yellow arrow.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{figures/confric.PNG}
-\caption[$\; \:$ $\Delta T_f$]{$\Delta T_f$}
+\caption[$\; \:$ Effect of contact between conductors]{Effect of contact between conductors}
  \label{fig:condfric}
 \end{figure}
 The contribution to the tension range from the contact friction could be calculated as:
@@ -242,7 +242,7 @@ The friction between the layers in the conductor was included in the analytical 
 \begin{equation}
     \Delta \sigma=\Delta \sigma_T \cdot SCF + \Delta \sigma_{nc}
 \end{equation}
-Calculation of fatigue life was otherwise completed according to the analytical model.
+Calculation of fatigue life was furthermore completed according to the analytical model.
 
 
 

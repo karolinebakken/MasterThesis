@@ -15,7 +15,7 @@ The cable cross section was based on guidance from Professor Svein Sævik, who h
 
 \subsection{Local Model}
 \label{sec:disclocmod}
-Due to the assumption of critical fatigue location, the local model only included the upper segment of the cable, including a bend stiffener. The bend stiffener served its purpose for most of the load cases, but the sudden increase in curvature in Figure \ref{fig:bendstiff} indicates a small optimization potential. Also, Figures \Todo{SETT INN FIGUR NUMMER HER} show that the curvature at the termination of the cable is not equal to zero, suggesting that the bend stiffener performs inadequately for these load cases.   The helical layers of the conductors were not modeled, but included by the analytical model. Several friction models used to describe the contact between the layers could have been explored more, and alternative models could have been considered.
+Due to the assumption of critical fatigue location, the local model only included the upper segment of the cable, including a bend stiffener. The bend stiffener served its purpose for most of the load cases, but the sudden increase in curvature in Figure \ref{fig:bendstiff} indicates a small optimization potential. Also, Figures \ref{fig:c14} and \ref{fig:c15}  show that the curvature at the termination of the cable is not equal to zero, suggesting that the bend stiffener performs inadequately for these load cases.   The helical layers of the conductors were not modeled, but included by the analytical model. Several friction models used to describe the contact between the layers could have been explored more, and alternative models could have been considered.
 
 \section{Discussion of Analyses Methodology}
 The local analysis was performed with 15 different load cases generated from the global analysis. Expanding the number of load cases would have increased the accuracy of the results, though at the cost of computation time. Due to the nature of the boundary conditions of the local model, the angle ranges from the global analyses had to be corrected as described in Section \ref{sec:localmodel}. The relationship between the applied angle and the total angle proved to linear with a close to perfect fit. As the original angle range classes from the Rainflow Counting was rearranged based on damage, many of the angle ranges are very close in magnitude as can be seen in Table \ref{table:angleclass}. The results are thus sensitive to small changes, and a slightly different linear relationship could have yielded significantly different results. \\\\ The angle was chosen as the master over the tension. Initially, the plan was to determine the max and min tension for each angle range class from the sea states that contributed to the angle range class. However, this proved to be difficult due to the nature of the Rainflow counting algorithm in Python. Instead, a simple but conservative approach was adopted. It was assumed that the maximum tension occurred at the maximum angle, minimum tension occurred at the minimum angle, and linear interpolation was used to find the corresponding tension to each angle.\\\\ Max tension was used in Equation \ref{eq:stressvariation2} when the analytical model calculated stress range on wire level, to grant a conservative procedure. Additionally, a sensitivity study was conducted to investigate the effect on fatigue life if mean or min tension would have been used (see Section \ref{sec:min}). \\\\ The cable was covered with an outer sheath, and thus cannot be inspected for crack initiation once in service. Consequently, High Safety Class was chosen for the design safety factor. 
@@ -23,7 +23,7 @@ The local analysis was performed with 15 different load cases generated from the
 \section{Results and Discussion of Results}
 In this section, the estimated fatigue life of the power cable is presented. The section also contains the results from the sensitivity studies and the study of the friction mechanisms and their influence upon fatigue life. The results displayed in the tables of this section are mean stress corrected according to Söderberg correction, and calculated with DFF=10.0.\\\\
 \subsection{Fatigue Life of Dynamic Power Cable}
-The fatigue life was calculated at two points on the dynamic power cable; max curvature range and max tension range. 
+The fatigue life was calculated at two points on the dynamic power cable; max curvature range and max tension range. The results are displayed in Tables \ref{table:fatlay2} to \ref{table:fatlaytens3}.
 \subsubsection{Fatigue Life at Point With Max Curvature Range}
 \begin{table} [H]
 \centering
@@ -193,7 +193,7 @@ The mean stress corrections, according to the Söderberg Assumption, was the mos
 \subsection{Results from Sensitivity Studies and Study of Friction Mechanisms}
 In this section, the results from the sensitivity study and the studies of the contact mechanisms are presented. 
 \subsubsection{Study of sensitivity by using Mean and Minimum Tension in Equation \ref{eq:stressvariation2}}
-When using minimum, mean and max tension for T in Equation \ref{eq:stressvariation2}, the fatigue life changed as shown in Table \ref{table:maxmin}
+When using minimum, mean and max tension for T in Equation \ref{eq:stressvariation2}, the fatigue life increased as shown in Table \ref{table:maxmin}
 
 \begin{table} [H]
 \centering
@@ -323,14 +323,14 @@ Case nr & Cycles ($n_i$) pr year & $\Delta \sigma$ [MPa]& Cycles to failure ($N_
     15 & 3628.41 & 627.45 & 0.17   \\ 
 \hline
 \end{tabular}
-\caption{Comparison of $\Delta T$ and $\Delta T_f$ due to contact between conductors, for design layer 2}
+\caption{Comparison of $\Delta T$ and $\Delta T_f$ due to contact between conductors, for inner layer}
 \label{table:tensfri}
 \end{table}
 
 Tables \ref{table:fatlaycond2} and \ref{table:fatlaycond3} show that the fatigue life, with the inner layer as design layer, was estimated to be 1530.15 years when the effect of contact between conductors was excluded. The fatigue life was roughly 5 times the fatigue life of the original calculation. Table \ref{table:tensfri} shows that the contact between the conductors contributes to approximately half of the tension range for most cases. The deviations seen in cases 14 and 15 are assumed to originate from the bend stiffeners lack of ability to perform optimally for some cases, as discussed in Section \ref{sec:disclocmod}. 
 
 \subsection{Study of Effect of Contact Between Layers in Conductors}
- Table \ref{table:fatlaycond2} and Table \ref{table:fatlaycond3} show the results from the study of the contact between the layers in the conductor. 
+ Table \ref{table:fatlaynofri2} and Table \ref{table:fatlaynofri3} show the results from the study of the contact between the layers in the conductor. 
 \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|c|c|c|}
@@ -418,7 +418,7 @@ Case nr & Cycles ($n_i$) pr year & $\Delta \sigma$ [MPa]& Cycles to failure ($N_
 
 \specialrule{.2em}{.1em}{.1em} 
 \end{tabular}
-\caption{Fatigue life calculations for layer 3 without the effect of friction between layers in conductor}
+\caption{Fatigue life calculations for outer layer without the effect of friction between layers in conductor}
 \label{table:fatlaynofri3}
 \end{table}
 Table \ref{table:fatlaynofri2} and \ref{table:fatlaynofri3} show the calculations of the fatigue life of the cable when the effect of the friction between the layers in the conductor. The fatigue life was calculated to be 1507.39 years with the inner layer as the design layer, more than five times the fatigue life in the original calculation. The fatigue damage was almost identical in the two layers before the mean stress correction was done. 

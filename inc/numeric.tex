@@ -74,7 +74,7 @@ where:
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1]{figures/euler}
-\caption[$\; \:$Euler-Cauchy Method]{Euler-Cauchy Method  \cite{moan2003} }
+\caption[$\; \:$Euler-Cauchy Method]{Euler-Cauchy Method, \cite{moan2003} }
  \label{fig:euler}
 \end{figure}
 \noindent As the incremental stiffness from the previous increment is used, this will only give an approximation, and does not fulfill total equilibrium. This can be seen in Figure \ref{fig:euler} where the approximation is plotted with the true solution. More accurate results will be obtained by using smaller increment size and by equilibrium corrections. 
@@ -98,7 +98,7 @@ and that $K_I$ is established.
  \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{figures/newton2}
-\caption[$\; \:$Newton-Raphson Iteration]{Newton-Raphson Iteration \cite{moan2003} }
+\caption[$\; \:$Newton-Raphson Iteration]{Newton-Raphson Iteration, \cite{moan2003} }
  \label{fig:newton}
 \end{figure}
 \noindent Newton-Raphson method is time consuming, but calculation time can be improved by updating $\boldsymbol{K_I}$ less frequently. That is called the modified Newton-Raphson method, and usually gives slower convergence.  The iteration ends when the displacement from one iteration to the next is smaller than the convergence criteria:
@@ -113,7 +113,7 @@ When combining the two methods load is applied according to the Euler-Cauchy met
  \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{figures/combined}
-\caption[$\; \:$Combined Method]{Combined Method \cite{moan2003} }
+\caption[$\; \:$Combined Method]{Combined Method, \cite{moan2003} }
  \label{fig:combined}
 \end{figure}
 \section{Method for Dynamic Calculation}
@@ -124,7 +124,7 @@ Dynamic analysis has to be considered when external loads are not applied in a v
   \label{eq:eq}
 \end{equation}
 
-\noindent A variation of equation \ref{eq:eq} is the semi-discrete global equation describing the instantaneous equation of motion of a non-linear system at time t. This relation is presented by \cite{Mathisen1990} as:
+\noindent A variation of Equation \ref{eq:eq} is the semi-discrete global equation describing the instantaneous equation of motion of a non-linear system at time t. This relation is presented by \cite{Mathisen1990} as:
 \begin{equation}
     \boldsymbol{R^I}+ \boldsymbol{R^D} + \boldsymbol{R^S}=\boldsymbol{R^E}
 \end{equation}
@@ -157,7 +157,6 @@ And the tangential damping matrix is:
       \boldsymbol{C_{T}}=\boldsymbol{C_T(\ddot{r},\dot{r},r,}t)=\alpha_1 \boldsymbol{M}+\alpha_2\boldsymbol{K_T} + C_d 
 \end{equation}
 Where $\alpha_1$ and $\alpha_2$ are the damping coefficients for the Rayleigh damping and $C_d$ is the damping coefficient matrix for additional discrete nodal points.  
-\noindent
 \newline
 \newline 
 \noindent  The dynamic equilibrium equation is an initial value problem, meaning that start values determine the solution. Practical numerical integration methods use a step-by-step approach, where the time interval is divided into sub-intervals with step length h. Displacement, velocity, and acceleration are known for the beginning of the sub-interval, and the solution for the end of the sub-interval is calculated by assuming the variation of the acceleration over the time step. The computed value is used to determine the velocity and displacement across the time step, and they are the start values for the next sub-interval. This way, an approximated solution is calculated at instants along the time axis, and accuracy increases as h decreases, \cite{Langen1999}.
@@ -235,7 +234,7 @@ This is convenient when it is assumed that the initial configuration deforms as 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{figures/coro}
-\caption[$\; \:$Co-rotated Ghost Reference]{Co-rotated Ghost Reference \cite{Mathisen1990} }
+\caption[$\; \:$Co-rotated Ghost Reference]{Co-rotated Ghost Reference, \cite{Mathisen1990} }
  \label{fig:coro}
 \end{figure}
 
@@ -248,7 +247,7 @@ In this section, the relevant element type and its kinematics are presented. Onl
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{figures/beamri}
-\caption[$\; \:$Beam Element]{Degrees of freedom for beam element\cite{sintef2017} }
+\caption[$\; \:$Beam Element]{Degrees of freedom for the beam element, \cite{sintef2017} }
  \label{fig:beamri}
 \end{figure}
 
@@ -346,7 +345,7 @@ Helix beam element with 4 nodes; 2 centroid nodes, and 2 helix nodes. The nodal 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{figures/hshear353}
-\caption[$\; \:$HSHEAR353]{Degrees of freedom for HSHEAR353 element \cite{Bflextheory2013} }
+\caption[$\; \:$HSHEAR353]{Degrees of freedom for HSHEAR353 element, \cite{Bflextheory2013} }
  \label{fig:353}
 \end{figure}
 
@@ -383,12 +382,12 @@ The rotations can be expressed as:
 \end{equation}
 
 \subsubsection{HSHEAR363}
-Helix beam element with 3 nodes; 2 centroid nodes and 1 radial node to describe the radial motion. The centroid nodes have 6 degrees of freedom each and take care of the axial and torsional stiffness, while the radial node has 1 degree of freedom to be able to describe the radial motion and take care of circumferential strain.  The nodal points can be described with Cartesian coordinates. It can be interpreted as a simplified shell, and the aim for this element is to describe plastic layers, tape layers, and pressure armor. 
+Helix beam element with 3 nodes; 2 centroid nodes and 1 radial node to describe the radial motion. The centroid nodes have 6 degrees of freedom each and take care of the axial and torsional stiffness, while the radial node has 1 degree of freedom to be able to describe the radial motion and take care of circumferential strain.  The nodal points can be described with Cartesian coordinates. It can be interpreted as a simplified shell, and the aim for this element is to describe plastic layers, tape layers, and pressure armor. The degrees of freedom for the HSHEAR363 element are displayed in Figure \ref{fig:363}. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{figures/hshear363}
-\caption[$\; \:$HSHEAR363]{Degrees of freedom for HSHEAR363 element \cite{Bflextheory2013} }
+\caption[$\; \:$HSHEAR363]{Degrees of freedom for HSHEAR363 element, \cite{Bflextheory2013} }
  \label{fig:363}
 \end{figure}
 
@@ -438,7 +437,7 @@ If $\alpha \rightarrow \infty$ the contact condition is recovered exactly.\newli
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{figures/hcont463}
-\caption[$\; \:$HCONT463]{Degrees of freedom for HCONT463,\cite{Bflextheory2013} }
+\caption[$\; \:$HCONT463]{Degrees of freedom for HCONT463, \cite{Bflextheory2013} }
  \label{fig:HCONT463}
 \end{figure}
 
@@ -476,7 +475,7 @@ Where R is the mean helix radius of the two bodies and $v_{,11}$ and $w_{,11}$ a
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{figures/hcont454}
-\caption[$\; \:$HCONT454]{Degrees of freedom for HCONT454 \cite{Bflextheory2017} }
+\caption[$\; \:$HCONT454]{Degrees of freedom for HCONT454, \cite{Bflextheory2017} }
  \label{fig:HCONT454}
 \end{figure}
 

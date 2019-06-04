@@ -45,7 +45,7 @@ Far & 96.85 \\
 \label{table:pos}
 \end{table}
 
-The design criterias for the cable configuration were no compression, and a maximum curvature of 1.3675 $\frac{1}{m}$ (\cite{API2014}) for the three vessel positions. An iterative approach was used to determine the configuration of the cable, and final measurements are displayed in Table \ref{table:DIMCABLE}.
+The design criteria for the cable configuration were no compression, and a maximum curvature of 1.3675 $\frac{1}{m}$ (\cite{API2014}) for the three vessel positions. An iterative approach was used to determine the configuration of the cable, and final measurements are displayed in Table \ref{table:DIMCABLE}.
 \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|c|}
@@ -82,7 +82,7 @@ Torsional Stiffness [Nm$^2$] & 5403 & 5403\\
 \caption{Parameters used for the two different cross sections}
 \label{table:crosssima}
 \end{table}
-\noindent The bouancy elements used for section 2 of the cable was modelled with an increased external area. The values in Table \ref{table:crosssima} were calculated as follows:\newline
+\noindent The buoyancy elements used for section 2 of the cable was modelled with an increased external area. The values in Table \ref{table:crosssima} were calculated as follows:\newline
 \newline 
 \noindent The Dry mass + Buoyancy: 
 \begin{equation}
@@ -111,7 +111,7 @@ Lead was added to the model to increase its weight and inertia. According to Pro
 \begin{equation}
     \frac{\sum_{i=1}^n m_i - b}{b}\approx 2
 \end{equation}
-Where $m_i$ is the mass of the different components in the cross section, and b is the buoyancy.\\\\ 6 $kg/m$ of lead was added to the model to accommodate the recommendation. It was verified that the incorporation of lead would be feasible if the center tube was made of lead, and by also adding 3 tubes identical to the center tube to the space between the conductors. As the lead did not serve any structural purpose, it was included in the model by an increase of the Dry mass + buoyancy, reaching 15.75 $\frac{kg}{m}$ as shown in Table \ref{table:DIMCABLE}. \newline
+Where $m_i$ is the mass of the different components in the cross section, and b is the buoyancy.\\\\ 6 $kg/m$ of lead was added to the model to accommodate the recommendation. It was verified that the incorporation of lead would be feasible if the center tube was made of lead, and by also adding 3 tubes identical to the center tube to the space between the conductors. As the lead did not serve any structural purpose, it was included in the model by an increase of the Dry mass + buoyancy, reaching 15.75 $\frac{kg}{m}$ as shown in Table \ref{table:crosssima}. \newline
 \newline An additional dummy supernode was added to the vessel with a dummy line between the two supernodes attached to the vessel. The dummy supernode enabled calculation of the angle between the vessel and cable by dot product. 
 
 \subsection{Boundary Conditions}
@@ -156,7 +156,7 @@ where n is the total number of armouring layers in both layers, $\alpha$ is the 
   {\includegraphics[width=.3\linewidth]{figures/statposneu}}\hfill
   \subfloat[Far position \label{fig:cavS5000}]
   {\includegraphics[width=.3\linewidth]{figures/statposfar}}\hfill
-\caption{Static configuration for the global model for different wind conditions, without current}
+\caption{Static configuration for the global model for different vessel displacements, without current}
 \label{fig:statcon}
 \end{figure}
 
@@ -168,7 +168,7 @@ The static configuration with current for the three different wind conditions:
   {\includegraphics[width=.3\linewidth]{figures/statposneuc}}\hfill
   \subfloat[Far position \label{fig:cavS5000}]
   {\includegraphics[width=.3\linewidth]{figures/statposfarc}}\hfill
-\caption{Static configuration for the global model for different wind conditions, with current}
+\caption{Static configuration for the global model for different vessel displacements, with current}
 \label{fig:statconc}
 \end{figure}
 
@@ -189,12 +189,12 @@ The local model was created in BFLEX and only consisted of the upper part of the
 \caption [$\; \:$ Cable cross-section in the local model]{Illustration of cable cross-section in local model}
  \label{fig:crosspro}
 \end{figure}
-Initially, the cable model had a length of 5 pitch lengths, but this was later changed to 4.25 as it became apparent that the model was too short. The cable included several layers and components, as displayed in Figure \ref{fig:cross2}.  The straight components were modeled with HSHEAR363 elements. That includes the center tube (A), the sheath around the conductors (C), the tape between the armoring layers (E), and the outer sheath(G). The helical components were modeled with HSHEAR353 elements and included the conductors (B) and the armoring layers (D) and (F). The cable was formed out of one central node system, and all the components were connected to this node system in addition to possessing their respective radial node system.\\\\ Contact elements were used to model the interaction between the element groups. HCONT463 was used to describe the contact between different layers. The interaction between the layers was described by making one layer the master and the other the slave, and connecting their center nodes and radial nodes.  Figure \ref{fig:contact} illustrates how HCONT463 connected the different layers.
+Initially, the cable model had a length of 5 pitch lengths, but this was later changed to 4.25 as it became apparent that the model was too short. The cable included several layers and components, as displayed in Figure \ref{fig:crosspro}.  The straight components were modeled with HSHEAR363 elements. That includes the center tube (A), the sheath around the conductors (C), the tape between the armoring layers (E), and the outer sheath(G). The helical components were modeled with HSHEAR353 elements and included the conductors (B) and the armoring layers (D) and (F). The cable was formed out of one central node system, and all the components were connected to this node system in addition to possessing their respective radial node system.\\\\ Contact elements were used to model the interaction between the element groups. HCONT463 was used to describe the contact between different layers. The interaction between the layers was described by making one layer the master and the other the slave, and connecting their center nodes and radial nodes.  Figure \ref{fig:contact} illustrates how HCONT463 connected the different layers.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{figures/contact}
-\caption[$\; \:$ Logic of HCONT463]{The element types for the different components in the cross section and the logic of connecting them by HCONT463}
+\caption[$\; \:$ Logic of HCONT463]{Logic of HCONT463}
  \label{fig:contact}
 \end{figure}
 HCONT454 was used to describe the contact between the conductors. This element connects the two radial nodes of the HSHEAR353 elements together.\newline
@@ -215,13 +215,13 @@ Shear modulus [GPA]& 80 & 40 &  \\
 Poisson's number [-]& 0.30 & 0.36 & 0.35\\
 Axial stiffness [N]& 1.48e+06 & 1.07e+07 & \\
 Bending stiffness [Nm$^2$] & 0.835 & 4.19 &\\
-Torsional stiffness & 0.64 & 0.32&\\
+Torsional stiffness [Nm$^2$] & 0.64 & 0.32&\\
  \hline
 \end{tabular}
 \caption{Properties of the materials used in the local model}
 \label{table:matprop}
 \end{table}
-\noindent The friction between layers was determined by the use of FRICONTACT materials. Table \ref{table:frimod} presents the properties of the contact materials and Table \ref{table:frimod} displays their usage. \begin{table} [H]
+\noindent The friction between layers was determined by the use of FRICONTACT materials. Table \ref{table:friprop} presents the properties of the contact materials and Table \ref{table:frimod} displays their usage. \begin{table} [H]
 \centering
 \begin{tabular}{ |c|c|c|c|}
 \hline

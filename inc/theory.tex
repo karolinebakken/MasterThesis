@@ -13,7 +13,7 @@ As electricity technology evolved, the notion of utilizing windmills to generate
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{figures/hutter}
-\caption[$\; \:$Hûtter Wind Turbine Concept]{"Wind turbine by U. Hütter in Stötten in the Swabian Alb, Germany (rotor diameter 34 m, rated power 100 kW), 1958-1968" \cite{Hau2013} }
+\caption[$\; \:$Hûtter Wind Turbine Concept]{"Wind turbine by U. Hütter in Stötten in the Swabian Alb, Germany (rotor diameter 34 m, rated power 100 kW), 1958-1968", \cite{Hau2013} }
  \label{fig:hutter}
 \end{figure}
 
@@ -64,27 +64,23 @@ where A is the area. The mass flow $\dot m$ is expressed as:
     \label{eq:air}
 \end{equation}
 
-\noindent From the Equation \ref{eq:air} it follows that the maximum energy extracted is obtained if $V_2=0$. Physically, however, this does not make sense as this implies that $V_1$ must become equal to zero, meaning no energy extraction at all. Through the conservation of momentum, Albert Betz developed a theory of the optimal relationship between the flow velocity before and after the extraction, $\frac{V_1}{V_2}$. $c_p$ is introduced to have a reference for the power output, where the power output, $P$  is compared the power of a free-flowing flow without extraction, $P_0$. 
+\noindent From the Equation \ref{eq:air} it follows that the maximum energy extracted is obtained if $V_2=0$. Physically, however, this does not make sense as this implies that $V_1$ must become equal to zero, meaning no energy extraction at all. Through the conservation of momentum, Albert Betz developed a theory of the optimal relationship between the flow velocity before and after the extraction, $\frac{V_1}{V_2}$. $c_p$ was introduced to have a reference for the power output, where the power output, $P$  is compared the power of a free-flowing flow without extraction, $P_0$. 
   \begin{equation}
     C_P = \frac{P}{P_0}
 \end{equation}
 
-\noindent The following results were obtained: 
+Figure \ref{fig:idealflow} show that the maximum power to be extracted is at $C_P$ close to 0.6, more precisely at: 
+ \begin{equation}
+    C_P = \frac{16}{27} = 0.593
+\end{equation}
 
+\noindent This is frequently called the Betz factor and expresses the maximum theoretical efficiency. 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{figures/idealflow}
 \caption[$\; \:$Power coefficient versus velocity ratio]{"Power coefficient versus velocity ratio" \cite{Hau2013} }
  \label{fig:idealflow}
 \end{figure}
-
-\noindent  From Figure \ref{fig:idealflow}, it is clear that the maximum power to be extracted is at $C_P$ close to 0.6, more precisely at 
-
- \begin{equation}
-    C_P = \frac{16}{27} = 0.593
-\end{equation}
-
-\noindent This is frequently called the Betz factor and expresses the maximum theoretical efficiency. 
 
 \subsubsection{Basics of Foil Theory}
 One of the most fundamental components of the wind turbine are the blades. They are shaped as foils and are responsible for the transfer of the kinetic energy in the wind, to the mechanical energy of the rotor. \cite{MATHEW2012} states that in earlier days, the foils in wind turbines were adopted from airplane foils. Today,  there is a whole industry dedicated to the optimization and design of wind turbine foils. A basic illustration of the essential features of a standard airfoil is shown in Figure \ref{fig:foil}.  
@@ -96,12 +92,12 @@ One of the most fundamental components of the wind turbine are the blades. They 
  \label{fig:foil}
 \end{figure}
 
-\noindent If the foil is placed in a flow stream, the foil experiences a separation of streamlines above and below the foil. Due to the configuration of the foil shape, the streamlines above the foil have a longer way to travel than those below the foil. Because of this, the velocity of the flow on the upper side has to increase to meet the particles in the streamlines on the bottom of the foil at the trailing edge. According to Bernoulli's theorem, increased velocity has to be counterbalanced with a reduction in pressure. Decreased pressure creates a pressure difference between the upper and lower side of the foil resulting in a lift force directed upwards. At the same time, a drag force is also exerted on the foil. Their resultant is the net experienced force on the airfoil, as illustrated in Figure \ref{fig:liftdrag}, \cite{MATHEW2012}. 
+\noindent If the foil is placed in a flow stream, the foil experiences a separation of streamlines above and below the foil. Due to the configuration of the foil shape, the streamlines above the foil have a longer way to travel than those below the foil. Because of this, the velocity of the flow on the upper side has to increase to meet the particles in the streamlines on the bottom of the foil at the trailing edge. According to Bernoulli's theorem, increased velocity has to be counterbalanced with a reduction in pressure. Decreased pressure creates a pressure difference between the upper and lower side of the foil resulting in a lift force directed upwards. At the same time, a drag force is also exerted on the foil. Their resultant is the net experienced force on the airfoil, as illustrated in Figure \ref{fig:liftdrag}. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{figures/liftdrag}
-\caption[$\; \:$Lift and drag on an airfoil]{Lift and drag on an airfoil \cite{MATHEW2012} }
+\caption[$\; \:$Lift and drag on an airfoil]{Lift and drag on an airfoil, \cite{MATHEW2012} }
  \label{fig:liftdrag}
 \end{figure}
 
@@ -120,16 +116,16 @@ Where $C_L$ and $C_D$ are lift and drag coefficients respectively.\newline
 \noindent The angle of attack influences the lift and drag forces (see Figure \ref{fig:foil}). In terms of airfoils used in wind turbines, the drag force is just a parasite component following the lift force, so it is a goal to maximize lift and minimize the drag so that the ratio $\frac{C_L}{C_D}$ reaches its maximum. For a wind turbine, the rotation of the foils creates a tangential velocity. The velocity experienced by a point is the resultant of the velocity and the tangential velocity. The drag force is parallel with the resulting velocity, and the lift is always perpendicular to the drag. 
 
 \section{Offshore Wind Turbines}
-The following paragraph is taken from \cite{Kapsali2012}.\\\\ In later years, there has been a significant increase in wind power installations. Renewable energy is on high demand, and wind energy is considered a cost-effective way of providing it. As restrictions on wind installations increase in terms of noise and visibility, development is being withheld. This has made a new market emerge: Offshore Wind Energy. Offshore wind energy implies electrical energy generated by wind installation placed offshore.  There are several advantages of this: wind speeds tend to increase with distance from shore, giving offshore wind energy an even greater potential than on-land wind energy. Also, the noise and visibility of the wind turbines are no longer a problem as long as the installation is placed far enough from shore, and the environmental impact is minimal. However, there are several challenges as well. The wind industry is a relatively new industry, and the ocean conditions such as weather, waves, currents, corrosion, and more, pose several challenges and demands multidisciplinary cooperation for development of plausible designs. New approaches are needed in terms of turbine, structure, installation, and maintenance, and the cost of offshore wind energy is considered higher than on land. Offshore wind energy generally follows a simple rule: The further from shore an installation is placed, the greater energy potential in terms of wind speed, but this also implies deeper waters and increased development and operation costs. A lot of the experience gained from the oil and gas industry is valuable in the advancement of offshore wind energy. 
+The theory in the following paragraph is taken from \cite{Kapsali2012}.\\\\ In later years, there has been a significant increase in wind power installations. Renewable energy is on high demand, and wind energy is considered a cost-effective way of providing it. As restrictions on wind installations increase in terms of noise and visibility, development is being withheld. This has made a new market emerge: Offshore Wind Energy. Offshore wind energy implies electrical energy generated by wind installation placed offshore.  There are several advantages of this: wind speeds tend to increase with distance from shore, giving offshore wind energy an even greater potential than on-land wind energy. Also, the noise and visibility of the wind turbines are no longer a problem as long as the installation is placed far enough from shore, and the environmental impact is minimal. However, there are several challenges as well. The wind industry is a relatively new industry, and the ocean conditions such as weather, waves, currents, corrosion, and more, pose several challenges and demands multidisciplinary cooperation for development of plausible designs. New approaches are needed in terms of turbine, structure, installation, and maintenance, and the cost of offshore wind energy is considered higher than on land. Offshore wind energy generally follows a simple rule: The further from shore an installation is placed, the greater energy potential in terms of wind speed, but this also implies deeper waters and increased development and operation costs. A lot of the experience gained from the oil and gas industry is valuable in the advancement of offshore wind energy. 
 
-\subsection{ Historical Background for Offshore Wind Turbines}
+\subsection{Historical Background for Offshore Wind Turbines}
 \cite{NG2016} states that the first offshore wind farm was developed in Denmark in the 1990s. According to \cite{Lynn2011}, this wind farm consisted of 11 turbines providing 5 MW combined.  By using the already existing knowledge and technology both from the onshore windmill industry and the offshore oil and gas industry, offshore wind turbines have experienced rapid growth in the middle of the 2000s, with doubling of capacity every 2-4 years, \cite{NG2016}. Figure \ref{fig:development} shows the increase in offshore wind installations. \cite{Lynn2011} States that "It is reasonable that Europe will generate tens of gigawatts of offshore electricity by 2020".
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1.1]{figures/development}
-\caption[$\; \:$Annual and cumulative offshore wind installations from 1993-2014]{Annual and cumulative offshore wind installations from 1993-2014 \cite{NG2016}}
+\caption[$\; \:$Annual and cumulative offshore wind installations from 1993-2014]{Annual and cumulative offshore wind installations from 1993-2014, \cite{NG2016}}
  \label{fig:development}
 \end{figure}
 
@@ -143,12 +139,12 @@ Offshore wind turbines are quite similar to onshore wind turbines, but with some
 \end{itemize}
 
 \subsection{Offshore Support Structures}
-Offshore wind turbines may be attached to the seabed or floating. According to \cite{IRENA2016}, the support structures that are attached to the seabed are restricted to water depths of 50m or less. As the offshore wind industry aims to move installations further offshore with increasing water depths, floating solutions are necessary. By introducing floating support structures, water depths constraints are eliminated (at least in terms of support structure). This opens new markets for countries with few shallow water areas suitable for offshore wind energy production. In most cases, moving further away from shore increases the wind speeds, and it also decreases the environmental impact on the surroundings. The main floating options are presented in Figure \ref{fig:supstruc}, are all familiar concepts from the oil and gas industry and have proven successful in demanding environments. 
+Offshore wind turbines may be attached to the seabed or floating. According to \cite{IRENA2016}, the support structures that are attached to the seabed are restricted to water depths of 50m or less. As the offshore wind industry aims to move installations further offshore with increasing water depths, floating solutions are necessary. By introducing floating support structures, water depths constraints are eliminated (at least in terms of support structure). This opens new markets for countries with few shallow water areas suitable for offshore wind energy production. In most cases, moving further away from shore increases the wind speeds, and it also decreases the environmental impact on the surroundings. The main floating options presented in Figure \ref{fig:supstruc}, are all familiar concepts from the oil and gas industry that have proven successful in demanding environments. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{figures/supstruc}
-\caption[$\; \:$Different support structures]{Different support structures \cite{Bailey2014}}
+\caption[$\; \:$Different support structures]{Different support structures, \cite{Bailey2014}}
  \label{fig:supstruc}
 \end{figure}
 
@@ -256,16 +252,16 @@ There are several different designs of subsea power cables. According to \cite{B
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{figures/pcable}
-\caption[$\; \:$Main components of a typical subsea power cable]{Main components of a typical subsea power cable. Adapted from  \cite{Boltinha2016} }
+\caption[$\; \:$Main components of a typical subsea power cable]{Main components of a typical subsea power cable. Adapted from \cite{Boltinha2016} }
  \label{fig:pcable}
 \end{figure}
 
-\noindent As mentioned in section 1.3.2, the W-configuration is not the only configuration that has been used for inter-array cables in recent years, and other configurations are being explored. Figure \ref{fig:config} shows some of the most common riser configurations for floating offshore structures. 
+\noindent As mentioned in Section 1.3.2, the W-configuration is not the only configuration that has been used for inter-array cables in recent years, and other configurations are being explored. Figure \ref{fig:config} shows some of the most common riser configurations for floating offshore structures. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{figures/config}
-\caption[$\; \:$Different configurations of flexible riser]{Different configurations of flexible riser \cite{Thies2012}}
+\caption[$\; \:$Different configurations of flexible riser]{Different configurations of flexible riser, \cite{Thies2012}}
  \label{fig:config}
 \end{figure}
 
@@ -276,7 +272,7 @@ the two ends [...] of the distributed buoyancy portion[...]" \cite{srinil2016}. 
 \centering
 \includegraphics[scale=0.6]{figures/bend}
 \caption[$\; \:$Effect of buoyancy distribution]{"Effect of buoyancy distribution (red line) change on the configuration of dynamic
-cable" \cite{srinil2016}}
+cable", \cite{srinil2016}}
  \label{fig:bend}
 \end{figure}
 \subsection{Bend Stiffener}
@@ -298,7 +294,7 @@ A dynamic power cable is susceptible to fatigue or over bend when there is an ab
   \begin{figure}[H]
 \centering
 \includegraphics[scale=0.9]{figures/cross}
-\caption[$\; \:$Inline and trellis contact between wires]{Inline and trellis contact between wires \cite{Nasution2013} }
+\caption[$\; \:$Inline and trellis contact between wires]{Inline and trellis contact between wires, \cite{Nasution2013} }
  \label{fig:cross}
 \end{figure}
 
@@ -321,7 +317,7 @@ A dynamic power cable is susceptible to fatigue or over bend when there is an ab
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{figures/cable}
-\caption[$\; \:$Forces on cable]{Forces on cable  \cite{Nasution2013} }
+\caption[$\; \:$Forces on cable]{Forces on cable,  \cite{Nasution2013} }
  \label{fig:cable}
 \end{figure}
 
